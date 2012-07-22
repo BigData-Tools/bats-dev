@@ -1,0 +1,15 @@
+<apex:component >
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/jquery.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-transition.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-alert.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-scrollspy.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-modal.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-dropdown.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-tab.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-tooltip.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-popover.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-button.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-collapse.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-carousel.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.js, 'js/bootstrap-typeahead.js')}"/>
+</apex:component>

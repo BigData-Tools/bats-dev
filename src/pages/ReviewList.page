@@ -1,0 +1,5 @@
+<apex:page standardController="Review__c" sidebar="true">
+ 
+ <apex:enhancedList listId="00BE000000109Hd" height="300" customizable="false" rowsPerPage="25"/><br/> 
+
+</apex:page>

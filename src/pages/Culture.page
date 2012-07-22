@@ -1,0 +1,172 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" >
+   <style type="text/css">
+     #feature{ 
+     font-size:13px;
+     } 
+     
+      #feature h4{ 
+      color:#E38101;
+      
+      }
+     
+    </style>
+  
+  <c:CareerSiteHeader />
+
+ 
+   <body screen_capture_injected="true" view_id="" name="" no_dhx="1">
+    <div id="wrap">
+    <!--Navigation bar---------------------------------------------------------------> 
+     <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#"><apex:image value="{!$Resource.boxlogo}" height="25px;"/></a>
+          <div class="nav-collapse">
+            <ul class="nav ">
+              <li class="active"><apex:outputLink value="{!$Page.Careers}"><strong>Careers</strong></apex:outputLink>
+             </li>
+             <li ><apex:outputLink value="{!$Page.Benefits}"><strong>Benefits</strong></apex:outputLink>
+              </li>
+              <li><apex:outputLink value="{!$Page.Culture}"><strong>Culture</strong></apex:outputLink></li>
+              <li ><apex:outputLink value="{!$Page.University}"><strong>University</strong></apex:outputLink></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!--/.navbar-inner -->
+    </div><!--/navbar -->
+    
+    <br/>
+     <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+         </div ><!-- /span2 -->
+       
+      <div class="span5">
+      <h2>Working at Box is all about...</h2>
+      <br/>
+     
+     <div id="feature" class="well">
+     <h4>Realizing an exciting vision</h4>
+     <p>We are true believers in the power of the 
+     Web and how it connects people to their content. 
+     You could say we have our heads in the cloud. 
+     We say it's the future: The way people manage, 
+     share and access content from anywhere presents extraordinary opportunities.</p>
+     <ul>
+     <li>7 million customers and growing</li>
+     <li>100,000 companies, including 77% of Fortune 500s</li>
+     <li>Transforming how people work and communicate, each and every day</li>
+     </ul>
+     </div>
+     
+     <div id="feature" class="well">
+      <h4>Helping create and promote great products</h4>
+     <p>There is just something about Box. Once people use it, 
+     they love it and wonder how they got along without it. 
+     Many of the world's most respected companies use Box, 
+     including Dell, TaylorMade and Clear Channel, among many others. 
+     Working at Box, you can take pride in building and spreading 
+     the word about something that's, well, just really cool.</p>
+     <ul>
+     <li>A 40-person team saves over 40 hours a week storing content on Box</li>
+     <li>A 100-person team deployment saves 450 hours/month; 700 days per year</li>
+     <li>CEOs run entire companies with Box and iPads</li>
+     </ul>
+     </div>
+     
+     <div id="feature" class="well">
+     <h4>Seeing the difference you will make</h4>
+     <p>Regardless of where you work within Box, 
+     everyone has a hand in shaping a service millions of people use 
+     around the world every day. Whether it's a simple suggestion or 
+     a new way of doing something, you can make your mark here, again and again.
+      We encourage it.</p>
+     <ul>
+     <li>Open office environment promotes collaboration</li>
+     <li>Boxers bring their wacky selves to work every day</li>
+     <li>Risk-taking welcome and rewarded</li>
+     </ul>
+     </div>
+     
+    </div><!--/span5-->
+        
+         <div class="span3">
+         
+     <ul class="thumbnails">
+      
+     <li class="span12">
+         <div class="thumbnail">
+      <apex:image value="{!URLFOR($Resource.companypics,'boxpics/working-hard.jpeg')}" alt=""/>
+      
+        </div>
+         </li>
+     <li class="span12">
+         <div class="thumbnail">
+      <apex:image value="{!URLFOR($Resource.companypics,'boxpics/fun.jpg')}" alt=""/>
+        </div>
+     </li>    
+            
+    
+     <li class="span12">
+         <div class="thumbnail">
+      <apex:image value="{!URLFOR($Resource.companypics,'boxpics/offices3.jpeg')}" alt=""/>
+        </div>
+     </li>
+     <li class="span12">
+         <div class="thumbnail">
+      <apex:image value="{!URLFOR($Resource.companypics,'boxpics/activity.jpeg')}" alt=""/>
+        </div>
+     </li>
+      
+      <li class="span5">
+         <div class="thumbnail">
+      <apex:image value="{!URLFOR($Resource.companypics,'boxpics/the-board.jpeg')}" alt=""/>
+        </div>
+     </li>
+     <li class="span5">
+         <div class="thumbnail">
+      <apex:image value="{!URLFOR($Resource.companypics,'boxpics/hackathon.jpeg')}" alt=""/>
+      
+        </div>
+         
+     </li>
+   
+    <li class="span1"><apex:outputLink value="http://www.glassdoor.com/Photos/Box-Office-Photos-E254092.htm">More..</apex:outputLink></li>
+    </ul> 
+     
+   
+    
+         </div ><!-- /span3 -->
+         
+        <div class="span2">
+        
+        </div ><!-- /span2 -->
+      </div><!-- /.row-fluid -->
+     
+     
+
+      
+    </div> <!-- /container -->
+    <div class="clearfooter">
+    </div>
+    
+    </div><!-- /wrap -->
+   
+   
+    <c:CareerSiteFooter />
+  
+  
+    <!--inlucde js files--------------------------------------------------------------->
+   
+     <c:JSFiles />
+     <c:clearlyComponentCss />
+   
+    
+   </body>                   
+
+</apex:page>

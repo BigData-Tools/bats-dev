@@ -1,0 +1,22 @@
+<apex:component id="footerComponent">
+  <style type="text/css">
+  #footer a {color:#484848;
+    font:10px;
+    padding:0 8px 9px; 
+    margin: 6 6px; }
+  #footer a:hover { color:#C8C8C8 ;}
+  #footer li { display:inline;  }
+  </style>
+
+  <div id="footer">
+ <br/>
+      <ul>
+        <li>&copy;2012 Box</li>
+        <li><a href="https://www.box.com"> box.com</a>|</li>
+        <li><a href="https://www.box.com/static/html/terms.html">Terms</a> |</li>
+        <li><a href="#">Privacy</a>|</li>
+        <li><a href="#">Policy</a> |</li>
+        <li><a href="#">Support</a>|</li>
+      </ul>  
+ </div>
+</apex:component>

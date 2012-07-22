@@ -1,0 +1,33 @@
+<apex:page controller="AAJobApplicationController" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Awards">
+        <apex:repeat value="{!resume.awardList}" var="award">
+        <apex:pageBlockSection title="Award" columns="1"> 
+            <apex:selectlist size="1" value="{!award.awardType}" label="Award Type">
+                <apex:selectOption itemValue="" itemLabel="Select a Type"/>
+                <apex:selectOption itemValue="P" itemLabel="Professional"/>
+                <apex:selectOption itemValue="A" itemLabel="Academic"/>
+            </apex:selectlist>
+            <apex:inputText label="Award Name" value="{!award.name}"/>
+            <apex:inputText label="Granter" value="{!award.granter}"/>
+            <apex:inputText label="Date" value="{!award.grantDate}"/>
+            <apex:inputText label="Reason" value="{!award.reason}"/>
+        </apex:pageBlockSection>
+        </apex:repeat>
+         </apex:pageBlock>
+                <apex:commandButton value="Add Award" action="{!addAwardListItem}"/> <apex:commandButton value="Remove Award" action="{!removeAwardListItem}"/><br/><br/>
+    
+        <apex:pageBlock title="Certifications">
+        <apex:repeat value="{!resume.certificationList}" var="cert">
+        <apex:pageBlockSection title="Professional Certification" columns="1"> 
+             <apex:inputText label="Certification Name" value="{!cert.name}"/>
+             <apex:inputText label="Vendor" value="{!cert.vendor}"/>
+             <apex:inputText label="Issue Date" value="{!cert.issueDate}"/>
+             <apex:inputText label="Expiration Date" value="{!cert.expiryDate}"/>
+         </apex:pageBlockSection>
+         </apex:repeat>
+         </apex:pageBlock>
+         <apex:commandButton value="Add Professional Certification" action="{!addCertificationListItem}"/> <apex:commandButton value="Remove Professional Certification" action="{!removeCertificationListItem}"/>
+          <apex:commandButton value="Continue" action="{!awardCertificationAction}"/>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,4 @@
+<apex:page controller="AAJobApplicationController">
+    <apex:outputLabel value="{!fileResponse}"></apex:outputLabel>
+  you have submitted your Job application successfully, thank you
+</apex:page>

@@ -1,0 +1,145 @@
+<apex:page standardController="Candidate__c" extensions="CandidateChartsExtension">
+  <apex:enhancedList listId="00BE000000109Gz" height="400" customizable="false" rowsPerPage="25"/>
+  <br/><br/>
+ 
+<!--<apex:stylesheet value="{!URLFOR($Resource.css,'css/bootstrap.css')}"/>-->
+<!--<apex:stylesheet value="{!URLFOR($Resource.css,'css/bootstrap-responsive.css')}"/>-->
+ 
+    <apex:includeScript id="a" value="https://www.google.com/jsapi" />
+  
+    <style>
+  
+    #chart th{
+        color:#ffffff;
+        background-color:#8b4500;
+        text-align:center;
+        font-size:14px;
+        height:2px;
+    }
+  
+    #chart table{
+        width:49%;
+        height:300px;
+    }
+  
+    .table-bordered {
+        border: 1px solid #dddddd;
+        border-collapse: separate;
+        *border-collapse: collapsed;
+        border-left: 0;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    
+    .table-bordered th,
+    .table-bordered td {
+        border-left: 1px solid #dddddd;
+    }
+
+    .pull-right {
+        float: right;
+    }
+    .pull-left {
+        float: left;
+    }
+ 
+  </style>
+   
+  <div id="chart">
+  <table class="table-bordered pull-left" >
+  <tr>
+   <th>Candidate Map </th>
+ </tr>
+ <tr>
+ <td>
+ <div id="geochart_div"/>
+ </td>
+</tr>
+  </table>
+  </div>
+   
+  <div id="chart">
+  <table class="table-bordered pull-right" >
+  <tr>
+   <th>Candidate Enducation </th>
+ </tr>
+ <tr>
+ <td>
+ <div id="educationchart_div"/>
+ </td>
+</tr>
+  </table>
+  </div>
+
+  <script type="text/javascript">
+ // Load the Visualization API and the map package.
+        google.load('visualization', '1.0', {'packages':['geochart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(initCharts);
+
+        function initCharts() {        
+            CandidateChartsExtension.loadState(
+                function(result, event){ 
+                // load Column chart
+                    var chart = new google.visualization.GeoChart(document.getElementById('geochart_div'));
+                    // Prepare table model for chart with columns
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'State');
+                    data.addColumn('number', 'Number of Candidates');   
+                    // add rows from the remoting results
+                    for(var i =0; i<result.length;i++){
+                        var r = result[i];
+                        data.addRow([r.State__c, r.StateNum]);
+                    }                                                                              
+                      
+                    var options= {
+                        region:'US',
+                        displayMode:'regions',
+                        resolution:'provinces',
+                        height:300,
+                        colorAxis:{minValue:0,colors:['#FFFF00','#FF0000']},
+                    };
+                     
+                    // all done, lets draw the chart with some options to make it look nice.
+                    chart.draw(data,options);             
+                    }, {escape:true});            
+        }
+
+    </script>
+    
+    <script type="text/javascript">
+ // Load the Visualization API and the map package.
+        google.load("visualization", "1", {packages:["corechart"]});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(initCharts);
+
+        function initCharts() {        
+            CandidateChartsExtension.loadEducation(
+                function(result, event){ 
+                // load Column chart
+                    var chart = new google.visualization.PieChart(document.getElementById('educationchart_div'));
+                    // Prepare table model for chart with columns
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Education Level');
+                    data.addColumn('number', 'Number of Candidates');   
+                    // add rows from the remoting results
+                    for(var i =0; i<result.length;i++){
+                        var r = result[i];
+                        data.addRow([r.Education__c, r.EducationNum]);
+                    }                                                                              
+                      
+                    var options = {width: 400, height: 300, chartArea:{left:90,top:30,width:"80%",height:"80%"}};
+                     
+                    // all done, lets draw the chart with some options to make it look nice.
+                    chart.draw(data,options);             
+                    }, {escape:true});            
+        }
+
+    </script>
+
+ 
+
+</apex:page>

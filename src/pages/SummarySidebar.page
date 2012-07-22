@@ -1,0 +1,33 @@
+<apex:page controller="SummarySidebarController" sidebar="false" showHeader="false" standardStylesheets="true">
+<style type="text/css" media="all">
+body{margin: 0px; 
+padding: 0px; 
+background-color: #d0eef7;
+}
+#DIV_Container table{margin: 0; 
+padding: 5px;
+ background-color:#d0eef7;
+ }
+ 
+#DIV_Container {font-size:13px; 
+   }
+
+#DIV_Container td{
+padding-top: 2px;
+margin:0px 1px;
+color:#f77b07;
+}
+
+#DIV_Container a{
+color:black;
+
+}
+</style>
+<div id="DIV_Container">
+<table>
+<tr><td><b>New Application</b>:  </td><td><a href="/a00?fcf=00BE00000010AnG" target="_parent"><b> {!NewApplication}</b></a></td></tr>
+<tr><td><b>New Phone Screen</b>:  </td><td><a href="/a00?fcf=00BE00000010AnB" target="_parent"><b> {!PhoneScreen}</b></a></td></tr>
+<tr><td><b>New Onsite</b>:  </td><td><a href="/a00?fcf=00BE00000010AnL" target="_parent"><b> {!Onsite}</b></a></td></tr>
+</table>
+</div>
+</apex:page>

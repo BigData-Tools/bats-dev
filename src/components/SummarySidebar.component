@@ -1,0 +1,5 @@
+<apex:component controller="SummarySidebarController">
+ 
+<style type="text/css" media="all">body{margin: 0; padding: 0; color: #000000; background-color: #E8E8E8;}#DIV_Container {background-color: #F3F3EC;}</style><div id="DIV_Container"><table><tbody><tr><td><em>New Application</em>: &nbsp;</td><td><a href="/a00?fcf=00BE00000010AnG" target="_parent"><b>{!NewApplication}</b></a></td></tr><tr><td><em>New Phone Screen</em>: &nbsp;</td><td><a href="/a00?fcf=00BE00000010AnB" target="_parent"><b>{!PhoneScreen}</b></a></td></tr><tr><td><em>New Onsite</em>: &nbsp;</td><td><a href="/a00?fcf=00BE00000010AnL" target="_parent"><b>{!Onsite}</b></a></td></tr></tbody></table></div>
+
+</apex:component>

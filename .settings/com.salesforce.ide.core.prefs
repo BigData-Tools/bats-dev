@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+endpointApiVersion=25.0
+endpointEnvironment=Other (Specify)
+endpointServer=cs14.salesforce.com
+httpsProtocol=true
+ideVersion=25.0
+keependpoint=false
+metadataFormatVersion=25.0
+namespacePrefix=
+packageName=unpackaged
+readTimeout=400
+username=khangwei@cmu.edu.dev

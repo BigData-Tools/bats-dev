@@ -1,0 +1,4 @@
+<apex:page standardController="Interview__c" sidebar="true">
+ 
+ <apex:enhancedList listId="01rE0000000U4co" height="300" customizable="false" rowsPerPage="25"/>
+</apex:page>

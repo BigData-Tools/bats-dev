@@ -1,0 +1,39 @@
+<apex:page controller="AAJobApplicationController" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Pre-Screening Information">
+        <apex:pageBlockSection title="" columns="1">
+        <apex:selectlist size="1" label="Position Salary Range" value="{!resume.preScreening.salaryRange}">
+            <apex:selectOption itemValue="" itemLabel="Select Salary Range"/>
+            <apex:selectOption itemValue="Below 50,000" itemLabel="Below 50,000"/>
+            <apex:selectOption itemValue="50,000 - 80,000" itemLabel="50,000 - 80,000"/>
+            <apex:selectOption itemValue="81,000 - 110,000" itemLabel="81,000 - 110,000"/>
+            <apex:selectOption itemValue="111,000 - 141,000" itemLabel="111,000 - 141,000"/>
+            <apex:selectOption itemValue="142,000 - 172,000" itemLabel="142,000 - 172,000"/>
+            <apex:selectOption itemValue="173,000 - 200,000" itemLabel="173,000 - 200,000"/>
+            <apex:selectOption itemValue="Above 200,000" itemLabel="Above 200,000"/>
+        </apex:selectlist>
+        <apex:inputText label="Anticipated join date" value="{!resume.preScreening.joinDate}"/>
+        <Apex:inputCheckbox label="Are you welling to relocate" value="{!resume.preScreening.relocate}"/>
+        <apex:inputcheckbox label="do you need visa sponsoring in future" value="{!resume.preScreening.sponsoring}"/>
+        <apex:selectlist size="1" label="Current Visa Status" value="{!resume.preScreening.currentVisa}">
+            <apex:selectOption itemValue="" itemLabel="Visa status"/>
+            <apex:selectOption itemValue="US Citizen" itemLabel="US Citizen"/>
+            <apex:selectOption itemValue="Permanent Resident" itemLabel="Permanent Resident"/>
+            <apex:selectOption itemValue="Refugee" itemLabel="Refugee"/>
+            <apex:selectOption itemValue="Granted Asylum" itemLabel="Granted Asylum"/>
+            <apex:selectOption itemValue="Temporary Resident" itemLabel="Temporary Resident"/>
+            <apex:selectOption itemValue="B Visa" itemLabel="B Visa"/>
+            <apex:selectOption itemValue="L Visa" itemLabel="L Visa"/>
+            <apex:selectOption itemValue="H Visa" itemLabel="H Visa"/>
+            <apex:selectOption itemValue="TN Visa" itemLabel="TN Visa"/>
+            <apex:selectOption itemValue="F Visa" itemLabel="F Visa"/>
+            <apex:selectOption itemValue="J Visa" itemLabel="J Visa"/>
+            <apex:selectOption itemValue="TN Visa" itemLabel="TN Visa"/>
+            <apex:selectOption itemValue="OPT Visa" itemLabel="OPT Visa"/>
+            <apex:selectOption itemValue="EAD Visa" itemLabel="EAD Visa"/>
+        </apex:selectlist>
+        <apex:commandButton value="Continue" action="{!preScreeningAction}"/>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

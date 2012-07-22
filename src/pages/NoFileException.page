@@ -1,0 +1,6 @@
+<apex:page Controller="FileUploadController">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>No File to Upload Exception</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

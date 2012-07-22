@@ -1,0 +1,7 @@
+<apex:page standardController="Interview__c">
+ <apex:enhancedList listId="00BE000000109El" height="300" customizable="false" rowsPerPage="25"/><br/>
+ <apex:enhancedList listId="00BE00000010Lt9" height="300" customizable="false" rowsPerPage="25"/><br/>
+ <apex:enhancedList listId="00BE00000010LtJ" height="300" customizable="false" rowsPerPage="25"/><br/>
+  <apex:enhancedList listId="00BE00000010I8Z" height="300" customizable="false" rowsPerPage="25"/><br/>
+  <apex:enhancedList listId="00BE00000010I8j" height="300" customizable="false" rowsPerPage="25"/><br/>
+</apex:page>

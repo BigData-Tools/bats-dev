@@ -1,0 +1,141 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0">
+   
+ 
+   
+   <c:CareerSiteHeader />
+
+ 
+   <body >
+    <div id="wrap">
+    <!--Navigation bar---------------------------------------------------------------> 
+     <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#"><apex:image value="{!$Resource.boxlogo}" height="25px;"/></a>
+          <div class="nav-collapse">
+            <ul class="nav ">
+              <li ><apex:outputLink value="{!$Page.Careers}"><strong>Careers</strong></apex:outputLink>
+             </li>
+              <li class="active"><apex:outputLink value="{!$Page.Benefits}"><strong>Benefits</strong></apex:outputLink>
+              </li>
+              <li><apex:outputLink value="{!$Page.Culture}"><strong>Culture</strong></apex:outputLink></li>
+              <li ><apex:outputLink value="{!$Page.University}"><strong>University</strong></apex:outputLink></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!--/.navbar-inner -->
+    </div><!--/navbar -->
+    
+    <br/>
+     <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+         </div ><!-- /span2 -->
+         
+         
+       <div class="span4">
+       <br/>
+        <apex:image value="{!URLFOR($Resource.companypics,'boxpics/snackarea.png')}" alt=""/>
+        <br/>
+         <br/>
+          <br/>
+         <apex:image value="{!URLFOR($Resource.companypics,'boxpics/officesnap.png')}" alt=""/>
+         <br/>
+          <br/>
+          <br/>
+           <br/>
+           
+          <apex:image value="{!URLFOR($Resource.companypics,'boxpics/slidesnap.png')}" alt=""/>
+         </div ><!-- /span3 -->
+        
+        <div class="span4">
+        
+        
+     
+         <h3>Benefits</h3>    
+         <ul>
+         <li>Free lunches and dinners</li>
+         <li>Subsidized gym membership</li>
+         <li>Competitive salary</li>
+         <li>Medical, dental and vision insurance</li>
+         <li>Free Caltrain pass</li>
+         <li>15 days of vacation (plus your birthday off!)</li>
+          <li>Lots of snacks and drinks</li>
+           <li>Casual dress environment</li>
+           <li>Ping-pong, Hackathons and scooters</li>
+             <li>Random happy hours on Thursday and Friday</li>
+         </ul>
+           <small>Just a few of benefits list above!</small>  
+         
+         <hr/>
+        
+         <h3>Awards and Accolades</h3>
+          <p><strong>2011</strong></p>
+         <ul>
+         <li> "Visionary" quadrant for Managed File Transfer solutions, Gartner </li>
+         <li>Box named a leader in the report 'Forrester Wave ™: Mobile Collaboration, Forrester Research'</li>
+         <li>Top Rankings as a Fastest Growing Private Company, The San Francisco Business Times and Silicon Valley/San Jose Business Journal</li>
+         <li>Ranked 36th Fastest Growing Company in North America, Deloitte's Technology Fast 500™</li>
+         </ul>
+           <p><strong>2010</strong></p>
+           <ul>
+           <li>Inc. 500 Fastest Growing Companies, Inc. Magazine</li>
+           <li>60 Fastest Growing Private Companies in Silicon Valley (#5), Silicon Valley Business Journal</li>
+           <li>Top Rankings as a Fastest Growing Private Company, The San Francisco Business Times and Silicon Valley/San Jose Business Journal</li>
+           <li>Aaron Levie selected as Entrepreneur of the Year Semi Finalist, Ernst and Young</li>
+           <li>CEO Aaron Levie named Most Creative People in Business List, Fast Company</li>
+           <li>Best Place to Work, San Francisco / Silicon Valley Business Journals and INC magazine</li>
+           <li>Top Website, PC Magazine</li>
+           <li>Trend Setting Product, KMWorld</li>
+           <li>Co-Founders Aaron Levie and Dylan Smith named as two of America's Winning Young Entrepreneurs, BusinessWeek</li>
+           </ul>
+         <hr/>
+          <h3>Reviews from current employees</h3>
+          <br/>
+          <blockquote>
+  <p>Box is an exciting company with a strong, fun-loving culture and an atmosphere of high success and higher expectations.</p>
+  <small>Current Sales Operations Manager </small>
+   </blockquote>
+   
+   <blockquote>
+  <p>The happiest I have been at any software company!</p>
+  <small> Current Software Engineer</small>
+   </blockquote>
+   
+    <blockquote>
+  <p>Box is a great company! Growing fast with lots of opportunity to advance in your career path. They are always looking to maximize the talents they have in-house already.</p>
+  <small> Current Anonymous Employee</small>
+   </blockquote>
+
+<p class="pull-right"><apex:outputLink value="http://www.glassdoor.com/Reviews/Box-Reviews-E254092.htm">Check more reviews at Glossdoor...</apex:outputLink></p>
+       
+        </div><!--/span5-->
+         
+        <div class="span2">
+        </div ><!-- /span2 -->
+      </div><!-- /.row-fluid -->
+       <br/>
+    </div> <!-- /container -->
+    
+    <div class="clearfooter">
+    </div>
+    
+    </div><!-- /wrap -->
+   
+   
+    <c:CareerSiteFooter />
+  
+  
+    <!--inlucde js files--------------------------------------------------------------->
+   
+     <c:JSFiles />
+     <c:clearlyComponentCss />
+   
+    
+   </body>                   
+</apex:page>

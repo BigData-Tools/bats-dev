@@ -1,0 +1,30 @@
+<apex:component >
+  <style type="text/css">
+  
+  #footer{
+  text-align:center;
+  padding:0px 10px 9px 5px; 
+  
+  }
+  #footer a {
+    color:#484848;
+    font:10px;
+    padding:5px 5px 9px 5px; 
+    
+    }
+  #footer a:hover { color:#C8C8C8 ;}
+  #footer li { display:inline;  }
+  </style>
+
+  <div id="footer">
+ <br/>
+      <ul>
+        <li>&copy;2012 Box</li>
+        <li><apex:outputLink value="https://www.box.com">box.com </apex:outputLink>|</li>
+        <li><apex:outputLink value="https://www.box.com/static/html/terms.html">About</apex:outputLink> |</li>
+        <li><apex:outputLink value="https://www.box.com/static/html/terms.html">Terms</apex:outputLink> |</li>
+        <li><apex:outputLink value="https://www.box.com/static/html/privacy.html">Privacy</apex:outputLink>|</li>
+        <li><apex:outputLink value="https://support.box.com/home">Support</apex:outputLink></li>
+      </ul>  
+ </div>
+</apex:component>

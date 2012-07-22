@@ -1,0 +1,29 @@
+<apex:component >
+   <div id="myCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <apex:image value="{!URLFOR($Resource.companypics,'boxpics/boxhq.jpg')}"/>
+                <div class="carousel-caption">
+                  <h4>#18 on Forbes' List of 100 Most Promising Companies</h4>
+                  <p> Ask any Boxer: Working here is far more than a job. For an exciting career with a vibrant culture, you can’t beat Box.</p>
+                </div>
+              </div>
+              <div class="item">
+                <apex:image value="{!URLFOR($Resource.companypics,'boxpics/working.jpg')}" alt=""/>
+                <div class="carousel-caption">
+                  <h4>Be Part of Something Amazing</h4>
+                  <p>Box combines the dynamics of a big family, a collegial atmosphere and throw in smarts, quirkiness and fun for good measure. </p>
+                </div>
+              </div>
+              <div class="item">
+                 <apex:image value="{!URLFOR($Resource.companypics,'boxpics/board.jpg')}" alt=""/>
+                <div class="carousel-caption">
+                  <h4>Building on a Cool, Well-respected Brand</h4>
+                  <p>Box has people talking. We are true believers in the power of the Web and how it connects people to their content.</p>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</apex:component>

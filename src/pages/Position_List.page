@@ -1,0 +1,11 @@
+<apex:page standardController="Position__c" sidebar="true">
+ 
+ <apex:enhancedList listId="00BE00000010562" height="300" customizable="false" rowsPerPage="10"/>
+ 
+<br/>
+
+<apex:enhancedList listId="00BE00000010Dmo" height="300" customizable="false" rowsPerPage="10"/>
+ 
+<br/>
+<apex:enhancedList listId="00BE00000010Dmy" height="300" customizable="false" rowsPerPage="10"/>
+</apex:page>

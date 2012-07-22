@@ -1,0 +1,13 @@
+<apex:page controller="FileUploadController" sidebar="false">
+    <apex:messages />
+     Resume file:
+    <apex:form id="theForm" enctype="multipart/form-data">
+      <apex:pageBlock >
+          <apex:pageBlockSection >
+          <table>
+            <tr><td>Resume File</td><td><apex:inputFile value="{!document.body}" filename="{!document.name}"/></td><td><apex:commandButton value="upload" action="{!convertToText}"/></td></tr>
+          </table>
+          </apex:pageBlockSection>
+       </apex:pageBlock>
+    </apex:form>
+</apex:page>

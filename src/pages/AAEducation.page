@@ -1,0 +1,34 @@
+<apex:page controller="AAJobApplicationController" sidebar="false">
+    <apex:form >
+    <apex:pageBlock title="Education">
+    <apex:repeat value="{!resume.educationList}" var="edu">
+    <apex:pageBlockSection title="Education" columns="1">
+        <apex:inputText label="School Name" value="{!edu.instituteName}"/>
+        <apex:inputText label="Degree Name" value="{!edu.degreeName}"/>
+        <apex:inputText label="Major" value="{!edu.major}"/>
+        <apex:inputText label="Minor" value="{!edu.minor}"/>
+        <apex:inputText label="Start Date" value="{!edu.startDate}"/>
+        <apex:inputText label="End Date" value="{!edu.endDate}"/>
+
+            <apex:selectlist size="1" label="Status" value="{!edu.status}">
+                <apex:selectOption itemValue="" itemLabel="Select degree status"/>
+                <apex:selectOption itemValue="G" itemLabel="Graduate"/>
+                <apex:selectOption itemValue="I" itemLabel="In-Progress"/>
+                <apex:selectOption itemValue="N" itemLabel="Incomplete"/>
+            </apex:selectlist>
+        
+        <apex:inputText label="GPA" value="{!edu.gpa}"/>
+        
+            <apex:selectlist size="1" label="Max GPA" value="{!edu.maxGpa}">
+                <apex:selectOption itemValue="" itemLabel="Select GPA Scale"/>
+                <apex:selectOption itemValue="5" itemLabel="5"/>
+                <apex:selectOption itemValue="4.3" itemLabel="4.3"/>
+                <apex:selectOption itemValue="4" itemLabel="4"/>
+            </apex:selectlist>
+    </apex:pageBlockSection>
+    </apex:repeat>
+    <apex:commandButton value="Add Education" action="{!addEducationListItem}"/> <apex:commandButton value="Remove Education" action="{!removeEducationListItem}"/>
+    <apex:commandButton value="Continue" action="{!educationAction}"/>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

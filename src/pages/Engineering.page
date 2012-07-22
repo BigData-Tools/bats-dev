@@ -1,0 +1,142 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" >
+     <style type="text/css">
+   #breadcrumb li {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  font-size:12px;
+}
+#breadcrumb .divider {
+  padding: 0 5px;
+  color: #999999;
+}
+#breadcrumb a{
+  color: #800000;
+  
+}
+
+
+     #feature{ 
+     font-size:13px;
+     } 
+     
+      #feature h4{ 
+      color:#E38101;
+      
+      }
+     
+
+    </style>
+    
+    <c:CareerSiteHeader />
+
+ 
+   <body screen_capture_injected="true" view_id="" name="" no_dhx="1">
+    <div id="wrap">
+    <!--Navigation bar---------------------------------------------------------------> 
+     <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#"><apex:image value="{!$Resource.boxlogo}" height="25px;"/></a>
+          <div class="nav-collapse">
+            <ul class="nav ">
+              <li class="active"><apex:outputLink value="{!$Page.Careers}"><strong>Careers</strong></apex:outputLink>
+             </li>
+             <li ><apex:outputLink value="{!$Page.Benefits}"><strong>Benefits</strong></apex:outputLink>
+              </li>
+              <li><apex:outputLink value="{!$Page.Culture}"><strong>Culture</strong></apex:outputLink></li>
+              <li ><apex:outputLink value="{!$Page.University}"><strong>University</strong></apex:outputLink></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!--/.navbar-inner -->
+    </div><!--/navbar -->
+    
+    <br/>
+     <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+         </div ><!-- /span2 -->
+       
+        <div class="span4">
+     <ul id="breadcrumb">
+  <li>
+    <a href="#" >Career</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    Engineering 
+  </li>
+</ul>
+     <br/>
+   </div><!--/span4-->   
+   
+       <div class="span4">
+     <br/>
+ 
+     <div id="feature" class="well">
+     <h4>Building the Next Big Thing！</h4>
+     <p>We are true believers in the power of the 
+     Web and how it connects people to their content. 
+     You could say we have our heads in the cloud. 
+     We say it's the future: The way people manage, 
+     share and access content from anywhere presents extraordinary opportunities.</p>
+     <ul>
+     <li>7 million customers and growing</li>
+     <li>100,000 companies, including 77% of Fortune 500s</li>
+     <li>Transforming how people work and communicate, each and every day</li>
+     </ul>
+     </div>
+     
+     
+        </div><!--/span4-->
+         
+        <div class="span2">
+        
+        </div ><!-- /span2 -->
+      </div><!-- /.row-fluid -->
+     
+     
+      <div class="row-fluid">
+        <div class="span2">
+         </div ><!-- /span2 -->
+       
+        <div class="span8">
+       
+       
+
+       
+        </div><!--/span8-->
+         
+        <div class="span2">
+        
+        </div ><!-- /span2 -->
+      </div><!-- /.row-fluid -->
+      
+<br/>
+<br/>
+    </div> <!-- /container -->
+    <div class="clearfooter">
+    </div>
+    
+    </div><!-- /wrap -->
+   
+   
+    <c:CareerSiteFooter />
+  
+  
+    <!--inlucde js files--------------------------------------------------------------->
+   
+     <c:JSFiles />
+     <c:clearlyComponentCss />
+   
+    
+   </body>                   
+
+</apex:page>
