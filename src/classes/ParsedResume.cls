@@ -2,6 +2,7 @@ public with sharing class ParsedResume {
 
     public String resumeText{get; set;}
     private String resumeXML;
+    public Candidate__c c{get; set;}
     private sovrenCom.ConvertAndParseSoap sovren;
 
     /* Given a resume Document, uses Sovren to parse the document, and
@@ -18,40 +19,24 @@ public with sharing class ParsedResume {
      */
     public void parseToXML() {
         resumeXML = sovren.ParseConvertedResume(resumeText , false, false, 5000, 2,'1', false,'1');
-        GivenName = getFirstField('GivenName');
-        FamilyName = getFirstField('FamilyName');
-        Phone = getFirstField('FormattedNumber');
-        Email = getFirstField('InternetEmailAddress');
+        c = new Candidate__c();
+
+        c.First_Name__c = getFirstField('GivenName');
+        c.Last_Name__c = getFirstField('FamilyName');
+        c.Phone__c = getFirstField('FormattedNumber');
+        c.Email__c = getFirstField('InternetEmailAddress');
         
-        Street = getFirstField('AddressLine');
-        City = getFirstField('Municipality');
-        State = getFirstField('Region');
-        Zip = getFirstField('PostalCode');
-        Country = getFirstField('CountryCode');
+        c.Street__c = getFirstField('AddressLine');
+        c.City__c = getFirstField('Municipality');
+        c.State__c = getFirstField('Region');
+        c.Zip_Code__c = getFirstField('PostalCode');
+        //c. = getFirstField('CountryCode');
         
-        SchoolName = getFirstField('SchoolName');
+        c.University__c = getFirstField('SchoolName');
         
-        EmployerOrgName = getFirstField('EmployerOrgName');
-        Title = getFirstField('Title');        
+        c.Current_Employer__c = getFirstField('EmployerOrgName');
+        c.Current_Title__c = getFirstField('Title');        
     }
-        
-    //Information we will parse & store from the resume
-    public String GivenName{get; set;}
-    public String FamilyName{get; set;}
-    public String Phone{get; set;}
-    public String Email{get; set;}
-    public String Skype{get; set;}
-    
-    public String Street{get; set;}
-    public String City{get; set;}
-    public String State{get; set;}
-    public String Zip{get; set;}
-    public String Country{get; set;}
-    
-    public String SchoolName{get; set;}
-    
-    public String EmployerOrgName{get; set;}
-    public String Title{get; set;}
     
     /* Helper method to populate variables
      * Returns the contents of the first XML element identified by fieldName 
