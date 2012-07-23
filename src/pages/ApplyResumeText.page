@@ -1,0 +1,16 @@
+<apex:page controller="ApplyController" sidebar="false">
+    <apex:messages />
+    <apex:form id="theForm">
+      <apex:pageBlock title="Parsed resume text">
+          <apex:pageBlockSection title="Your resume text. If it is garbled, try pasting the body of your resume into this textarea.">
+              <apex:inputTextArea rows="12" cols="100" value="{!parsedResume.resumeText}" label="Resume Text"/>
+          </apex:pageBlockSection>
+
+          <apex:pageBlockSection title="Cover letter">
+              <apex:inputTextArea rows="12" cols="100" label="Cover letter (Optional)"/>
+          </apex:pageBlockSection>
+ 
+          <apex:commandButton value="Continue" action="{!resumeTextAction}"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

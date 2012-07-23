@@ -1,0 +1,3 @@
+<apex:page controller="ApplyController">    
+    Your application has been received. Thank you for applying to Box!
+</apex:page>

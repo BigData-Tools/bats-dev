@@ -1,0 +1,33 @@
+<apex:page controller="ApplyController">
+    <apex:pageBlock title="Job Application">
+        <apex:form >
+            <apex:pageBlockSection title="General information">
+                <apex:inputText label="First Name" value="{!parsedResume.GivenName}" />
+                <apex:inputText label="Last Name" value="{!parsedResume.FamilyName}"/>
+                <apex:inputText label="Phone Number" value="{!parsedResume.Phone}"/>
+                <apex:inputText label="email" value="{!parsedResume.Email}"/>
+                <apex:inputText label="Skype username" value="{!parsedResume.Skype}"/>
+            </apex:pageBlockSection> 
+        
+            <apex:pageBlockSection title="Current Address">    
+                <apex:inputTextArea label="Street Address" value="{!parsedResume.Street}"/>
+                <apex:inputText label="City" value="{!parsedResume.City}"/>
+                
+                <apex:inputText label="Zip Code" value="{!parsedResume.Zip}"/>
+                <!--Include State--> 
+            </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Education">
+                <!--Include Degree Picklist-->
+                 
+                <apex:inputText label="Institute Name" value="{!parsedResume.SchoolName}"/>
+            </apex:pageBlockSection>
+            
+         <apex:pageBlockSection title="Latest job">    
+                <apex:inputText label="Company Name" value="{!parsedResume.EmployerOrgName}" />
+                <apex:inputText label="Current Title" value="{!parsedResume.Title}"/>
+            </apex:pageBlockSection>
+            <apex:commandButton value="submit" action="{!submitAction}"/>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>
