@@ -1,0 +1,13 @@
+<apex:page controller="ApplyAgentController" sidebar="false">
+    <apex:pageBlock title="Upload agent resume">
+            <apex:pageBlockSection title="Please upload your resume to begin your application" columns="1">
+                <apex:form >
+                <table cellspacing="7">
+                    <tr><td>Source</td><td><apex:inputText value="{!source}" label="Source"/></td></tr>
+                    <tr><td>Resume File</td><td><apex:inputFile value="{!resume.body}" filename="{!resume.name}" title="Resume File"/></td></tr>
+                    <tr><td align="right"><apex:commandButton value="upload" action="{!uploadAction}"/></td><td>&nbsp;</td></tr>
+                </table>
+                </apex:form>
+            </apex:pageBlockSection>
+     </apex:pageBlock> 
+</apex:page>

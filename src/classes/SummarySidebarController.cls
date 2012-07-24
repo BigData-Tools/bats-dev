@@ -11,7 +11,7 @@ public Integer getPhoneScreen() {
 return [
 select count() from Application__c
 where Status__c='Recruiter Screen'
-OR Status__c='Recruiter Screen'
+OR Status__c='HM Screen'
 ];
 }
  

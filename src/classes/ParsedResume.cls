@@ -1,12 +1,29 @@
 public with sharing class ParsedResume {
 
+    /*resumeText: is string which contains the text of the resume
+    */
     public String resumeText{get; set;}
+    
+    /*resumeXML: is string which contains the parsed resume of the text.
+      it differs from the resume text that contains the resume as parsed xml version
+      rather than plain resume text
+    */
     private String resumeXML;
+    
+    /** Candidate: is customized Object that corresponds to Job Applicant
+    */
     public Candidate__c c{get; set;}
+    
+    /**
+        sovren: which contains all sovren methods to parse and convert resumes
+    */
     private sovrenCom.ConvertAndParseSoap sovren;
 
     /* Given a resume Document, uses Sovren to parse the document, and
      * stores the raw text in resumeText, and stores the HR-XML in resumeXML
+     
+         resumeDoc: is object which will contains the resume binaries and 
+         pass it to sovren webservice
      */
     public ParsedResume(Document resumeDoc) {
         sovren = new sovrenCom.ConvertAndParseSoap();        
@@ -30,7 +47,6 @@ public with sharing class ParsedResume {
         c.City__c = getFirstField('Municipality');
         c.State__c = getFirstField('Region');
         c.Zip_Code__c = getFirstField('PostalCode');
-        //c. = getFirstField('CountryCode');
         
         c.University__c = getFirstField('SchoolName');
         

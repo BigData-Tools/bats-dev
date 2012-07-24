@@ -12,14 +12,14 @@
             <apex:pageBlockSection title="Current Address">    
                 <apex:inputTextArea label="Street Address" value="{!parsedResume.c.Street__c}"/>
                 <apex:inputText label="City" value="{!parsedResume.c.City__c}"/>
-                
+                <apex:inputField value="{!parsedResume.c.State__c}"/>
                 <apex:inputText label="Zip Code" value="{!parsedResume.c.Zip_Code__c}"/>
                 <!--Include State--> 
             </apex:pageBlockSection>
         
         <apex:pageBlockSection title="Education">
                 <!--Include Degree Picklist-->
-                 
+                <apex:inputField value="{!parsedResume.c.Education__c}"/>
                 <apex:inputText label="Institute Name" value="{!parsedResume.c.University__c}"/>
             </apex:pageBlockSection>
             
