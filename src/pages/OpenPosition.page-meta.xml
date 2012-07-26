@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>25.0</apiVersion>
-    <description>the suggested box.com career landing page</description>
-    <label>Careers</label>
+    <description>List all the open positions for the Box Career Site.</description>
+    <label>OpenPosition</label>
 </ApexPage>

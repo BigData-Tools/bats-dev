@@ -51,6 +51,7 @@ public with sharing class BoxUpload {
         }   
         boxResponse = res;
         checkSuccessfulUpload();
+        shareResume();
         return;
     }
             
@@ -58,5 +59,17 @@ public with sharing class BoxUpload {
     	if (getJsonField('type') == 'error') {    		
     		throw new UploadException('There was an error uploading your resume: ' + getJsonField('message'));
     	}
+    }
+    
+    private void shareResume() {
+    	/*
+    	https://www.box.net/api/1.0/rest?action=private_share&api_key=q2m5pg738dgekmll3knx55tyxnf15ro6&auth_token=6xxg77jzts0z5jg5gy29qzdqjct9hl0z&target=file&target_id=2709767190&emails[]=email@example.com&message=hey&notify=false
+    	*/
+    	Http httpCallout = new Http();
+        HttpRequest requestBox = new HttpRequest();
+        String fileId = getJsonField('id');
+        requestBox.setEndpoint('https://www.box.net/api/1.0/rest?action=private_share&api_key=' + API_KEY + '&auth_token=' + PUBLIC_USER_TOKEN + '&target=file&target_id=' + fileId + '&emails[]=email@example.com&message=hey&notify=false');
+        requestBox.setMethod('GET');
+        HttpResponse res = httpCallout.send(requestBox);
     }
 }

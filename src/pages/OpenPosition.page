@@ -1,0 +1,73 @@
+<apex:page controller="OpenPosition">
+  <h3>Business Operations</h3>
+  <hr/>
+  <apex:repeat value="{!BusinessPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+   
+  <h3>Customer Success</h3>
+  <hr/>
+   <apex:repeat value="{!CustomerPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+  
+ 
+  <h3>Design</h3>
+  <hr/> 
+  <apex:repeat value="{!designPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+   
+   <h3>Engineering</h3>
+  <hr/>
+  <apex:repeat value="{!EngineeringPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+  
+  
+  <h3>Marketing</h3>
+  <hr/>
+  <apex:repeat value="{!MarketingPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+   
+   
+  <h3>Product and Platform</h3>
+  <hr/>
+  <apex:repeat value="{!ProductPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+  
+  <h3>Sales</h3>
+  <hr/>
+  
+  <apex:repeat value="{!SalesPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat> 
+
+  
+  <h3>Technical Operations</h3>
+  <hr/>
+   <apex:repeat value="{!TechnicalPositions}" var="p">
+    <ul>    
+    <li> {!p.Name}</li>
+    </ul>   
+   </apex:repeat>
+   
+  
+  
+</apex:page>

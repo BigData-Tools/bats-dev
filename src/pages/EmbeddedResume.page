@@ -1,0 +1,3 @@
+<apex:page standardController="Application__c" extensions="EmbeddedResumeController">    
+    <apex:outputText escape="false" value="{!embedHtml}"></apex:outputText>    
+</apex:page>

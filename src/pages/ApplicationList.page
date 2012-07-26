@@ -1,6 +1,9 @@
 <apex:page standardController="Application__c" extensions="ApplicationChartsExtension" sidebar="true">
  
- <apex:enhancedList listId="00BE000000109HT" height="300" customizable="false" rowsPerPage="25"/><br/>
+ <apex:enhancedList listId="00Bc0000000LnKC" height="300" customizable="false" rowsPerPage="25"/><br/>
+ <apex:enhancedList listId="00Bc0000000LnKM" height="300" customizable="false" rowsPerPage="25"/><br/>
+ <apex:enhancedList listId="00Bc0000000LnKR" height="300" customizable="false" rowsPerPage="25"/><br/>
+ <apex:enhancedList listId="00Bc0000000LnKW" height="300" customizable="false" rowsPerPage="25"/><br/>
  <apex:enhancedList listId="00BE00000010H9I" height="300" customizable="false" rowsPerPage="25"/><br/>
 
  <apex:includeScript id="a" value="https://www.google.com/jsapi" />
@@ -48,47 +51,5 @@
   </style>
    
   <br/>
-  <div id="chart">
-  <table class="table-bordered pull-center" >
-  <tr>
-   <th>Pipeline Overview </th>
- </tr>
- <tr>
- <td>
- <div id="applicationstatuschart_div"/>
- </td>
-</tr>
-  </table>
-  </div>
-
-  <script type="text/javascript">
- // Load the Visualization API and the map package.
-        google.load("visualization", "1", {packages:["corechart"]});
-
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.setOnLoadCallback(initCharts);
-
-        function initCharts() {        
-            
-                // load Column chart
-                    var chart = new google.visualization.ColumnChart(document.getElementById('applicationstatuschart_div'));
-                    // Prepare table model for chart with columns
-               var data = google.visualization.arrayToDataTable([
-          ['Position', 'New', 'Phone Screen','Onsite', 'Offer','Accepted'],
-          ['Web App',  41, 10,5, 3,1],
-          ['Marketing',  43, 10,3,1,1],
-          ['Sales',  60, 23,10, 8,7],
-          ['Designer',  123,56,21, 10,5]            
-        ]);                                                           
-                      
-                    chart.draw(data, {'isStacked': true,
-             'legend':{position: 'right', textStyle: {fontSize: 10}},
-             'colors': ['#1C86EE', '#00CD66', '#663399', '#FF8C00','#FF0033'],
-            'hAxis': {'title': 'Application Status Distribution'}}); 
-            
-        
-        }
-
-    </script>
-
+ 
 </apex:page>

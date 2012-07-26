@@ -1,6 +1,7 @@
 <apex:page standardController="Candidate__c" extensions="CandidateChartsExtension">
-  <apex:enhancedList listId="00BE000000109Gz" height="400" customizable="false" rowsPerPage="25"/>
-  <br/><br/>
+  <apex:enhancedList listId="00BE000000109Gz" height="400" customizable="false" rowsPerPage="25"/><br/>
+  <apex:enhancedList listId="00Bc0000000LnK2" height="400" customizable="false" rowsPerPage="25"/><br/>
+  <br/>
  
 <!--<apex:stylesheet value="{!URLFOR($Resource.css,'css/bootstrap.css')}"/>-->
 <!--<apex:stylesheet value="{!URLFOR($Resource.css,'css/bootstrap-responsive.css')}"/>-->
@@ -62,7 +63,7 @@
   <div id="chart">
   <table class="table-bordered pull-right" >
   <tr>
-   <th>Candidate Enducation </th>
+   <th>Candidate Education </th>
  </tr>
  <tr>
  <td>
@@ -89,7 +90,7 @@
                     data.addColumn('string', 'State');
                     data.addColumn('number', 'Number of Candidates');   
                     // add rows from the remoting results
-                    for(var i =0; i<result.length;i++){
+                    for(var i = 0; i < result.length; i++){
                         var r = result[i];
                         data.addRow([r.State__c, r.StateNum]);
                     }                                                                              
@@ -126,11 +127,14 @@
                     data.addColumn('string', 'Education Level');
                     data.addColumn('number', 'Number of Candidates');   
                     // add rows from the remoting results
-                    for(var i =0; i<result.length;i++){
+                    for(var i = 0; i < result.length; i++){
                         var r = result[i];
-                        data.addRow([r.Education__c, r.EducationNum]);
-                    }                                                                              
-                      
+                        if(r.Education__c == null && r.EducationNum != null){
+                            data.addRow(["Other", r.EducationNum]);
+                        }else{
+                            data.addRow([r.Education__c, r.EducationNum]);
+                        }
+                    }
                     var options = {width: 400, height: 300, chartArea:{left:90,top:30,width:"80%",height:"80%"}};
                      
                     // all done, lets draw the chart with some options to make it look nice.
@@ -139,7 +143,4 @@
         }
 
     </script>
-
- 
-
 </apex:page>

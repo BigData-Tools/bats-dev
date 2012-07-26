@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>25.0</apiVersion>
+    <description>This page is used as iframe within Candidate tab to show candidate map which contains the number of applicant from certain state in addition to the education distribution for the education</description>
     <label>CandidateList</label>
 </ApexPage>

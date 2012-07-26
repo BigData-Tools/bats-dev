@@ -1,18 +1,13 @@
 <apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" >
      <style type="text/css">
-   
-     
      #department a{ 
-      color:#E38101;
-      font-size:15px;
-      
+          color:#E38101;
+          font-size:15px; 
      }
-     
     </style>
-    
+  
     <c:CareerSiteHeader />
 
- 
    <body screen_capture_injected="true" view_id="" name="" no_dhx="1">
     <div id="wrap">
     <!--Navigation bar---------------------------------------------------------------> 

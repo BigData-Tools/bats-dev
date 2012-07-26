@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>25.0</apiVersion>
+    <description>It is the Pipeline chart which is placed in the application tab. it is used to show number of leads in each stage for each position</description>
     <label>ApplicationList</label>
 </ApexPage>

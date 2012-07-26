@@ -1,0 +1,3 @@
+<apex:page >
+ <apex:enhancedList listId="00BE00000010I8Z" height="340" customizable="false" rowsPerPage="25"/>
+</apex:page>

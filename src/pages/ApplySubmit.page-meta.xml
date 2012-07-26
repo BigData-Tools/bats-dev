@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>25.0</apiVersion>
+    <description>It is the job application form which will Auto-filled by the parsed information out of the applicant&apos;s resume. and then the user will validate the parsed information and add any missing information and submit the application. the Action of this page will upload to box.com and will insert the candidate object</description>
     <label>ApplySubmit</label>
 </ApexPage>

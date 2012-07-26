@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>25.0</apiVersion>
+    <description>it is the page which allow the applicants to enter or edit the parsed version of their resume and add their coverletter. (Note: the coverletter currently isn&apos;t added to the object)</description>
     <label>ApplyResumeText</label>
 </ApexPage>

@@ -1,4 +1,4 @@
-public with sharing class ApplyAgentController {    
+public with sharing class ApplyAgentController {
     
     public Document resume{
         get{
@@ -15,6 +15,19 @@ public with sharing class ApplyAgentController {
         set;
     }
     
+    private boolean validation(){
+        try{
+            if(!(resume.name.contains('.doc') || resume.name.contains('.docx') || resume.name.contains('.pdf'))){
+                return false;
+            }else if(source == null || source.length() < 1){
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+    
     //for debug only
     public String responseBody{get; private set;}
     
@@ -22,15 +35,23 @@ public with sharing class ApplyAgentController {
     
     //Go from Page 1 (upload) to Page 2 (resume text)
     public pageReference uploadAction(){
-        try{
-            parsedResume = new ParsedResume(resume);
-            HttpResponse BoxResponse = BoxUpload.uploadToBox(resume);
-            responseBody = BoxResponse.getBody();    
-            insert parsedResume.c;
-        }catch(Exception e){
-            //if the user didn't upload resume
-             return null;
+        if(validation()){
+            try{
+                parsedResume = new ParsedResume(resume);
+                BoxUpload boxUpload = new BoxUpload(resume);
+                responseBody = boxUpload.getUploadedFileId();
+                parsedResume.parseToXML();
+                parsedResume.c.Source__c = source;
+                insert parsedResume.c;
+            }catch(Exception e){
+                //if the user didn't upload resume
+                return null;
+            }
+            return new PageReference('/apex/ApplyComplete');
+        }else if(resume != null){
+            ApexPages.Message fileNameMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'invalid file type');
+            ApexPages.addMessage(fileNameMessage);   
         }
-        return new PageReference('/apex/ApplyComplete');
+        return null;
     }
 }
