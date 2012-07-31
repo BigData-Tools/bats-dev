@@ -51,5 +51,120 @@
   </style>
    
   <br/>
+  
+   <div id="chart">
+  <table class="table-bordered pull-center" >
+  <tr>
+   <th>Pipeline Overview </th>
+ </tr>
+ <tr>
+ <td>
+ <div id="applicationstatuschart_div"/>
+ </td>
+</tr>
+  </table>
+  </div>
+
+  <script type="text/javascript">
+ // Load the Visualization API and the map package.
+        google.load("visualization", "1", {packages:["corechart"]});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(initCharts);
+
+        function initCharts() { 
+            var data1 = new google.visualization.DataTable();
+            var data2 = new google.visualization.DataTable();
+            var data3 = new google.visualization.DataTable();
+            var data4 = new google.visualization.DataTable();
+            var data5 = new google.visualization.DataTable();
+
+            // load Column chart
+            var chart = new google.visualization.ColumnChart(document.getElementById('applicationstatuschart_div'));
+                           
+            ApplicationChartsExtension.loadNewStatus(
+                function(result, event){ 
+                                    
+                    // Prepare table model for chart with columns
+                    
+                    data1.addColumn('string', 'Position');
+                    data1.addColumn('number', 'New');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data1.addRow([r.position, r.newNum]);
+                    }                                                                                                     
+            }, {escape:true});  
+        
+            ApplicationChartsExtension.loadPhoneScreenStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data2.addColumn('string', 'Position');
+                    data2.addColumn('number', 'Phone Screen');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data2.addRow([r.position, r.phoneNum]);
+                    }
+             }, {escape:true}); 
+                
+             ApplicationChartsExtension.loadOnsiteStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data3.addColumn('string', 'Position');
+                    data3.addColumn('number', 'Onsite');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data3.addRow([r.position, r.onsiteNum]);
+                    }
+             }, {escape:true});
+             
+             ApplicationChartsExtension.loadOfferInProgressStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data4.addColumn('string', 'Position');
+                    data4.addColumn('number', 'Offer In Progress');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data4.addRow([r.position, r.offerInProgressNum]);
+                    }
+             }, {escape:true});
+             
+             ApplicationChartsExtension.loadOfferAcceptedStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data5.addColumn('string', 'Position');
+                    data5.addColumn('number', 'Offer Accepted');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data5.addRow([r.position, r.offerAcceptedNum]);
+                    }
+                    
+                    var joined_dt1 = google.visualization.data.join(data1, data2, 'full', [[0,0]], [1], [1]);
+                    var joined_dt2 = google.visualization.data.join(joined_dt1, data3, 'full', [[0,0]], [1,2], [1]);
+                    var joined_dt3 = google.visualization.data.join(joined_dt2, data4, 'full', [[0,0]], [1,2,3], [1]);
+                    var joined_dt4 = google.visualization.data.join(joined_dt3, data5, 'full', [[0,0]], [1,2,3,4], [1]);
+                                         
+                    chart.draw(joined_dt4, {'isStacked': true,
+                                'legend':{position: 'top', textStyle: {fontSize: 12}},
+                                'colors': ['#1C86EE', '#00CD66', '#663399', '#FF8C00','#FF0033'],
+                                'hAxis': {}}); 
+            
+            }, {escape:true});                               
+        }   
+      
+    </script>
+
  
 </apex:page>

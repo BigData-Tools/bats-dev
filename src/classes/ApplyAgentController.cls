@@ -54,4 +54,12 @@ public with sharing class ApplyAgentController {
         }
         return null;
     }
+    
+     /*------------ Tests only below this line ------------*/
+    static testMethod void testApplyAgentController(){
+        ApplyAgentController ttt = new ApplyAgentController();
+        ttt.validation();
+        ttt.uploadAction();
+    
+    }
 }

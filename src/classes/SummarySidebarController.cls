@@ -42,7 +42,7 @@ where Status__c='Onsite Interview'
 
 
 
- 
+ /*
 static testMethod void testSummarySidebarController() {
 Test.setCurrentPageReference(new PageReference('Page.SidebarSummary'));
 SummarySidebarController controller = new SummarySidebarController();
@@ -54,5 +54,17 @@ Integer i5 = controller.getNewReview();
 Integer i6 = controller.getNewPosition();
 
 }
+*/
+ /*------------ Tests only below this line ------------*/
+    static testMethod void testSummarySidebarController(){
+    SummarySidebarController ttt = new SummarySidebarController();
+      ttt.getNewGoal();
+      ttt.getNewReview();
+      ttt.getNewPosition();
+      ttt.getNewApplication();
+      ttt.getPhoneScreen();
+      ttt.getOnsite();
+    }
+
  
 }

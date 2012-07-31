@@ -14,4 +14,15 @@ global with sharing class CandidateChartsExtension {
         return [select count(Id) EducationNum, Education__c from Candidate__c group by Education__c];
     }  
 
+    
+    /*------------ Tests only below this line ------------*/
+     static testMethod void testCandidateChartsExtension(){
+        ApexPages.standardController CandidateController;
+        Candidate__c c1 = new Candidate__c();
+        ApexPages.StandardController sc = new ApexPages.standardController(c1);
+        CandidateChartsExtension cce = new CandidateChartsExtension(sc);
+        Candidate__c c2 = cce.candidate;
+        CandidateChartsExtension.loadState();
+        CandidateChartsExtension.loadEducation();
+     }
 }

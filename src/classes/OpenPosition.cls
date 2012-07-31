@@ -146,4 +146,20 @@ public class OpenPosition {
     public List<Position__c> getOtherPositions() {
         return (List<Position__c>) setOther.getRecords();
     }
+    
+     /*------------ Tests only below this line ------------*/
+    static testMethod void testOpenPosition(){
+    OpenPosition ttt = new OpenPosition();
+    ttt.getBusinessPositions();
+    ttt.getCustomerPositions();
+    ttt.getDesignPositions();
+    ttt.getEngineeringPositions();
+    ttt.getMarketingPositions();
+    ttt.getProductPositions();
+    ttt.getSalesPositions();
+    ttt.getTechnicalPositions();
+    ttt.getOtherPositions();
+    
+    }
+    
 }

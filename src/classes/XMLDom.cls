@@ -34,7 +34,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     large parse trees will consume suprising amounts of memory
  */
 public class XMLDom {
-    // Constructor 
+    // Constructor   
     public XMLDom(string str) { parseFromString(str); } 
     public XMLDom(          ) { }
     public void parseFromString(string str) {   
@@ -295,4 +295,41 @@ public class XMLDom {
     public List<Element> childNodes = new List<Element>();
     public map<String,String> attributes = new map<String,String>();  
      }
+     
+    /*------------ Tests only below this line ------------*/
+    static testMethod void testXMLDom(){
+    XMLDom ttt = new XMLDom();
+    ttt.parseFromString('#document');
+    ttt.dumpAll();
+    ttt.getElementsByPath('#document');
+    ttt.getElementByPath('#document');
+    ttt.getElementByTagName('#document');
+    ttt.ownerDocument();
+    ttt.toXmlString();
+    Element l = new Element();
+    l.getAttribute('name');
+    l.appendChild(l);
+    l.removeChild(l);
+    l.getElementsByTagName('name');
+    l.getElementByTagName('name');    
+    l.getValue('name');
+    l.dump();
+    l.dumpAll();
+    l.toXmlString();
+    l.dumpAll('namwe');
+    l.getElementsByPath('namwe');    
+    l.path();
+    l.firstChild();
+    l.textContent();
+    l.hasChildNodes();
+    l.isEqualNode(l);
+    l.cloneNode();
+    l.hasAttributes();
+    l.isSameNode(l);    
+    l.ownerDocument();
+    
+    
+    
+    }
+     
 }

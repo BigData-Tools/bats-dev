@@ -1,6 +1,6 @@
-global with sharing class ApplicationChartsExtension {
+global with sharing class ChartsExtension {
     public final Application__c application;
-    public ApplicationChartsExtension(ApexPages.StandardController ApplicationController) {
+    public ChartsExtension (ApexPages.StandardController ApplicationController) {
         this.application=(Application__c)ApplicationController.getRecord();
     }
     
@@ -29,18 +29,28 @@ global with sharing class ApplicationChartsExtension {
         return [select Position__r.Name position, count(Status__c) offerAcceptedNum from Application__c where Status__c= 'Accepted' group by Position__r.Name];
     } 
     
-    /*------------ Tests only below this line ------------*/
-    static testMethod void testApplicationChartsExtension(){
-        ApexPages.standardController CandidateController;
+    @RemoteAction  
+    global static AggregateResult[] loadGoalActualGauge() {        
+        return [select count(Id) actual from Application__c where Status__c='Accepted'];                
+    } 
+    
+    @RemoteAction  
+    global static AggregateResult[] loadGoalTargetGauge() {        
+        return [select sum(Number_of_Hires__c) target from Position__c];                
+    } 
+    
+     /*------------ Tests only below this line ------------*/
+    static testMethod void testChartsExtension(){
         Application__c a = new Application__c();
-        ApexPages.StandardController sc = new ApexPages.standardController(a);
-        ApplicationChartsExtension ace = new ApplicationChartsExtension(sc);
-        Application__c c2 = ace.application;
+        ApexPages.StandardController sc = new ApexPages.StandardController(a);
+        ChartsExtension ce = new ChartsExtension(sc);
         loadNewStatus();
         loadPhoneScreenStatus();
         loadOnsiteStatus();
         loadOfferInProgressStatus();
         loadOfferAcceptedStatus();
+        loadGoalActualGauge();
+        loadGoalTargetGauge();
     }
    
 }

@@ -1,0 +1,15 @@
+<apex:page showHeader="true" sidebar="false">
+    <table>
+        <tr>
+            <td width="50%"> <apex:enhancedList listId="00Bc0000000LntR" height="300"  customizable="false" rowsPerPage="10"/> </td>                      
+            <td width="50%" rowspan="2" valign="top"> <br/><h1> Chatter</h1> <c:ChatterFeed ></c:ChatterFeed> </td>
+        </tr>
+        <tr>
+            <td><apex:enhancedList listId="00Bc0000000LntS" height="300"  customizable="false" rowsPerPage="10"/> </td>
+        </tr>
+       
+        <tr>
+            <td width="70%"><apex:iframe src="https://cs14.salesforce.com/01ZE0000000JIQK?isdtp=vw" scrolling="false"  height="900" width="100%"/></td>
+        </tr>
+    </table>
+</apex:page>

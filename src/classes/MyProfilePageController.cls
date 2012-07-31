@@ -120,5 +120,17 @@ public with sharing class MyProfilePageController {
             System.assert(existingPortalUser.Contact.fax == randFax);
         }
     }
+ /*------------ Tests only below this line ------------*/
+    static testMethod void testMyProfilePageController(){
+    MyProfilePageController ttt = new MyProfilePageController();
+    ttt.getUser();
+    ttt.getIsEdit();
+    ttt.edit();
+    ttt.save();
+    ttt.changePassword();
+    ttt.cancel();
+    
+    }
+
 
 }
