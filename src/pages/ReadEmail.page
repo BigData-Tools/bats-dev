@@ -1,0 +1,11 @@
+<apex:page standardController="Candidate__c" extensions="EmailReadingPanel">
+    <apex:pageMessages />
+    <apex:pageBlock title="Reading Panel">
+        <apex:pageBlockSection columns="1">
+            <apex:outputText label="From" value="{!IF(emailCommunication.CandidateSender__c,"Candidate", "HR Employee")}"/>
+            <apex:outputText label="To" value="{!IF(emailCommunication.CandidateSender__c,"HR Employee", "Candidate")}"/>
+            <apex:outputText label="Subject" value="{!emailCommunication.Subject__c}" />
+            <apex:outputField label="Message" value="{!emailCommunication.Message__c}" />
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

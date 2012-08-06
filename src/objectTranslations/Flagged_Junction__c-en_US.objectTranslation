@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Flagged Junction</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Flagged Junctions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+        <relationshipLabel><!-- Flagged Junctions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Commentor --></label>
+        <name>Commentor__c</name>
+        <relationshipLabel><!-- Flagged Junctions --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

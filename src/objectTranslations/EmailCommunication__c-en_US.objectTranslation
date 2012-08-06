@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>EmailCommunication</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>EmailCommunications</value>
+    </caseValues>
+    <fields>
+        <label><!-- CandidateSender --></label>
+        <name>CandidateSender__c</name>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+        <relationshipLabel><!-- EmailCommunications --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- it will contains the message which the Box employee has sent or received from the candidate --></help>
+        <label><!-- Message --></label>
+        <name>Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

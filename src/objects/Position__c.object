@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Application__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Application</label>
+        <referenceTo>Application__c</referenceTo>
+        <relationshipLabel>Positions</relationshipLabel>
+        <relationshipName>Positions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Close_Date__c</fullName>
+        <description>The close date for the postion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The close date for the postion</inlineHelpText>
+        <label>Close Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Business Operations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Success</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Engineering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product and Platform</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Recruiting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Technical Operations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Description of the position including its overview duties, responsibility and qualifications</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the position including its overview duties, responsibility and qualifications</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <type>Html</type>
+        <visibleLines>20</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Eperience_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Experience Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Executive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Director</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mid-Senior level</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Associate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Entry level</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Internship</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Hiring_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Hiring Manager</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Positions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Los Altos, CA</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chicago, IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New York, NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>London, United Kingdom</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Max_Pay__c</fullName>
+        <description>The maximum salary for the postion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The maximum salary for the postion</inlineHelpText>
+        <label>Max Pay</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Min_Pay__c</fullName>
+        <description>The minimum salary for the postion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The minimum salary for the postion</inlineHelpText>
+        <label>Min Pay</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Hires__c</fullName>
+        <description>Indicate the goal that how many people need to be hired for this positon.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicate the goal that how many people need to be hired for this positon.</inlineHelpText>
+        <label>Number of Hires</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_Date__c</fullName>
+        <description>The open date to hire for the postion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The open date to hire for the postion</inlineHelpText>
+        <label>Open Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Travel_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If the job require traveling</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the job require traveling</inlineHelpText>
+        <label>Travel Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Position</label>
+    <listViews>
+        <fullName>Closed_Positions</fullName>
+        <columns>NAME</columns>
+        <columns>Department__c</columns>
+        <columns>Open_Date__c</columns>
+        <columns>Close_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Close_Date__c</field>
+            <operation>lessOrEqual</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Closed Positions</label>
+    </listViews>
+    <listViews>
+        <fullName>Coming_Postions</fullName>
+        <columns>NAME</columns>
+        <columns>Department__c</columns>
+        <columns>Open_Date__c</columns>
+        <columns>Close_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Open_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>Close_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Coming Positions</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Position</fullName>
+        <columns>NAME</columns>
+        <columns>Department__c</columns>
+        <columns>Open_Date__c</columns>
+        <columns>Close_Date__c</columns>
+        <columns>Number_of_Hires__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>lessOrEqual</operation>
+            <value>NEXT_WEEK</value>
+        </filters>
+        <label>New Position</label>
+    </listViews>
+    <listViews>
+        <fullName>Open_Positions</fullName>
+        <columns>NAME</columns>
+        <columns>Department__c</columns>
+        <columns>Open_Date__c</columns>
+        <columns>Close_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Open_Date__c</field>
+            <operation>lessOrEqual</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>Close_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Open Positions</label>
+    </listViews>
+    <nameField>
+        <label>Position Title</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Positions</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Department__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Open_Date__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Department__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Open_Date__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>Authenticated_Site_Sharing_Access__c</fullName>
+        <label>Authenticated Site Sharing Access</label>
+    </sharingReasons>
+    <sharingReasons>
+        <fullName>Department_Sharing_Access__c</fullName>
+        <label>Department Sharing Access</label>
+    </sharingReasons>
+    <sharingReasons>
+        <fullName>Dept_Head_Hiring_Manager_Sharing_Access__c</fullName>
+        <label>Dept Head Hiring Manager Sharing Access</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Close_Date_Rule</fullName>
+        <active>true</active>
+        <description>The Close Data should be after the Open Date</description>
+        <errorConditionFormula>Close_Date__c  &lt;  Open_Date__c</errorConditionFormula>
+        <errorDisplayField>Close_Date__c</errorDisplayField>
+        <errorMessage>The Close Data should be after the Open Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Min_Pay_Rule</fullName>
+        <active>true</active>
+        <description>Min Pay should never exceed Max Pay</description>
+        <errorConditionFormula>Min_Pay__c  &gt; Max_Pay__c</errorConditionFormula>
+        <errorDisplayField>Min_Pay__c</errorDisplayField>
+        <errorMessage>Min Pay cannot exceed Max Pay</errorMessage>
+    </validationRules>
+</CustomObject>

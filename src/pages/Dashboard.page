@@ -1,0 +1,377 @@
+<apex:page standardController="Application__c" extensions="ChartsExtension" showHeader="true" sidebar="false">
+<apex:includeScript id="a" value="https://www.google.com/jsapi" />
+  
+  <style>
+  
+    #chart th{
+        color:#000000;
+        background-color:#ffffff;
+        text-align:center;
+        font-size:22px;
+        height:2px;
+    }
+  
+    #chart table{
+        width:100%;
+        height:300px;
+    }
+    
+    #chatter td{
+        width:300px;
+       
+    }
+    
+    #gauge_chart table{
+        width: 300px;
+    }
+    
+    #gauge_chart td{
+        font-family: sans-serif; 
+        font-size: 10pt;
+        valign: top;
+        text-align: center;
+        background-color:#ff0fff;
+        height: 90px;
+    }
+    
+    #gaugechart_div{
+        width: 300px;
+        text-align:center;    
+    } 
+    
+    #candidatesourcechart th{
+        color:#000000;
+        background-color:#ffffff;
+        text-align:center;
+        font-size:22px;
+        height:2px;
+    }
+    
+    #candidatesourcechart div { 
+        float: left; 
+        width: 330; 
+        margin: 4px;
+    }
+    
+    #today_task td{
+        width: 420px;
+        height: 400px;
+    }
+    
+    #flagged_pending td{
+        width: 420px;
+        height: 400px;
+    }
+ 
+  </style>
+  <script type="text/javascript">
+  
+        function insertAfter( referenceNode, newNode ){
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+        
+        // Load the Visualization API and the chart package.
+        google.load("visualization", "1", {packages:["corechart"]});
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(initPipelineOverview);
+
+        function initPipelineOverview() { 
+            var data1 = new google.visualization.DataTable();
+            var data2 = new google.visualization.DataTable();
+            var data3 = new google.visualization.DataTable();
+            var data4 = new google.visualization.DataTable();
+            var data5 = new google.visualization.DataTable();
+
+            // load Column chart
+            var chart = new google.visualization.ColumnChart(document.getElementById('applicationstatuschart_div'));
+                           
+            ChartsExtension.loadNewStatus(
+                function(result, event){ 
+                                    
+                    // Prepare table model for chart with columns
+                    
+                    data1.addColumn('string', 'Position');
+                    data1.addColumn('number', 'New');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data1.addRow([r.position, r.newNum]);
+                    }                                                                                                     
+            }, {escape:true});  
+        
+            ChartsExtension.loadPhoneScreenStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data2.addColumn('string', 'Position');
+                    data2.addColumn('number', 'Phone Screen');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data2.addRow([r.position, r.phoneNum]);
+                    }
+             }, {escape:true}); 
+                
+             ChartsExtension.loadOnsiteStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data3.addColumn('string', 'Position');
+                    data3.addColumn('number', 'Onsite');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data3.addRow([r.position, r.onsiteNum]);
+                    }
+             }, {escape:true});
+             
+             ChartsExtension.loadOfferInProgressStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data4.addColumn('string', 'Position');
+                    data4.addColumn('number', 'Offer In Progress');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data4.addRow([r.position, r.offerInProgressNum]);
+                    }
+             }, {escape:true});
+             
+             ChartsExtension.loadOfferAcceptedStatus(
+                function(result, event){ 
+                                   
+                    // Prepare table model for chart with columns
+                    
+                    data5.addColumn('string', 'Position');
+                    data5.addColumn('number', 'Offer Accepted');   
+                    // add rows from the remoting results
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];
+                        data5.addRow([r.position, r.offerAcceptedNum]);
+                    }
+                    
+                    var joined_dt1 = google.visualization.data.join(data1, data2, 'full', [[0,0]], [1], [1]);
+                    var joined_dt2 = google.visualization.data.join(joined_dt1, data3, 'full', [[0,0]], [1,2], [1]);
+                    var joined_dt3 = google.visualization.data.join(joined_dt2, data4, 'full', [[0,0]], [1,2,3], [1]);
+                    var joined_dt4 = google.visualization.data.join(joined_dt3, data5, 'full', [[0,0]], [1,2,3,4], [1]);
+                                         
+                    chart.draw(joined_dt4, {'isStacked': true,
+                                'legend':{position: 'top', textStyle: {fontSize: 12}},
+                                'colors': ['#1C86EE', '#00CD66', '#663399', '#FF8C00','#FF0033'],
+                                'hAxis': {}}); 
+            
+            }, {escape:true});                                           
+        }   
+      
+      google.load('visualization', '1', {packages:['gauge']});
+      google.setOnLoadCallback(initGaugeChart);
+      function initGaugeChart() {
+          var data = new google.visualization.DataTable();
+          var target = 0;
+          var actual = 0;
+          ChartsExtension.loadGoalActualGauge(
+                function(result, event){                                           
+                    // add the value of completed goals from the remoting result
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];                       
+                        actual = r.actual;
+                    }                                                                                                                                           
+          }, {escape:true}); 
+                
+          ChartsExtension.loadGoalTargetGauge(
+                function(result, event){                                       
+                    // add the value of target goals from the remoting result
+                    for(var i = 0; i < result.length; i++){
+                        var r = result[i];                       
+                        target = r.target;
+                    }                                                                                                                                          
+                                
+                data.addColumn('number', 'value'); 
+                data.addRow([actual]);
+                var options = {width: 210, height: 210,                             
+                               minorTicks: 5, max: target,
+                               redFrom: 0, redTo: actual
+                              };
+
+                var chart = new google.visualization.Gauge(document.getElementById('gaugechart_div'));
+                chart.draw(data, options); 
+                
+          }, {escape:true});          
+        }
+     
+         // Load the Visualization API and the pie chart package.
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(initCandidateSourcesChart);
+
+        function initCandidateSourcesChart() {
+        
+            ChartsExtension.loadPositions(            
+                function(pos_result, event){
+                    var div1 = document.getElementById('sourcechart0_div'); 
+                                                      
+                    for(var i = 0; i < pos_result.length; i++){                         
+                        var position = pos_result[i];
+                        
+                        ChartsExtension.loadCandidateSources(position,
+                            function(source_result, event){                                                                
+                               
+                                // Prepare table model for chart with columns
+                                var data = new google.visualization.DataTable();
+                                var positionTitle;
+                                data.addColumn('string', 'Source');
+                                data.addColumn('number', 'Number of Applications'); 
+                                  
+                                // add rows from the remoting results
+                                for(var i = 0; i < source_result.length; i++){
+                                    var r = source_result[i];
+                                    if(r.Source__c == null && r.SourceNum != null){
+                                        data.addRow(["Other", r.SourceNum]);
+                                    }else{
+                                        data.addRow([r.Source__c, r.SourceNum]);
+                                        positionTitle = r.pos;
+                                    }
+                                }
+                                                             
+                                // all done, lets draw the chart with some options to make it look nice.                                
+                                var options = {width: 350, height: 300, pieSliceText: 'value', chartArea:{left:70,top:30,width:"80%",height:"80%"}, title: positionTitle, titleTextStyle:{fontSize: 13}};
+                                var chart = new google.visualization.PieChart(div1);
+                                chart.draw(data,options); 
+                                         
+                                var newdiv = document.createElement('div');
+                                newdiv.style.width = 400;  
+                                newdiv.style.height = 300;
+                                newdiv.style.float = "left";  
+                                newdiv.style.overflow = "auto";                               
+                                var divIdName = 'sourcechart'+ i +'_div';
+                                newdiv.setAttribute('id', divIdName);                                                  
+                                insertAfter(div1, newdiv);
+                                div1 = div1.nextSibling;
+                                //div1 = newdiv;                                                   
+                       
+                       }, {escape:true});                                                                                      
+                    }                                
+                  }, {escape:true});                                                                                          
+        }
+    
+    </script>
+    <table border="2px" cellspacing="15" bordercolor="grey">
+        <tr>
+            <td style="font-family: sans-serif; font-size: 23pt;" align="center"> Day Overview</td>            
+            <td style="font-family: sans-serif; font-size: 23pt;" align="center"> Chatter</td>
+        </tr>
+        <tr>
+            <td>
+                <table cellspacing="30">
+                    <tr>
+                        <td>
+                            <span style="font-size:17pt;">Tasks</span>
+                            <div style="text-align: center">
+                                <apex:iframe src="/apex/DashboardTaskList?core.apexpages.devmode.url=1" frameborder="0" height="140"></apex:iframe>
+                            </div>
+                        </td>
+                        <td>
+                            <span style="font-size:17pt;">Red Zone</span>
+                            <div style="text-align: center">
+                                <apex:iframe src="/apex/DashboardRedZone?core.apexpages.devmode.url=1" frameborder="0" height="140"></apex:iframe>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <div id="chatter">                       
+                <td  rowspan="2"> <c:ChatterFeed ></c:ChatterFeed> </td>
+            </div>
+        </tr>
+        <tr>            
+            <td>
+                <table cellspacing="10">
+                    <tr>
+                        <div id="today_task">
+                            <td>
+                                <apex:enhancedList listId="00BE00000010Lt9" height="400" width="420"  customizable="false" rowsPerPage="10"/>
+                            </td>
+                            <td>
+                                <apex:enhancedList listId="00BE00000010LtJ" height="400" width="420"  customizable="false" rowsPerPage="10"/>
+                            </td>
+                        </div>
+                    </tr>
+                </table>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr> 
+            <td>
+                <table cellspacing="10">
+                    <tr>
+                        <div id="flagged_pending">
+                            <td>
+                               <apex:enhancedList listId="00Bc0000000LoXl" height="400" width="420" customizable="false" rowsPerPage="10"/> 
+                            </td>
+                            <td>
+                               <apex:enhancedList listId="00Bc0000000LoXq" height="400" width="420" customizable="false" rowsPerPage="10"/>
+                            </td>
+                        </div>
+                    </tr>
+                </table>
+            </td>
+                            
+            <td>
+              <div id="gauge_chart">      
+                      
+                      <table>
+                          <tr>
+                               <td>Closed Requisitions vs Target Goals</td>
+                          </tr>
+                          <tr>
+                               <td>
+                                     <div id="gaugechart_div"/>
+                               </td>
+                          </tr>
+                      </table>
+                </div>              
+            </td>
+            
+        </tr>
+        <tr>
+            <td colspan="2">
+                 <div id="chart">
+                      <br/><br/>
+                      <table>
+                          <tr>
+                               <th>Pipeline Overview </th>
+                          </tr>
+                          <tr>
+                               <td>
+                                     <div id="applicationstatuschart_div"/>
+                               </td>
+                          </tr>
+                      </table>
+                  </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                 <div id="candidatesourcechart">
+                      <br/><br/>
+                      <table>
+                          <tr>
+                               <th  colspan="3">Candidate Sources<br/> </th>
+                          </tr>                          
+                          <tr>
+                               <td>
+                                     <div id="sourcechart0_div"/>
+                               </td>                                                            
+                          </tr>
+                          
+                      </table>
+                  </div>
+            </td>
+        </tr>
+        
+    </table>
+</apex:page>

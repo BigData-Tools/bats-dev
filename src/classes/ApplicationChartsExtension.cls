@@ -31,7 +31,6 @@ global with sharing class ApplicationChartsExtension {
     
     /*------------ Tests only below this line ------------*/
     static testMethod void testApplicationChartsExtension(){
-        ApexPages.standardController CandidateController;
         Application__c a = new Application__c();
         ApexPages.StandardController sc = new ApexPages.standardController(a);
         ApplicationChartsExtension ace = new ApplicationChartsExtension(sc);

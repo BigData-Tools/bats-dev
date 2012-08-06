@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>25.0</apiVersion>
+    <description>the page which verify that the agent is authorized agent. it won&apos;t check for the agent password rather than agent name and url.</description>
+    <label>AgentLogin</label>
+</ApexPage>

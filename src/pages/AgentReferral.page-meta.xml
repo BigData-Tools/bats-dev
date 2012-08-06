@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>25.0</apiVersion>
+    <description>Used to allow Box.com recruiting Agents to referrer people they think they worth interviewing and considering for certain position(s)</description>
+    <label>Agent Referral</label>
+</ApexPage>

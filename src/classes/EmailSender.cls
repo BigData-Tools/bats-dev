@@ -6,38 +6,54 @@ public class EmailSender{
         public set;
     }
     
-    public String candidateEmail{
-        public get;
-        public set;
-    }
-    
     public EmailCommunication__c emailCommunication{
         public get;
         public set;
     }
     
-    public boolean html{
-        get;
-        set;
-    }
+    private Id candidateId;
     
+    /**
+    * @description the class constructor which will initialize the email communication object and get the list of
+    * possible cadidate contacts
+    */
     public EmailSender(){
        emailCommunication = new emailCommunication__c();
        candidateList = [select First_Name__c, Last_Name__c, Email__c from Candidate__c];
     }
     
-    public List<SelectOption> getCandidates() {
+    public EmailSender(ApexPages.StandardController stdController) {
+        emailCommunication = new emailCommunication__c();
+        candidateId = stdController.getId();
+        try {
+           emailCommunication.Candidate__c = candidateId;
+           emailCommunication.CandidateSender__c = false;
+        } catch (Nullpointerexception e) {
+           return;
+        }
+    }
+
+    
+    /**
+    * @description the getter method for candidate list
+    * @return List<SelectOption> which will be select HTML list in the email communication page
+    */
+    /*public List<SelectOption> getCandidates() {
         List<SelectOption> options = new List<SelectOption>();
         for(Integer i = 0; i < candidateList.size(); i++){ 
             options.add(new SelectOption(candidateList.get(i).Email__c, candidateList.get(i).First_Name__c + ' ' + candidateList.get(i).Last_Name__c));
         }
         return options;
-    }
+    }*/
 
+    /**
+    * @description this method is the action for sending the email to the candidates
+    * @return PageReference
+    */
     public PageReference sendEmail(){
         try{
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            Candidate__c selectedCandidate = [select id, First_Name__c, Last_Name__c, Email__c from Candidate__c where Email__c = :candidateEmail limit 1];  
+            Candidate__c selectedCandidate = [select id, First_Name__c, Last_Name__c, Email__c from Candidate__c where id = :candidateId limit 1];  
             String[] toAddresses = new String[] {selectedCandidate.Email__c}; 
             mail.setToAddresses(toAddresses);
             EmailServicesAddress emailServicesAddress = [select LocalPart, EmailDomainName from EmailServicesAddress limit 1];
@@ -46,9 +62,8 @@ public class EmailSender{
             mail.setSubject(emailCommunication.Subject__c);  
             mail.setBccSender(false);
             mail.setUseSignature(false);   
-            mail.setPlainTextBody(emailCommunication.Message__c);
-            //mail.setHtmlBody('Your case:<b> ' + case.Id +' </b>has been created.<p>'+
-                 //'To view your case <a href=https://na1.salesforce.com/'+case.Id+'>click here.</a>');     
+            //mail.setPlainTextBody(emailCommunication.Message__c);
+            mail.setHtmlBody(emailCommunication.Message__c);     
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
             emailCommunication.CandidateSender__c = false;
             emailCommunication.Candidate__c = selectedCandidate.id;
@@ -65,7 +80,7 @@ public class EmailSender{
      /*------------ Tests only below this line ------------*/
     static testMethod void testEmailSender(){
     EmailSender ttt = new EmailSender();
-    ttt.getCandidates();
+    //ttt.getCandidates();
     ttt.sendEmail();
     
     }

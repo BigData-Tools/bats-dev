@@ -1,4 +1,4 @@
-<apex:page controller="SummarySidebarController" sidebar="false" showHeader="false" standardStylesheets="true">
+<apex:page controller="DashboardRedZoneController" sidebar="false" showHeader="false" standardStylesheets="true">
 <style type="text/css" media="all">
 body{margin: 0px; 
 padding: 0px; 
@@ -26,8 +26,8 @@ color:black;
 <div id="DIV_Container">
 <table>
 
-<tr><td><b>Offers In Progress</b>:  </td><td><a href="/a00?fcf=00Bc0000000LnKC" target="_parent"><b> {!NewApplication}</b></a></td></tr>
-<tr><td><b>Code Red Candidates</b>:  </td><td><a href="/a00?fcf=00Bc0000000LnO9" target="_parent"><b> {!PhoneScreen}</b></a></td></tr>
+<tr><td><b>Offers In Progress</b>:  </td><td><a href="/a00?fcf=00Bc0000000LpE1" target="_parent"><b> {!OfferInProgressNum}</b></a></td></tr>
+<tr><td><b>Code Red Candidates</b>:  </td><td><a href="/a02?fcf=00Bc0000000LpDr" target="_parent"><b> {!CodeRedNum}</b></a></td></tr>
 
 </table>
 </div>

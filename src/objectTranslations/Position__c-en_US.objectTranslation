@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Position</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Positions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Application --></label>
+        <name>Application__c</name>
+        <relationshipLabel><!-- Positions --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The close date for the postion --></help>
+        <label><!-- Close Date --></label>
+        <name>Close_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Department --></label>
+        <name>Department__c</name>
+        <picklistValues>
+            <masterLabel>Business Operations</masterLabel>
+            <translation><!-- Business Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Success</masterLabel>
+            <translation><!-- Customer Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design</masterLabel>
+            <translation><!-- Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product and Platform</masterLabel>
+            <translation><!-- Product and Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recruiting</masterLabel>
+            <translation><!-- Recruiting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation><!-- Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Operations</masterLabel>
+            <translation><!-- Technical Operations --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Description of the position including its overview duties, responsibility and qualifications --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Experience Level --></label>
+        <name>Eperience_Level__c</name>
+        <picklistValues>
+            <masterLabel>Associate</masterLabel>
+            <translation><!-- Associate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Director</masterLabel>
+            <translation><!-- Director --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entry level</masterLabel>
+            <translation><!-- Entry level --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Executive</masterLabel>
+            <translation><!-- Executive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internship</masterLabel>
+            <translation><!-- Internship --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid-Senior level</masterLabel>
+            <translation><!-- Mid-Senior level --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Hiring Manager --></label>
+        <name>Hiring_Manager__c</name>
+        <relationshipLabel><!-- Positions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+        <picklistValues>
+            <masterLabel>Chicago, IL</masterLabel>
+            <translation><!-- Chicago, IL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>London, United Kingdom</masterLabel>
+            <translation><!-- London, United Kingdom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Los Altos, CA</masterLabel>
+            <translation><!-- Los Altos, CA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York, NY</masterLabel>
+            <translation><!-- New York, NY --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The maximum salary for the postion --></help>
+        <label><!-- Max Pay --></label>
+        <name>Max_Pay__c</name>
+    </fields>
+    <fields>
+        <help><!-- The minimum salary for the postion --></help>
+        <label><!-- Min Pay --></label>
+        <name>Min_Pay__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicate the goal that how many people need to be hired for this positon. --></help>
+        <label><!-- Number of Hires --></label>
+        <name>Number_of_Hires__c</name>
+    </fields>
+    <fields>
+        <help><!-- The open date to hire for the postion --></help>
+        <label><!-- Open Date --></label>
+        <name>Open_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the job require traveling --></help>
+        <label><!-- Travel Required --></label>
+        <name>Travel_Required__c</name>
+    </fields>
+    <layouts>
+        <layout>Position Layout</layout>
+        <sections>
+            <label><!-- Candidate Map --></label>
+            <section>Candidate Map</section>
+        </sections>
+        <sections>
+            <label><!-- Compensation --></label>
+            <section>Compensation</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Position Title</nameFieldLabel>
+    <sharingReasons>
+        <label><!-- Authenticated Site Sharing Access --></label>
+        <name>Authenticated_Site_Sharing_Access</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Department Sharing Access --></label>
+        <name>Department_Sharing_Access</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Dept Head Hiring Manager Sharing Access --></label>
+        <name>Dept_Head_Hiring_Manager_Sharing_Access</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The Close Data should be after the Open Date --></errorMessage>
+        <name>Close_Date_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Min Pay cannot exceed Max Pay --></errorMessage>
+        <name>Min_Pay_Rule</name>
+    </validationRules>
+</CustomObjectTranslation>

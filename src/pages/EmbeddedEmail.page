@@ -1,0 +1,27 @@
+<apex:page standardController="Candidate__c" extensions="EmbeddedEmailController">
+    
+    <script>
+        alert("test2");
+        function updateSubject(){
+            alert("test");
+            document.getElementById('Subject'­ ).value = "Test from onClick";
+        }
+    </script>
+    
+    <apex:pageBlock title="Email Communication With Candidate">
+        <apex:pageBlockTable value="{!emailCommunication}" var="email">
+            <apex:column >
+                <apex:facet name="header">Sender</apex:facet>
+                <a href="#anything" onclick="window.open('/apex/ReadEmail?emailId={!email.id}')">{!IF(email.CandidateSender__c,"Candidate", "HR Employee")}</a>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Receiver</apex:facet>
+                <a href="#anything" onclick="window.open('/apex/ReadEmail?emailId={!email.id}')">{!IF(email.CandidateSender__c,"HR Employee", "Candidate")}</a>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Subject</apex:facet>
+                <a href="#anything" onclick="window.open('/apex/ReadEmail?emailId={!email.id}')">{!email.Subject__c}</a>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>    
+</apex:page>

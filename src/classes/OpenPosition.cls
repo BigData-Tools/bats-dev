@@ -4,7 +4,8 @@ public class OpenPosition {
         get {
             if(setBusiness == null) {
                 setBusiness = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Business Operations']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Business Operations'
+                    And Close_Date__c > TODAY]));
             }
             return setBusiness;
         }
@@ -21,7 +22,8 @@ public class OpenPosition {
         get {
             if(setCustomer == null) {
                 setCustomer = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Customer Success']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Customer Success'
+                    And Close_Date__c > TODAY]));
             }
             return setCustomer;
         }
@@ -39,7 +41,8 @@ public class OpenPosition {
         get {
             if(setDesign == null) {
                 setDesign = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Design']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Design'
+                    And Close_Date__c > TODAY]));
             }
             return setDesign;
         }
@@ -56,7 +59,8 @@ public class OpenPosition {
         get {
             if(setEngineering == null) {
                 setEngineering = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Engineering']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Engineering'
+                    And Close_Date__c > TODAY]));
             }
             return setEngineering;
         }
@@ -72,7 +76,8 @@ public class OpenPosition {
         get {
             if(setMarketing == null) {
                 setMarketing = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Marketing']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Marketing'
+                    And Close_Date__c > TODAY]));
             }
             return setMarketing;
         }
@@ -88,7 +93,8 @@ public class OpenPosition {
         get {
             if(setProduct == null) {
                 setProduct = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Product and Platform']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Product and Platform'
+                    And Close_Date__c > TODAY]));
             }
             return setProduct;
         }
@@ -104,7 +110,8 @@ public class OpenPosition {
         get {
             if(setSales == null) {
                 setSales = new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Sales']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Sales'
+                    And Close_Date__c > TODAY]));
             }
             return setSales;
         }
@@ -120,7 +127,8 @@ public class OpenPosition {
         get {
             if(setTechnical == null) {
                 setTechnical= new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = 'Technical Operations']));
+                    [SELECT Name FROM Position__c WHERE Department__c = 'Technical Operations'
+                    And Close_Date__c > TODAY]));
             }
             return setTechnical;
         }
@@ -136,7 +144,8 @@ public class OpenPosition {
         get {
             if(setOther == null) {
                 setOther= new ApexPages.StandardSetController(Database.getQueryLocator(
-                    [SELECT Name FROM Position__c WHERE Department__c = '']));
+                    [SELECT Name FROM Position__c WHERE Department__c = ''
+                    And Close_Date__c > TODAY]));
             }
             return setOther;
         }

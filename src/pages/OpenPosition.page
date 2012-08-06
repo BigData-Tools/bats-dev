@@ -1,71 +1,99 @@
-<apex:page controller="OpenPosition">
-  <h3>Business Operations</h3>
-  <hr/>
-  <apex:repeat value="{!BusinessPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
-   </apex:repeat> 
-   
-  <h3>Customer Success</h3>
-  <hr/>
-   <apex:repeat value="{!CustomerPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
-   </apex:repeat> 
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" controller="OpenPosition">
   
+  <style type="text/css">
+   body, html {
+     font-family: arial, Sans-Serif !important;
+     color: #333 !important;
+     font-size: 13px !important;
+     line-height: 20px !important;
+     margin: 0px;
+     padding: 0px;
+   }
+   
+   h1 {
+      color: #111;
+      font-size: 35px;
+      line-height: 1.1;
+      text-shadow: 0 0 1px rgba(17, 17, 17, 0.4), 0 2px 1px rgba(0, 0, 0, 0.2);
+   }
+   
+   p {
+     margin-bottom: 10px;
+   }
+   
+   h3{
+    color: #333;
+    font-size: 16px;
+    border-bottom: 1px solid #E8E8E8;
+    margin: 0px 0px 5px 0px;
+    padding: 0px 0px 5px 0px;
+   }
+   a {
+     color: #1A74B0;
+     text-decoration: none;
+   }
+  </style>
+  <h1>Open Positions</h1>
+  <p>Please check our open positions below.  </p>
+  <h3 >Business Operations</h3>
+
+  <apex:repeat value="{!BusinessPositions}" var="p">
+     <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>
+     
+   </apex:repeat> 
+   <br/> 
+  <h3>Customer Success</h3>
+
+   <apex:repeat value="{!CustomerPositions}" var="p">
+     <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>
+  </apex:repeat>
+   <br/>
  
   <h3>Design</h3>
-  <hr/> 
+ 
   <apex:repeat value="{!designPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
+    <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/> 
    </apex:repeat> 
-   
+   <br/>
    <h3>Engineering</h3>
-  <hr/>
+
   <apex:repeat value="{!EngineeringPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
+     <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>  
    </apex:repeat> 
-  
+  <br/>
   
   <h3>Marketing</h3>
-  <hr/>
+
   <apex:repeat value="{!MarketingPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
+   <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/> 
    </apex:repeat> 
    
-   
+   <br/>
   <h3>Product and Platform</h3>
-  <hr/>
-  <apex:repeat value="{!ProductPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
-   </apex:repeat> 
   
+  <apex:repeat value="{!ProductPositions}" var="p">
+     <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>   
+   </apex:repeat> 
+  <br/>
   <h3>Sales</h3>
-  <hr/>
   
   <apex:repeat value="{!SalesPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
+     <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>  
    </apex:repeat> 
 
-  
+  <br/>
   <h3>Technical Operations</h3>
-  <hr/>
+ 
    <apex:repeat value="{!TechnicalPositions}" var="p">
-    <ul>    
-    <li> {!p.Name}</li>
-    </ul>   
+     <apex:outputlink value="/apex/PositionDetail"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>  
    </apex:repeat>
    
   

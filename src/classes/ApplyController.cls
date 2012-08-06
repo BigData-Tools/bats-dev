@@ -15,37 +15,47 @@ public with sharing class ApplyController {
     
     public ParsedResume parsedResume{get; private set;}    
     
-    //Go from Page 1 (upload) to Page 2 (resume text)
+    /**
+    * @description Go from Page 1 (upload) to Page 2 (resume text)
+    * @return the pageReference to the next page
+    */
     public pageReference uploadAction(){
         if (!Test.isRunningTest()) //because testMethods don't support callouts, and we need 75% code coverage.
             parsedResume = new ParsedResume(resume);
         return new PageReference('/apex/ApplyResumeText');
     }
     
-    //Go from Page 2 (resume text) to Page 3 (fill fields, submit app)
+    /**
+    * @description it will just get the user from the resume text page into the application form
+    * @return the pageReference to the next page
+    */
     public pageReference resumeTextAction(){
         if (!Test.isRunningTest())
             parsedResume.parseToXML();
         return new PageReference('/apex/ApplySubmit');
     }
     
-    //Go from Page 3 (fill & submit) to Page 4 (confirmation)
+    /**
+    * @description this method contains action from transforming from page 3 to 4 page. it contains upload resume to box, create candidate and application
+    * @return the PageReferenece to the next page.
+    */
     public pageReference submitAction(){
         if (!Test.isRunningTest()) {
-	        //upload Resume to Box
-	        BoxUpload boxUpload = new BoxUpload(resume);
-	        responseBody = boxUpload.getUploadedFileId();
-	    
-	        //create Candidate       
-	        insert parsedResume.c;
-	    
-	        //create Application
-	        Application__c a = new Application__c();
-	        a.Box_Resume_Id__c = boxUpload.getUploadedFileId();
-	        a.Candidate__c = parsedResume.c.Id;
-	        a.Resume_Text__c = parsedResume.resumeText;
-	        a.Position__c = [SELECT Id FROM Position__c].get(0).Id;
-	        insert a;
+            //upload Resume to Box
+            BoxUpload boxUpload = new BoxUpload(resume);
+            responseBody = boxUpload.getUploadedFileId();
+        
+            //update or create Candidate
+            //upsert prevents duplicates       
+            upsert parsedResume.c Email__c;
+        
+            //create Application
+            Application__c a = new Application__c();
+            a.Box_Resume_Id__c = boxUpload.getUploadedFileId();
+            a.Candidate__c = parsedResume.c.Id;
+            a.Resume_Text__c = parsedResume.resumeText;
+            a.Position__c = [SELECT Id FROM Position__c].get(0).Id;
+            insert a;
         }
         return new PageReference('/apex/ApplyComplete');
     }

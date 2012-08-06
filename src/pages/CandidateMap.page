@@ -1,4 +1,4 @@
-<apex:page standardcontroller="Position__c">
+<apex:page standardcontroller="Position__c" showHeader="false">
 <p>This map shows the locations of candidates who have applied for the {!Position__c.Name} position.</p>
 <br/>
     <apex:includeScript value="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=salesforce.com"/>

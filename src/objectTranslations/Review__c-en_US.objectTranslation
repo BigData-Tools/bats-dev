@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Review</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reviews</value>
+    </caseValues>
+    <fields>
+        <label><!-- Application --></label>
+        <name>Application__c</name>
+        <relationshipLabel><!-- Review --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commentor --></label>
+        <name>Commentor_Formula__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commentor --></label>
+        <name>Commentor__c</name>
+        <relationshipLabel><!-- Review --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Culture Rating --></label>
+        <name>Culture_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interview Date/Time (PST) --></label>
+        <name>Interview_Datetime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interview Duration (hour) --></label>
+        <name>Interview_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interview Location --></label>
+        <name>Interview_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interview --></label>
+        <name>Interview__c</name>
+        <relationshipLabel><!-- Review --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Rating --></label>
+        <name>Technical_Rating__c</name>
+    </fields>
+    <layouts>
+        <layout>Review Layout</layout>
+        <sections>
+            <label><!-- Assessment --></label>
+            <section>Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Invalid rating. Rating must be
+from 1 to 5. --></errorMessage>
+        <name>Rating_Scale_Rule</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Email --></label>
+        <name>Email</name>
+    </webLinks>
+</CustomObjectTranslation>

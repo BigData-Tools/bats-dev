@@ -39,6 +39,21 @@ global with sharing class ChartsExtension {
         return [select sum(Number_of_Hires__c) target from Position__c];                
     } 
     
+    @RemoteAction  
+    global static Set<String> loadPositions() {        
+        LIST<Application__c> positions = [select Position__r.Name from Application__c]; 
+        Set<String> positionset = new Set<String>();               
+        for (Integer i = 0; i< positions.size(); i++){
+            positionset.add(positions[i].Position__r.Name); // contains distinct position
+        }
+        return positionset;
+    } 
+    
+    @RemoteAction  
+    global static AggregateResult[] loadCandidateSources(string position) {        
+        return [select count(Id) SourceNum, Source__c, Position__r.Name pos from Application__c where Position__r.Name=:position group by Source__c, Position__r.Name];                
+    }
+    
      /*------------ Tests only below this line ------------*/
     static testMethod void testChartsExtension(){
         Application__c a = new Application__c();

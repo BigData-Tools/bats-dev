@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Application</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Applications</value>
+    </caseValues>
+    <fields>
+        <help><!-- The average rating for the reviews --></help>
+        <label><!-- Average Rating --></label>
+        <name>Average_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- Box_Resume_Id --></label>
+        <name>Box_Resume_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Box Resume Link --></label>
+        <name>Box_Resume_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate_Formula__c</name>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+        <relationshipLabel><!-- Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cover Letter --></label>
+        <name>Cover_Letter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Reviews --></label>
+        <name>Number_of_Reviews__c</name>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>Position__c</name>
+        <relationshipLabel><!-- Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Resume Text --></label>
+        <name>Resume_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>Source__c</name>
+        <picklistValues>
+            <masterLabel>Agent</masterLabel>
+            <translation><!-- Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Career Site</masterLabel>
+            <translation><!-- Career Site --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee Referral</masterLabel>
+            <translation><!-- Employee Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Job Board</masterLabel>
+            <translation><!-- Job Board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sourced</masterLabel>
+            <translation><!-- Sourced --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HM Screen</masterLabel>
+            <translation><!-- HM Screen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HM Screen Approved</masterLabel>
+            <translation><!-- HM Screen Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HM Screen Rejection</masterLabel>
+            <translation><!-- HM Screen Rejection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offer in process</masterLabel>
+            <translation><!-- Offer in process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onsite Interview</masterLabel>
+            <translation><!-- Onsite Interview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recruiter Screen</masterLabel>
+            <translation><!-- Recruiter Screen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recruiter Screen Approved</masterLabel>
+            <translation><!-- Recruiter Screen Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recruiter Screen Rejection</masterLabel>
+            <translation><!-- Recruiter Screen Rejection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted Approved</masterLabel>
+            <translation><!-- Submitted Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted Rejection</masterLabel>
+            <translation><!-- Submitted Rejection --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Shows the sum of all the job application&apos;s review ratings --></help>
+        <label><!-- Total Rating --></label>
+        <name>Total_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- candidate_email_address --></label>
+        <name>candidate_email_address__c</name>
+    </fields>
+    <layouts>
+        <layout>Application Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Files --></label>
+            <section>Files</section>
+        </sections>
+        <sections>
+            <label><!-- Resume --></label>
+            <section>Resume</section>
+        </sections>
+        <sections>
+            <label><!-- Reviews --></label>
+            <section>Reviews</section>
+        </sections>
+    </layouts>
+    <sharingReasons>
+        <label><!-- Authenticated Site Sharing Access --></label>
+        <name>Authenticated_Site_Sharing_Access</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Department Sharing Access --></label>
+        <name>Department_Sharing_Access</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Dept Head Hiring Manager Sharing Access --></label>
+        <name>Dept_Head_Hiring_Manager_Sharing_Access</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Update_Status --></label>
+        <name>Update_Status</name>
+    </webLinks>
+</CustomObjectTranslation>

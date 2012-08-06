@@ -1,0 +1,87 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" standardController="Position__c" extensions="PositionParamController">
+  <style type="text/css">
+  h1 {
+   color: #333;
+   font-size: 18px;
+   margin: 0px 0px 8px 0px;
+   padding: 0px;
+   }
+   
+  .divide {
+    border-top: solid 1px #E4E4E4;
+    margin: 5px 0px 5px 0px;
+    display: block;
+   }
+   
+   body, html {
+font-family: arial, Sans-Serif !important;
+color: #333 !important;
+font-size: 13px !important;
+line-height: 20px !important;
+}
+
+a {
+color: #1A74B0;
+text-decoration: none;
+}
+
+.pullLeft{
+float:left;
+}
+
+.btnApply {
+display: block;
+float:right;
+}
+
+  </style>
+ 
+  <h1> {!name} </h1>
+  
+   <p> {!Department} | {!Location} , United States</p>
+   
+  <p class="btnApply">
+   <apex:form >
+        <apex:commandButton value="apply" action="{!applyButtonClick}">
+            <apex:param name="position"
+                value="{!name}"
+                assignTo="{!position}"/>
+        </apex:commandButton>
+ 
+    </apex:form>
+    </p>    
+ <div class="divide"></div>
+
+<apex:outputText value="{!Description}" escape="false"/>
+
+
+
+ <!--{!substitute(Description, '\n', '<br/>')}-->
+
+ 
+ <br/>
+ <br/>
+ 
+ <strong>About Box:</Strong>
+ <br/>
+ <br/>
+{!BoxDescription}
+ 
+ 
+ <br/>
+ <br/>
+ <p class="btnApply">
+   <apex:form >
+        <apex:commandButton value="apply" action="{!applyButtonClick}">
+            <apex:param name="position"
+                value="{!name}"
+                assignTo="{!position}"/>
+        </apex:commandButton>
+ 
+    </apex:form>
+    </p>    
+    
+  <div class="pullLeft">
+  <apex:outputlink value="/apex/OpenPosition">  Back to Open Positions </apex:outputlink>
+  </div>
+</apex:page>

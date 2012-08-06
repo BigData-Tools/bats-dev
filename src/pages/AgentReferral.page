@@ -1,0 +1,53 @@
+<apex:page controller="ReferralController" sidebar="false">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script>
+        function updatePosition(departmentFieldId, positionFieldId){
+            //alert(document.getElementById(departmentFieldId).value);
+            
+            $.get("PositionsDynamicCall", { department: document.getElementById(departmentFieldId).value},
+               function(data){
+                     //alert("Data Loaded: " + data);
+               });
+        }
+    </script>
+    <apex:form >
+        <apex:pageBlock title="Agent's Referral">
+            
+            <apex:pageMessages />
+            <apex:pageBlockSection title="Referrer" columns="2">
+                <apex:inputText value="{!candidate.Referrer_Name__c}" label="Referrer Name" />
+                <apex:inputText value="{!candidate.Referrer_Email__c}" label="Referrer Email" />
+                <apex:inputCheckbox value="{!candidate.Referrer_Confidential__c}" label="Confidential" />
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Candidate Information" columns="2">
+                <apex:inputField value="{!candidate.First_Name__c}" label="First Name" />
+                <apex:inputField value="{!candidate.Last_Name__c}" label="Last Name" />
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Recommended Position" columns="2">
+             <!--Just Comment-->
+                 <apex:selectList value="{!position.Department__c}" size="1" id="department" required="true" onChange="updatePosition('{!$Component.department}','{!$Component.position11}')" >
+                     <apex:selectOptions value="{!DepartmentsList}"/>
+                 </apex:selectList> 
+                 <apex:selectList value="{!position.Name}" size="1" required="true" id="position11">
+                     <apex:selectOptions value="{!positionsList}"/>
+                 </apex:selectList>  
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Candidate Contact Information" >
+                <apex:inputField value="{!candidate.Email__c}" label="Email" />
+                <apex:inputField value="{!candidate.Street__c}" label="Street" />
+                <apex:inputField value="{!candidate.LinkedIn_Profile_URL__c}" label="LinkedIn Profile URL" />
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Resume upload">
+                <apex:inputFile value="{!resume.body}" filename="{!resume.name}"/>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockButtons >
+             <apex:commandButton value="Submit" action="{!agentReferralAction}"/>
+             </apex:pageBlockButtons>
+         </apex:pageBlock> 
+     </apex:form>
+</apex:page>

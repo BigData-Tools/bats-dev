@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Comments and a rating of a candidate, often after a phone screen or interview.</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Application__c</fullName>
+        <description>Application for which this review was performed.</description>
+        <externalId>false</externalId>
+        <label>Application</label>
+        <referenceTo>Application__c</referenceTo>
+        <relationshipLabel>Review</relationshipLabel>
+        <relationshipName>Review</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Candidate__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+Application__r.Candidate__r.Id,
+Application__r.Candidate__r.First_Name__c
+&amp;
+&quot; &quot;
+&amp;
+Application__r.Candidate__r.Last_Name__c)</formula>
+        <label>Candidate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Commentor_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>Commentor__r.First_Name__c
+&amp; 
+&quot; &quot; 
+&amp; 
+Commentor__r.Last_Name__c</formula>
+        <label>Commentor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Commentor__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>User of authenticated sites.</description>
+        <externalId>false</externalId>
+        <label>Commentor</label>
+        <referenceTo>Commentor__c</referenceTo>
+        <relationshipLabel>Review</relationshipLabel>
+        <relationshipName>Review</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Comments about a candidate.</description>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Culture_Rating__c</fullName>
+        <description>Rating on a scale of 1 (worst)  to 4 (best).</description>
+        <externalId>false</externalId>
+        <label>Culture Rating</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interview_Datetime__c</fullName>
+        <externalId>false</externalId>
+        <label>Interview Date/Time (PST)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Interview_Duration__c</fullName>
+        <defaultValue>1</defaultValue>
+        <externalId>false</externalId>
+        <label>Interview Duration (hour)</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interview_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Interview Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interview__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Interview</label>
+        <referenceTo>Interview__c</referenceTo>
+        <relationshipLabel>Review</relationshipLabel>
+        <relationshipName>Review</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Position__c</fullName>
+        <externalId>false</externalId>
+        <formula>Application__r.Position__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Position</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technical_Rating__c</fullName>
+        <description>Rating of an applicant&apos;s technical skills from 1 (worst) to 4 (best).</description>
+        <externalId>false</externalId>
+        <label>Technical Rating</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Review</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>CREATED_DATE</columns>
+        <columns>Candidate__c</columns>
+        <columns>Application__c</columns>
+        <columns>Interview__c</columns>
+        <columns>Comments__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Assigned_Reviews</fullName>
+        <columns>NAME</columns>
+        <columns>Application__c</columns>
+        <columns>Candidate__c</columns>
+        <columns>Interview__c</columns>
+        <columns>Comments__c</columns>
+        <columns>Commentor__c</columns>
+        <columns>Commentor_Formula__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Commentor__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>Assigned Reviews</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Review</fullName>
+        <booleanFilter>1</booleanFilter>
+        <columns>Candidate__c</columns>
+        <columns>Position__c</columns>
+        <columns>Interview__c</columns>
+        <columns>Commentor__c</columns>
+        <columns>Comments__c</columns>
+        <columns>Culture_Rating__c</columns>
+        <columns>Technical_Rating__c</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>lessOrEqual</operation>
+            <value>NEXT_WEEK</value>
+        </filters>
+        <label>New Review</label>
+    </listViews>
+    <nameField>
+        <displayFormat>R-{000000}</displayFormat>
+        <label>ReviewID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Reviews</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Application__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Candidate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Position__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Interview__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Commentor__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATED_DATE</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Application__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Candidate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Position__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Interview__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Commentor__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Rating_Scale_Rule</fullName>
+        <active>true</active>
+        <description>Rating must be from 1 to 5.</description>
+        <errorConditionFormula>(Culture_Rating__c &lt;1 || Culture_Rating__c &gt; 5)</errorConditionFormula>
+        <errorDisplayField>Culture_Rating__c</errorDisplayField>
+        <errorMessage>Invalid rating. Rating must be
+from 1 to 5.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Email</fullName>
+        <availability>online</availability>
+        <description>Email interviewers.</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Resend Calendar Invites</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)} 
+sforce.apex.execute(&quot;ResendCalendarInvites&quot;,&quot;SendEmailNotification&quot;, {id:222}); 
+window.alert(&quot;Emails sent.&quot; );</url>
+    </webLinks>
+</CustomObject>

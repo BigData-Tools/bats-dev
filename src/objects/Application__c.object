@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>An application for a position offered at Box.</description>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Average_Rating__c</fullName>
+        <description>The average rating for the reviews</description>
+        <externalId>false</externalId>
+        <formula>Total_Rating__c / Number_of_Reviews__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average rating for the reviews</inlineHelpText>
+        <label>Average Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Box_Resume_Id__c</fullName>
+        <description>Resume id of a resume stored in Box. Used to retreive a resume and display embedded in a page.</description>
+        <externalId>false</externalId>
+        <label>Box_Resume_Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Box_Resume_Link__c</fullName>
+        <description>The URL for the resume in the box folder</description>
+        <externalId>false</externalId>
+        <label>Box Resume Link</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Candidate_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>Candidate__r.First_Name__c
+&amp;
+&quot; &quot;
+&amp;
+Candidate__r.Last_Name__c</formula>
+        <label>Candidate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Candidate__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Candidate who is applying.</description>
+        <externalId>false</externalId>
+        <label>Candidate</label>
+        <referenceTo>Candidate__c</referenceTo>
+        <relationshipLabel>Applications</relationshipLabel>
+        <relationshipName>Applications</relationshipName>
+        <required>true</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cover_Letter__c</fullName>
+        <description>The text contents of the cover letter</description>
+        <externalId>false</externalId>
+        <label>Cover Letter</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_of_Reviews__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Reviews</label>
+        <summaryForeignKey>Review__c.Application__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Position__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Position</label>
+        <referenceTo>Position__c</referenceTo>
+        <relationshipLabel>Applications</relationshipLabel>
+        <relationshipName>Applications</relationshipName>
+        <required>true</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Resume_Text__c</fullName>
+        <description>Textual version of a resume.</description>
+        <externalId>false</externalId>
+        <label>Resume Text</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>20</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Source__c</fullName>
+        <description>Hires by Source</description>
+        <externalId>false</externalId>
+        <label>Source</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Job Board</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Career Site</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Referral</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Agent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sourced</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted Rejection</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Recruiter Screen</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Recruiter Screen Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Recruiter Screen Rejection</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HM Screen</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HM Screen Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HM Screen Rejection</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Onsite Interview</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Offer in process</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Total_Rating__c</fullName>
+        <description>Shows the sum of all the job application&apos;s review ratings</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Shows the sum of all the job application&apos;s review ratings</inlineHelpText>
+        <label>Total Rating</label>
+        <summarizedField>Review__c.Culture_Rating__c</summarizedField>
+        <summaryForeignKey>Review__c.Application__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>candidate_email_address__c</fullName>
+        <externalId>false</externalId>
+        <label>candidate_email_address</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <label>Application</label>
+    <listViews>
+        <fullName>Active_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>New,Submitted Rejection,Recruiter Screen Rejection,HM Screen Rejection</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Accepted,Rejected</value>
+        </filters>
+        <label>Active Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>Source__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Closed_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>,Submitted Rejection,Recruiter Screen Rejection,HM Screen Rejection,Accepted</value>
+        </filters>
+        <label>Closed Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>Flagged_Candidates</fullName>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <label>Flagged Candidates</label>
+    </listViews>
+    <listViews>
+        <fullName>Hired_Candidates</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Accepted</value>
+        </filters>
+        <label>Hired Candidates</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </filters>
+        <label>New Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Onsite</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Onsite Interview</value>
+        </filters>
+        <label>New Onsite</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Phone_Screen</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Candidate__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Recruiter Screen</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>HM Screen</value>
+        </filters>
+        <label>New Phone Screen</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Recruiter_Screen</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Recruiter Screen</value>
+        </filters>
+        <label>New Recruiter Screen</label>
+    </listViews>
+    <listViews>
+        <fullName>Offer_In_Progress</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Source__c</columns>
+        <columns>Total_Rating__c</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Offer in process</value>
+        </filters>
+        <label>Offer In Progress</label>
+    </listViews>
+    <listViews>
+        <fullName>Pending_Candidates</fullName>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>New,Recruiter Screen,HM Screen,Onsite Interview,Offer in process</value>
+        </filters>
+        <label>Pending Candidates</label>
+    </listViews>
+    <listViews>
+        <fullName>Pending_HM_Screens</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Recruiter Screen Approved</value>
+        </filters>
+        <label>Pending HM Screens</label>
+    </listViews>
+    <listViews>
+        <fullName>Pending_Onsites</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>HM Screen Approved</value>
+        </filters>
+        <label>Pending Onsites</label>
+    </listViews>
+    <listViews>
+        <fullName>Pending_Recruiter_Screens</fullName>
+        <columns>NAME</columns>
+        <columns>Candidate_Formula__c</columns>
+        <columns>Position__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted Approved</value>
+        </filters>
+        <label>Pending Recruiter Screens</label>
+    </listViews>
+    <nameField>
+        <displayFormat>A-{000000}</displayFormat>
+        <label>ApplicationID</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Applications</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Candidate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Candidate_Formula__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Position__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Candidate_Formula__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Candidate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Position__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>Authenticated_Site_Sharing_Access__c</fullName>
+        <label>Authenticated Site Sharing Access</label>
+    </sharingReasons>
+    <sharingReasons>
+        <fullName>Department_Sharing_Access__c</fullName>
+        <label>Department Sharing Access</label>
+    </sharingReasons>
+    <sharingReasons>
+        <fullName>Dept_Head_Hiring_Manager_Sharing_Access__c</fullName>
+        <label>Dept Head Hiring Manager Sharing Access</label>
+    </sharingReasons>
+    <webLinks>
+        <fullName>Update_Status</fullName>
+        <availability>online</availability>
+        <description>Updates the Status field on
+multiple job applications.</description>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Update Status</masterLabel>
+        <openType>sidebar</openType>
+        <page>UpdateStatus</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

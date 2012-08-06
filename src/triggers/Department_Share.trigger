@@ -41,7 +41,7 @@ trigger Department_Share on Application__c (after insert) {
         appShares.add(appShare);
         
         
-        // We also have to add for authenticated site users
+        // We also have to add for authenticated site users (from custom roles)
         List<Role__c> users = [SELECT User__c,Id FROM Role__c where Department__c = :dept];
         for(Role__c role : users) {
             Application__Share appRoleShare = new Application__Share();
@@ -50,6 +50,17 @@ trigger Department_Share on Application__c (after insert) {
             appRoleShare.AccessLevel = 'edit';
             appRoleShare.RowCause = Schema.Application__Share.RowCause.Authenticated_Site_Sharing_Access__c;
             appShares.add(appRoleShare);
+        }
+        
+        // We also have to add for individual authenticated site users
+        List<Position__Share> usersPos = [SELECT Id, UserOrGroupId FROM Position__Share WHERE ParentId =: app.Position__c AND RowCause =: Schema.Position__Share.RowCause.Dept_Head_Hiring_Manager_Sharing_Access__c];
+        for (Position__Share pos : usersPos) {
+            Application__Share appRoleShare = new Application__Share();
+            appRoleShare.ParentId = app.Id;
+            appRoleShare.UserOrGroupId = pos.UserOrGroupId;
+            appRoleShare.AccessLevel = 'edit';
+            appRoleShare.RowCause = Schema.Application__Share.RowCause.Dept_Head_Hiring_Manager_Sharing_Access__c;
+            appShares.add(appRoleShare);            
         }
     }
         

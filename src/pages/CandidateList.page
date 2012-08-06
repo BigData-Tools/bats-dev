@@ -92,7 +92,11 @@
                     // add rows from the remoting results
                     for(var i = 0; i < result.length; i++){
                         var r = result[i];
-                        data.addRow([r.State__c, r.StateNum]);
+                        if(r.State__c== null && r.StateNum!= null){
+                            data.addRow(["CA", r.EducationNum]);
+                        }else{
+                            data.addRow([r.State__c, r.StateNum]);
+                        }
                     }                                                                              
                       
                     var options= {

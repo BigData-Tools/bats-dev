@@ -1,41 +1,26 @@
 public with sharing class ParsedResume {
 
-    /*resumeText: is string which contains the text of the resume
-    */
-    public String resumeText{get; set;}
-    
-    /*resumeXML: is string which contains the parsed resume of the text.
-      it differs from the resume text that contains the resume as parsed xml version
-      rather than plain resume text
-    */
-    private String resumeXML;
-    
-    /** Candidate: is customized Object that corresponds to Job Applicant
-    */
-    public Candidate__c c{get; set;}
-    
-    /**
-        sovren: which contains all sovren methods to parse and convert resumes
-    */
+    public String resumeText{get; set;}  
+    private String resumeXML;    
+    public Candidate__c c{get; set;}    
     private sovrenCom.ConvertAndParseSoap sovren;
 
     /* Given a resume Document, uses Sovren to parse the document, and
-     * stores the raw text in resumeText, and stores the HR-XML in resumeXML
-     
-         resumeDoc: is object which will contains the resume binaries and 
-         pass it to sovren webservice
-     */
+     * stores the raw text in resumeText, and stores the HR-XML in resumeXML */
     public ParsedResume(Document resumeDoc) {
-        sovren = new sovrenCom.ConvertAndParseSoap();        
-        if (resumeDoc != null) {
-            resumeText = sovren.DoConversionSimplified(EncodingUtil.Base64Encode(resumeDoc.body),'PLAIN_TEXT');            
-        }
+        try {
+	        sovren = new sovrenCom.ConvertAndParseSoap();
+	        if (resumeDoc != null) {
+	            resumeText = sovren.DoConversionSimplified(EncodingUtil.Base64Encode(resumeDoc.body),'PLAIN_TEXT');            
+	        }
+        } catch(System.TypeException e) {} //because salesforce tests don't support callouts
     }
     
-    /* Sends the resume text to Sovren to be parsed. Stores the HR-XML result in resumeXML. 
-     */
+    /* Sends the resume text to Sovren to be parsed. Stores the HR-XML result. */
     public void parseToXML() {
-        resumeXML = sovren.ParseConvertedResume(resumeText , false, false, 5000, 2,'1', false,'1');
+    	try {
+            resumeXML = sovren.ParseConvertedResume(resumeText , false, false, 5000, 2,'1', false,'1');
+    	} catch(System.TypeException e) {}
         c = new Candidate__c();
 
         c.First_Name__c = getFirstField('GivenName');
@@ -55,8 +40,7 @@ public with sharing class ParsedResume {
     }
     
     /* Helper method to populate variables
-     * Returns the contents of the first XML element identified by fieldName 
-     */
+     * Returns the contents of the first XML element identified by fieldName */ 
     private String getFirstField(String fieldName) {
         XMLDom xmlDom = new XMLDom(resumeXML);
         try {
@@ -64,5 +48,14 @@ public with sharing class ParsedResume {
         } catch (System.ListException e) {
             return '';
         }
+    }
+    
+    /*------------ Tests only below this line ------------*/
+    static testMethod void testParsedResume(){
+        Document d = new Document();
+        d.Body = Blob.valueOf('test data');
+        ParsedResume pr = new ParsedResume(d);
+        pr.resumeXML = '<nothing></nothing>';
+        pr.parseToXML();
     }
 }
