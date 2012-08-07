@@ -105,6 +105,18 @@ Candidate__r.Last_Name__c</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Coordinator__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Coordinator</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Applications2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Cover_Letter__c</fullName>
         <description>The text contents of the cover letter</description>
         <externalId>false</externalId>
@@ -114,6 +126,18 @@ Candidate__r.Last_Name__c</formula>
         <trackHistory>false</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Hiring_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Hiring Manager</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Applications</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Number_of_Reviews__c</fullName>
@@ -134,6 +158,18 @@ Candidate__r.Last_Name__c</formula>
         <relationshipName>Applications</relationshipName>
         <required>true</required>
         <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Recruiter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Recruiter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Applications1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>

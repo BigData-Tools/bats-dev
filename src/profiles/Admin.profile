@@ -59,6 +59,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FlagCandidateController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ForgotPasswordController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -151,7 +155,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Application__c.Coordinator__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Application__c.Cover_Letter__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.Hiring_Manager__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -162,6 +176,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Application__c.Position__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.Recruiter__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -436,6 +455,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Position__c.Coordinator__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Position__c.Department__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -477,6 +501,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Position__c.Open_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Position__c.Recruiter__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

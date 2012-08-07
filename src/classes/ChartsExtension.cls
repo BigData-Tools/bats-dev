@@ -44,7 +44,7 @@ global with sharing class ChartsExtension {
         LIST<Application__c> positions = [select Position__r.Name from Application__c]; 
         Set<String> positionset = new Set<String>();               
         for (Integer i = 0; i< positions.size(); i++){
-            positionset.add(positions[i].Position__r.Name); // contains distinct position
+            positionset.add(positions[i].Position__r.Name); // contains distinct positions
         }
         return positionset;
     } 
@@ -66,6 +66,9 @@ global with sharing class ChartsExtension {
         loadOfferAcceptedStatus();
         loadGoalActualGauge();
         loadGoalTargetGauge();
+        loadPositions();
+        loadCandidateSources('sss');
+        
     }
    
 }

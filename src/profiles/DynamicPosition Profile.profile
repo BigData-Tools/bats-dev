@@ -8,7 +8,7 @@
     <applicationVisibilities>
         <application>Get_Started</application>
         <default>false</default>
-        <visible>true</visible>
+        <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
         <apexClass>ApplicationChartsExtension</apexClass>
@@ -84,7 +84,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PositionsDynamicCall</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ReferralController</apexClass>
@@ -818,7 +818,7 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>BandwidthExceeded</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>Benefits</apexPage>
@@ -838,7 +838,7 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>ChangePassword</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>Communicate</apexPage>
@@ -890,19 +890,19 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>Exception</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>FileNotFound</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>ForgotPassword</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>ForgotPasswordConfirm</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>Get_Started</apexPage>
@@ -914,7 +914,7 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>InMaintenance</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>InterviewList</apexPage>
@@ -950,19 +950,19 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>SiteLogin</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>SiteRegister</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>SiteRegisterConfirm</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>SiteTemplate</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>StdExceptionTemplate</apexPage>
@@ -974,7 +974,7 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>Unauthorized</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>UnderConstruction</apexPage>
@@ -998,75 +998,7 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>publicPage</apexPage>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
     </pageAccesses>
-    <tabVisibilities>
-        <tab>Agent__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Application</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Application__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Apply</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Apply_Agent</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Candidate</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Candidate__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Commentor__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Dashboard</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Goal__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Interview</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Interview__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Position</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Position__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Review</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Review__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Role__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <userLicense>Authenticated Website</userLicense>
+    <userLicense>Guest User License</userLicense>
 </Profile>

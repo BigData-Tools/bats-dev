@@ -31,8 +31,18 @@
         <relationshipLabel><!-- Applications --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Coordinator --></label>
+        <name>Coordinator__c</name>
+        <relationshipLabel><!-- Applications (Coordinator) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Cover Letter --></label>
         <name>Cover_Letter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hiring Manager --></label>
+        <name>Hiring_Manager__c</name>
+        <relationshipLabel><!-- Applications (Hiring Manager) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Number of Reviews --></label>
@@ -42,6 +52,11 @@
         <label><!-- Position --></label>
         <name>Position__c</name>
         <relationshipLabel><!-- Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recruiter --></label>
+        <name>Recruiter__c</name>
+        <relationshipLabel><!-- Applications (Recruiter) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Resume Text --></label>

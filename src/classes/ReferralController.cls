@@ -1,4 +1,4 @@
-public with sharing class ReferralController {
+global with sharing class ReferralController {
 
     public Document resume{
         get{
@@ -48,7 +48,7 @@ public with sharing class ReferralController {
                return null;
            }
            
-           if(candidate.LinkedIn_Profile_URL__c != null && candidate.LinkedIn_Profile_URL__c.length() > 0 && candidate.LinkedIn_Profile_URL__c.contains('LinkedIn.com') == false){
+           if(candidate.LinkedIn_Profile_URL__c != null && candidate.LinkedIn_Profile_URL__c.length() < 1 && candidate.LinkedIn_Profile_URL__c.contains('LinkedIn.com') == false){
                errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'valid LinkedIn Profile URL');
                ApexPages.addMessage(errorMessage); 
                return null;
@@ -144,17 +144,20 @@ public with sharing class ReferralController {
     public List<selectOption> positionsList{
         public get{
             List<selectOption> positionsList = new List<selectOption>();
-            for (Position__c positionItem : [select Name from Position__c]){
-                positionsList.add(new selectOption(positionItem.Name, positionItem.Name));
+            try{        
+                for (Position__c positionItem : [select Name from Position__c where Department__c = 'Engineering']){
+                    positionsList.add(new selectOption(positionItem.Name, positionItem.Name));
+                }
+            }catch(Exception e){
+                positionsList.add(new selectOption('None', 'None'));
             }
-            positionsList.add(new selectOption('null', 'null'));
             return positionsList;
         }
         
         public set;
     }
     
-    public List<selectOption> testPositionsList{
+    /*public List<selectOption> testPositionsList{
         public get{
             List<selectOption> positionsList = new List<selectOption>();
             for (Position__c positionItem : [select Name from Position__c where Department__c = 'Engineering']){
@@ -164,10 +167,19 @@ public with sharing class ReferralController {
         }
         
         public set;
-    }
+    }*/
     
-    public String getPositionListDynamically(String departmentName){
-        return 'From Dynamic Method: ' + departmentName;
+    @RemoteAction
+    global static String getPositionListDynamically(String departmentName){
+        String result = '';
+        try{
+            for (Position__c positionItem : [select Name from Position__c where Department__c = :departmentName]){
+                    result += positionItem.Name + ',';
+            }
+        }catch(Exception e){
+            result = 'None,';
+        }
+        return result;
     }
     
     public Position__c position{

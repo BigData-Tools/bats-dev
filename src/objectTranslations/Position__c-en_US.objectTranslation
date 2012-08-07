@@ -19,6 +19,11 @@
         <name>Close_Date__c</name>
     </fields>
     <fields>
+        <label><!-- Coordinator --></label>
+        <name>Coordinator__c</name>
+        <relationshipLabel><!-- Positions (Coordinator) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Department --></label>
         <name>Department__c</name>
         <picklistValues>
@@ -98,7 +103,7 @@
     <fields>
         <label><!-- Hiring Manager --></label>
         <name>Hiring_Manager__c</name>
-        <relationshipLabel><!-- Positions --></relationshipLabel>
+        <relationshipLabel><!-- Positions (Hiring Manager) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Location --></label>
@@ -139,6 +144,11 @@
         <help><!-- The open date to hire for the postion --></help>
         <label><!-- Open Date --></label>
         <name>Open_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recruiter --></label>
+        <name>Recruiter__c</name>
+        <relationshipLabel><!-- Positions (Recruiter) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- If the job require traveling --></help>

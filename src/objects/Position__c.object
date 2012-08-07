@@ -58,6 +58,16 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>Coordinator__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Coordinator</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Positions1</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Department__c</fullName>
         <externalId>false</externalId>
         <label>Department</label>
@@ -226,6 +236,16 @@
         <label>Open Date</label>
         <required>false</required>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Recruiter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Recruiter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Positions2</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Travel_Required__c</fullName>

@@ -54,6 +54,7 @@ public with sharing class ApplyController {
             a.Box_Resume_Id__c = boxUpload.getUploadedFileId();
             a.Candidate__c = parsedResume.c.Id;
             a.Resume_Text__c = parsedResume.resumeText;
+            a.Box_Resume_Link__c = 'https://www.box.com/shared/' + boxUpload.getUploadedFileShareLink();
             a.Position__c = [SELECT Id FROM Position__c].get(0).Id;
             insert a;
         }
