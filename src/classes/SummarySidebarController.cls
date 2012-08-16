@@ -1,64 +1,42 @@
 public class SummarySidebarController{
 
-public Integer getNewGoal() {
-return [
-select count() from Goal__c
-where CreatedDate<=NEXT_WEEK
-];
-}
 public Integer getNewReview() {
 return [
-select count() from Review__c
-where CreatedDate<=NEXT_WEEK
+SELECT count() FROM Review__c
+WHERE CreatedDate<=NEXT_WEEK  AND (Application__r.Recruiter__c = :UserInfo.getUserId() OR Application__r.Hiring_Manager__c = :UserInfo.getUserId() OR Application__r.Coordinator__c = :UserInfo.getUserId())
 ];
 }
 public Integer getNewPosition() {
 return [
-select count() from Position__c
-where CreatedDate<=NEXT_WEEK
+SELECT count() FROM Position__c
+WHERE CreatedDate<=NEXT_WEEK  AND (Recruiter__c = :UserInfo.getUserId() OR Hiring_Manager__c = :UserInfo.getUserId() OR Coordinator__c = :UserInfo.getUserId())
 ];
 }
 public Integer getNewApplication() {
 return [
-select count() from Application__c
-where Status__c='New'
+SELECT count() FROM Application__c
+WHERE Status__c='New' AND (Recruiter__c = :UserInfo.getUserId() OR Hiring_Manager__c = :UserInfo.getUserId() OR Coordinator__c = :UserInfo.getUserId())
 ];
 }
  
 public Integer getPhoneScreen() {
 return [
-select count() from Application__c
-where Status__c='Recruiter Screen'
-OR Status__c='HM Screen'
+SELECT count() FROM Application__c
+WHERE (Status__c='Recruiter Screen' OR Status__c='HM Screen')  AND (Recruiter__c = :UserInfo.getUserId() OR Hiring_Manager__c = :UserInfo.getUserId() OR Coordinator__c = :UserInfo.getUserId())
 ];
 }
  
 public Integer getOnsite() {
 return [
-select count() from Application__c
-where Status__c='Onsite Interview'
+SELECT count() FROM Application__c
+WHERE Status__c='Onsite Interview'  AND (Recruiter__c = :UserInfo.getUserId() OR Hiring_Manager__c = :UserInfo.getUserId() OR Coordinator__c = :UserInfo.getUserId())
 ];
 }
 
 
-
- /*
-static testMethod void testSummarySidebarController() {
-Test.setCurrentPageReference(new PageReference('Page.SidebarSummary'));
-SummarySidebarController controller = new SummarySidebarController();
-Integer i1 = controller.getNewApplication();
-Integer i2 = controller.getPhoneScreen();
-Integer i3 = controller.getOnsite();
-Integer i4 = controller.getNewGoal();
-Integer i5 = controller.getNewReview();
-Integer i6 = controller.getNewPosition();
-
-}
-*/
  /*------------ Tests only below this line ------------*/
     static testMethod void testSummarySidebarController(){
     SummarySidebarController ttt = new SummarySidebarController();
-      ttt.getNewGoal();
       ttt.getNewReview();
       ttt.getNewPosition();
       ttt.getNewApplication();

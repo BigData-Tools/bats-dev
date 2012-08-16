@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Commentor</value>
+        <value>Reviewer</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Commentors</value>
+        <value>Reviewers</value>
     </caseValues>
     <fields>
         <label><!-- Email --></label>
@@ -23,7 +23,7 @@
     <fields>
         <label><!-- User --></label>
         <name>User__c</name>
-        <relationshipLabel><!-- Commentors --></relationshipLabel>
+        <relationshipLabel><!-- Reviewers --></relationshipLabel>
     </fields>
     <layouts>
         <layout>User Layout</layout>

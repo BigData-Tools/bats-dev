@@ -2,16 +2,20 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Review</value>
+        <value>Session</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Reviews</value>
+        <value>Sessions</value>
     </caseValues>
     <fields>
         <label><!-- Application --></label>
         <name>Application__c</name>
-        <relationshipLabel><!-- Review --></relationshipLabel>
+        <relationshipLabel><!-- Sessions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate_Formula__c</name>
     </fields>
     <fields>
         <label><!-- Candidate --></label>
@@ -24,7 +28,7 @@
     <fields>
         <label><!-- Commentor --></label>
         <name>Commentor__c</name>
-        <relationshipLabel><!-- Review --></relationshipLabel>
+        <relationshipLabel><!-- Sessions --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Comments --></label>
@@ -49,7 +53,7 @@
     <fields>
         <label><!-- Interview --></label>
         <name>Interview__c</name>
-        <relationshipLabel><!-- Review --></relationshipLabel>
+        <relationshipLabel><!-- Sessions --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Position --></label>
@@ -77,7 +81,15 @@ from 1 to 5. --></errorMessage>
         <name>Rating_Scale_Rule</name>
     </validationRules>
     <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Email --></label>
         <name>Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Session --></label>
+        <name>New_Session</name>
     </webLinks>
 </CustomObjectTranslation>

@@ -18,15 +18,11 @@
         <name>Candidate_Formula__c</name>
     </fields>
     <fields>
-        <label><!-- Interview Date/Time (PST) --></label>
-        <name>Interview_Datetime__c</name>
-    </fields>
-    <fields>
         <label><!-- Interview Type --></label>
         <name>Interview_Type__c</name>
         <picklistValues>
-            <masterLabel>Hiring Manager Screen</masterLabel>
-            <translation><!-- Hiring Manager Screen --></translation>
+            <masterLabel>HM Screen</masterLabel>
+            <translation><!-- HM Screen --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Onsite Interview</masterLabel>
@@ -36,10 +32,6 @@
             <masterLabel>Recruiter Screen</masterLabel>
             <translation><!-- Recruiter Screen --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Last Interview Date/Time (PST) --></label>
-        <name>Last_Interview_Datetime__c</name>
     </fields>
     <fields>
         <label><!-- Total Number of Interviewers --></label>
@@ -53,4 +45,8 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
 </CustomObjectTranslation>

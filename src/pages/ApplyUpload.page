@@ -1,5 +1,6 @@
-<apex:page controller="ApplyController" sidebar="false">
+<apex:page controller="ApplyController" showHeader="false">
     <apex:pageBlock title="Upload resume">
+    <apex:pageMessages />
             <apex:pageBlockSection title="Please upload your resume to begin your application" columns="1">
                 <apex:form >
                     Resume File: <apex:inputFile value="{!resume.body}" filename="{!resume.name}"/><apex:commandButton value="upload" action="{!uploadAction}"/>

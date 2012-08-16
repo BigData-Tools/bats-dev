@@ -1,0 +1,18 @@
+<apex:page controller="DashboardController" sidebar="false" showHeader="false" standardStylesheets="true">
+    <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">Today's Phone Screens</span>
+    <br/><br/> 
+    <apex:PageBlock >
+        <apex:outputpanel style="overflow:scroll;height:400px;" layout="block"> 
+            <apex:pageblockTable value="{!TodayPhoneScreens}" var="ps"  rendered="{!(TodayPhoneScreens.size != 0)}">
+                <apex:column headerValue="ApplicationID">
+                    <apex:outputlink value="/{!ps.Application__c}" target="_blank"> {!ps.Application__r.Name} 
+                    </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Candidate" value="{!ps.Candidate_Formula__c}"/>  
+                <apex:column headerValue="Position"  value="{!ps.Position__c}" />
+                <apex:column headerValue="Status"  value="{!ps.Interview__r.Interview_Type__c}" />
+            </apex:pageblockTable>
+            <apex:outputText rendered="{!(TodayPhoneScreens.size == 0)}" value="There are no phone screens for today." />
+        </apex:outputpanel>
+    </apex:PageBlock>
+</apex:page>

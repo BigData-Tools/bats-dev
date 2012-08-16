@@ -1,4 +1,4 @@
-<apex:page controller="DashboardRedZoneController" sidebar="false" showHeader="false" standardStylesheets="true">
+<apex:page controller="DashboardController" sidebar="false" showHeader="false" standardStylesheets="true">
 <style type="text/css" media="all">
 body{margin: 0px; 
 padding: 0px; 

@@ -47,13 +47,12 @@
                 <behavior>Edit</behavior>
                 <field>Coordinator__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>OwnerId</field>
+                <field>Notes__c</field>
             </layoutItems>
         </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
@@ -147,17 +146,7 @@
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Department__c</fields>
-        <fields>Hiring_Manager__c</fields>
-        <fields>Open_Date__c</fields>
-        <fields>Close_Date__c</fields>
-        <relatedList>Position__c.Application__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Interview_Datetime__c</fields>
         <fields>Interview_Type__c</fields>
         <relatedList>Interview__c.Application__c</relatedList>
     </relatedLists>

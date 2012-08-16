@@ -54,7 +54,7 @@
         <externalId>false</externalId>
         <inlineHelpText>The close date for the postion</inlineHelpText>
         <label>Close Date</label>
-        <required>false</required>
+        <required>true</required>
         <type>Date</type>
     </fields>
     <fields>
@@ -234,7 +234,7 @@
         <externalId>false</externalId>
         <inlineHelpText>The open date to hire for the postion</inlineHelpText>
         <label>Open Date</label>
-        <required>false</required>
+        <required>true</required>
         <type>Date</type>
     </fields>
     <fields>
@@ -243,7 +243,7 @@
         <externalId>false</externalId>
         <label>Recruiter</label>
         <referenceTo>User</referenceTo>
-        <relationshipName>Positions2</relationshipName>
+        <relationshipName>Positions2_del</relationshipName>
         <required>false</required>
         <type>Lookup</type>
     </fields>
@@ -263,6 +263,9 @@
         <columns>Department__c</columns>
         <columns>Open_Date__c</columns>
         <columns>Close_Date__c</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Close_Date__c</field>
@@ -277,6 +280,9 @@
         <columns>Department__c</columns>
         <columns>Open_Date__c</columns>
         <columns>Close_Date__c</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Open_Date__c</field>
@@ -312,6 +318,9 @@
         <columns>Department__c</columns>
         <columns>Open_Date__c</columns>
         <columns>Close_Date__c</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Open_Date__c</field>
@@ -331,6 +340,7 @@
     </nameField>
     <pluralLabel>Positions</pluralLabel>
     <searchLayouts>
+        <listViewButtons>Delete</listViewButtons>
         <lookupDialogsAdditionalFields>Department__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Open_Date__c</lookupDialogsAdditionalFields>
         <searchResultsAdditionalFields>Department__c</searchResultsAdditionalFields>
@@ -350,6 +360,12 @@
         <label>Dept Head Hiring Manager Sharing Access</label>
     </sharingReasons>
     <validationRules>
+        <fullName>Check_Default_Taggings</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Hiring_Manager__c ) || ISBLANK( Recruiter__c ) ||  ISBLANK( Coordinator__c )</errorConditionFormula>
+        <errorMessage>Default Tagging: Hiring Manager, Recruiter and Coordinator cannot be blank.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Close_Date_Rule</fullName>
         <active>true</active>
         <description>The Close Data should be after the Open Date</description>
@@ -365,4 +381,27 @@
         <errorDisplayField>Min_Pay__c</errorDisplayField>
         <errorMessage>Min Pay cannot exceed Max Pay</errorMessage>
     </validationRules>
+    <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <description>Bulk Delete for Positions</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+
+var idsToDelete = {!GETRECORDIDS( $ObjectType.Position__c )};
+var deleteWarning= &apos;Are you sure you wish to delete &apos; + idsToDelete.length + &apos; Records?&apos;;
+if( idsToDelete.length &amp;&amp; (window.confirm(deleteWarning)))
+{
+sforce.connection.deleteIds(idsToDelete,function(){
+navigateToUrl(window.location.href);
+});
+}else if (idsToDelete.length == 0){
+alert(&quot;Please select the position(s) you wish to delete.!!&quot;);
+}</url>
+    </webLinks>
 </CustomObject>

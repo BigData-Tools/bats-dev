@@ -44,9 +44,16 @@ public with sharing class EmbeddedResumeController {
       c.Email__c = 'user@user.com';
       insert c;      
       
+      User u = [SELECT Id FROM User].get(0);
+      
       Position__c p = new Position__c();
       p.Department__c = 'Engineering';
       p.Number_of_Hires__c = 5;
+      p.Hiring_Manager__c = u.Id;
+      p.Recruiter__c = u.Id; 
+      p.Coordinator__c = u.Id; 
+      p.Open_Date__c = System.today();
+      p.Close_Date__c = System.today();      
       insert p;
             
       a.Box_Resume_Id__c = 'boxid';

@@ -44,13 +44,27 @@
         <externalId>false</externalId>
         <label>Application</label>
         <referenceTo>Application__c</referenceTo>
-        <relationshipLabel>Review</relationshipLabel>
         <relationshipName>Review</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>true</reparentableMasterDetail>
         <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Candidate_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>Application__r.Candidate__r.First_Name__c 
+&amp; 
+&quot; &quot; 
+&amp; 
+Application__r.Candidate__r.Last_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Candidate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Candidate__c</fullName>
@@ -89,7 +103,6 @@ Commentor__r.Last_Name__c</formula>
         <externalId>false</externalId>
         <label>Commentor</label>
         <referenceTo>Commentor__c</referenceTo>
-        <relationshipLabel>Review</relationshipLabel>
         <relationshipName>Review</relationshipName>
         <required>true</required>
         <trackHistory>false</trackHistory>
@@ -153,7 +166,7 @@ Commentor__r.Last_Name__c</formula>
         <externalId>false</externalId>
         <label>Interview</label>
         <referenceTo>Interview__c</referenceTo>
-        <relationshipLabel>Review</relationshipLabel>
+        <relationshipLabel>Sessions</relationshipLabel>
         <relationshipName>Review</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -182,7 +195,7 @@ Commentor__r.Last_Name__c</formula>
         <type>Number</type>
         <unique>false</unique>
     </fields>
-    <label>Review</label>
+    <label>Session</label>
     <listViews>
         <fullName>All</fullName>
         <columns>CREATED_DATE</columns>
@@ -235,8 +248,9 @@ Commentor__r.Last_Name__c</formula>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Reviews</pluralLabel>
+    <pluralLabel>Sessions</pluralLabel>
     <searchLayouts>
+        <listViewButtons>Delete</listViewButtons>
         <lookupDialogsAdditionalFields>Application__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Candidate__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Position__c</lookupDialogsAdditionalFields>
@@ -261,6 +275,29 @@ Commentor__r.Last_Name__c</formula>
 from 1 to 5.</errorMessage>
     </validationRules>
     <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <description>Bulk Delete from Review</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+
+var idsToDelete = {!GETRECORDIDS( $ObjectType.Review__c )};
+var deleteWarning= &apos;Are you sure you wish to delete &apos; + idsToDelete.length + &apos; Records?&apos;;
+if( idsToDelete.length &amp;&amp; (window.confirm(deleteWarning)))
+{
+sforce.connection.deleteIds(idsToDelete,function(){
+navigateToUrl(window.location.href);
+});
+}else if (idsToDelete.length == 0){
+alert(&quot;Please select the review(s) you wish to delete.!!&quot;);
+}</url>
+    </webLinks>
+    <webLinks>
         <fullName>Email</fullName>
         <availability>online</availability>
         <description>Email interviewers.</description>
@@ -269,10 +306,26 @@ from 1 to 5.</errorMessage>
         <masterLabel>Resend Calendar Invites</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
+        <requireRowSelection>false</requireRowSelection>
         <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)} 
 {!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)} 
-sforce.apex.execute(&quot;ResendCalendarInvites&quot;,&quot;SendEmailNotification&quot;, {id:222}); 
-window.alert(&quot;Emails sent.&quot; );</url>
+var result = sforce.apex.execute(&quot;ResendCalendarInvites&quot;,&quot;SendEmailNotification&quot;, {id:&quot;{!Interview__c.Name}&quot;}); 
+
+if (result == &quot;true&quot;) {
+window.alert(&quot;Emails will be sent to the candidate and the interviewers.&quot; );
+} else {
+window.alert(&quot;Email was not sent! Total number of interviewers does not correspond with the total number of reviews created.&quot;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Session</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>New Session</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/a03/e?CF00NE00000023rkB={! Interview__c.Name }&amp;CF00NE00000023rj3={!Interview__c.Application__c }&amp;retURL=%2F{! Interview__c.Id}&amp;saveURL=%2F{! Interview__c.Id}</url>
     </webLinks>
 </CustomObject>

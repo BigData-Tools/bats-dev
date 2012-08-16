@@ -26,11 +26,10 @@ color:black;
 <div id="DIV_Container">
 <table>
 
+<tr><td><b>New Position</b>:  </td><td><a href="/a04?fcf=00Bc0000000LnOn" target="_parent"><b> {!NewPosition}</b></a></td></tr>
 <tr><td><b>New Application</b>:  </td><td><a href="/a00?fcf=00Bc0000000LnKC" target="_parent"><b> {!NewApplication}</b></a></td></tr>
 <tr><td><b>New Phone Screen</b>:  </td><td><a href="/a00?fcf=00Bc0000000LnO9" target="_parent"><b> {!PhoneScreen}</b></a></td></tr>
 <tr><td><b>New Onsite</b>:  </td><td><a href="/a00?fcf=00Bc0000000LnOE" target="_parent"><b> {!Onsite}</b></a></td></tr>
-<tr><td><b>New Goal</b>:  </td><td><a href="/a07?fcf=00Bc0000000LnOJ" target="_parent"><b> {!NewGoal}</b></a></td></tr>
-<tr><td><b>New Position</b>:  </td><td><a href="/a04?fcf=00Bc0000000LnOn" target="_parent"><b> {!NewPosition}</b></a></td></tr>
 <tr><td><b>New Review</b>:  </td><td><a href="/a03?fcf=00Bc0000000LnOY" target="_parent"><b> {!NewReview}</b></a></td></tr>
 </table>
 </div>

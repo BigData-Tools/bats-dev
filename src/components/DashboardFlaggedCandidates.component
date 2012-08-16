@@ -1,0 +1,16 @@
+<apex:component controller="DashboardController">    
+    <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">Flagged Candidates</span>
+    <br/><br/> 
+    <apex:PageBlock > 
+        <apex:pageblockTable value="{!FlaggedCandidates}" var="fc">
+            <apex:column headerValue="FlagID">
+                <apex:outputlink value="/{!fc.Id}" target="_blank"> {!fc.Id} 
+                </apex:outputlink>
+            </apex:column>
+            <apex:column headerValue="Candidate" value="{!fc.Candidate__r.First_Name__c} {!fc.Candidate__r.Last_Name__c}"/>
+            <apex:column headerValue="Position" />  
+            <apex:column headerValue="Status"/>               
+        </apex:pageblockTable>
+    </apex:PageBlock>
+
+</apex:component>

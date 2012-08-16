@@ -34,10 +34,10 @@
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Junction object to support the many-to-many relationship between a Candidate and a Commentor (User) for Flagging a candidate. Flagged candidates work like starred messages in Gmail.</description>
-    <enableActivities>false</enableActivities>
+    <enableActivities>true</enableActivities>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableReports>false</enableReports>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
     <fields>
         <fullName>Candidate__c</fullName>
         <description>Flagged candidate.</description>
@@ -48,6 +48,7 @@
         <relationshipName>Flagged_Junctions</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
@@ -61,12 +62,14 @@
         <relationshipName>Flagged_Junctions</relationshipName>
         <relationshipOrder>1</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <label>Flagged Junction</label>
     <nameField>
         <label>Flagged Junction Name</label>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Flagged Junctions</pluralLabel>

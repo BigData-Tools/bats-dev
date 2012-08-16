@@ -81,9 +81,10 @@
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
-    <label>Commentor</label>
+    <label>Reviewer</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>User__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -93,7 +94,7 @@
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Commentors</pluralLabel>
+    <pluralLabel>Reviewers</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>First_Name__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Last_Name__c</customTabListAdditionalFields>

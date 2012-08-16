@@ -1,0 +1,17 @@
+<apex:page controller="DashboardController" sidebar="false" showHeader="false" standardStylesheets="true" > 
+    <div style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt; text-align: center">Hire List</div><br/><br/>  
+    <apex:PageBlock >
+        <apex:outputpanel style="overflow:scroll;height:370px;" layout="block">    
+            <apex:pageblockTable value="{!TeamQuarterlyHiredList}" var="hire" rendered="{!(TeamQuarterlyHiredList.size != 0)}">
+                <apex:column headerValue="Name">
+                    <apex:outputlink value="/{!hire.Id}" target="_blank"> {!hire.Candidate__r.First_Name__c} {!hire.Candidate__r.Last_Name__c} 
+                    </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Role" value="{!hire.Position__c}"/>                  
+                <apex:column headerValue="Department"  value="{!hire.Position__r.Department__c}" />
+                <apex:column headerValue="Source"  value="{!hire.Source__c }" />
+            </apex:pageblockTable>
+            <apex:outputText rendered="{!(TeamQuarterlyHiredList.size == 0)}" value="There are no hires so far." />         
+        </apex:outputpanel>
+   </apex:PageBlock>
+</apex:page>

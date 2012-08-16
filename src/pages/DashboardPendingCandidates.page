@@ -1,0 +1,18 @@
+<apex:page controller="DashboardController" sidebar="false" showHeader="false" standardStylesheets="true">
+  <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">Pending Candidates</span>
+    <br/><br/>
+    <apex:PageBlock >
+        <apex:outputpanel style="overflow:scroll;height:400px;" layout="block">
+            <apex:pageblockTable value="{!PendingCandidates}" var="pc" rendered="{!(PendingCandidates.size != 0)}">
+                <apex:column headerValue="ApplicationID">
+                    <apex:outputlink value="/{!pc.Id}" target="_blank"> {!pc.Name} 
+                    </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Candidate" value="{!pc.Candidate_Formula__c}"/>
+                <apex:column headerValue="Position" value="{!pc.Position__c}"/>  
+                <apex:column headerValue="Status" value="{!pc.Status__c}"/>               
+            </apex:pageblockTable>
+            <apex:outputText rendered="{!(PendingCandidates.size == 0)}" value="There are no pending candidates." />
+        </apex:outputpanel>
+    </apex:PageBlock>
+</apex:page>

@@ -1483,4 +1483,88 @@ public class sovrenCom {
         private String[] field_order_type_info = new String[]{'DocumentAsByteArray','EmbedConvertedResume'};
     }
     
+    /*------------ Tests only below this line ------------*/
+    static testMethod void testSovrenCom(){
+    	
+    	//test all classes -- this was generated using a script
+		sovrenCom t0 = new sovrenCom();
+		ParseJobOrder_element t1 = new ParseJobOrder_element();
+		ParseForContactInfoSimplifiedXResponse_element t2 = new ParseForContactInfoSimplifiedXResponse_element();
+		ReturnTestHRXMLResponse_element t3 = new ReturnTestHRXMLResponse_element();
+		DefaultParseXResponse_element t4 = new DefaultParseXResponse_element();
+		GetCustomDataList_element t5 = new GetCustomDataList_element();
+		ParseJobOrderResponse_element t6 = new ParseJobOrderResponse_element();
+		ParseConvertedResume2XResponse_element t7 = new ParseConvertedResume2XResponse_element();
+		ProcessXResponse_element t8 = new ProcessXResponse_element();
+		GetCustomDataListResponse_element t9 = new GetCustomDataListResponse_element();
+		ReturnTestHRXML_element t10 = new ReturnTestHRXML_element();
+		ParseConvertedResume2X_element t11 = new ParseConvertedResume2X_element();
+		ProcessResult t12 = new ProcessResult();
+		ParseForContactInfo_element t13 = new ParseForContactInfo_element();
+		ParseConvertedResume3_element t14 = new ParseConvertedResume3_element();
+		GetCoverLetterFromConvertedResumeResponse_element t15 = new GetCoverLetterFromConvertedResumeResponse_element();
+		HelloWorldResponse_element t16 = new HelloWorldResponse_element();
+		ReturnWhatWasPassedInResponse_element t17 = new ReturnWhatWasPassedInResponse_element();
+		ParseForContactInfoSimplified_element t18 = new ParseForContactInfoSimplified_element();
+		DeleteCustomDataLists_element t19 = new DeleteCustomDataLists_element();
+		ParseConvertedResume2XResult_element t20 = new ParseConvertedResume2XResult_element();
+		ParseForContactInfoSimplifiedResponse_element t21 = new ParseForContactInfoSimplifiedResponse_element();
+		DefaultParseXResult_element t22 = new DefaultParseXResult_element();
+		DoConversionSimplified_element t23 = new DoConversionSimplified_element();
+		HelloWorldResult_element t24 = new HelloWorldResult_element();
+		ArrayOfString t25 = new ArrayOfString();
+		ParseForContactInfoX_element t26 = new ParseForContactInfoX_element();
+		ParseX_element t27 = new ParseX_element();
+		HrXmlResume_element t28 = new HrXmlResume_element();
+		ProcessResponse_element t29 = new ProcessResponse_element();
+		DeleteCustomDataListsResponse_element t30 = new DeleteCustomDataListsResponse_element();
+		SetCustomDataList_element t31 = new SetCustomDataList_element();
+		DoConversionSimplifiedResponse_element t32 = new DoConversionSimplifiedResponse_element();
+		GetVersionInfoResponse_element t33 = new GetVersionInfoResponse_element();
+		DoConversion_element t34 = new DoConversion_element();
+		ParseConvertedResume3XResponse_element t35 = new ParseConvertedResume3XResponse_element();
+		ReturnWhatWasPassedIn_element t36 = new ReturnWhatWasPassedIn_element();
+		DefaultParse_element t37 = new DefaultParse_element();
+		ConvertAndParseSoap t38 = new ConvertAndParseSoap();
+		SetCustomDataListResponse_element t39 = new SetCustomDataListResponse_element();
+		ParseXResponse_element t40 = new ParseXResponse_element();
+		DoConversionResponse_element t41 = new DoConversionResponse_element();
+		GetVersionInfo_element t42 = new GetVersionInfo_element();
+		ParseConvertedResumeResponse_element t43 = new ParseConvertedResumeResponse_element();
+		ParseJobOrderInput t44 = new ParseJobOrderInput();
+		ParseConvertedResume3XResult_element t45 = new ParseConvertedResume3XResult_element();
+		ParseForContactInfoXResponse_element t46 = new ParseForContactInfoXResponse_element();
+		GetVersionInfoResult_element t47 = new GetVersionInfoResult_element();
+		ProcessX_element t48 = new ProcessX_element();
+		Process_element t49 = new Process_element();
+		Parse_element t50 = new Parse_element();
+		ParseForContactInfoXResult_element t51 = new ParseForContactInfoXResult_element();
+		ParseForContactInfoResponse_element t52 = new ParseForContactInfoResponse_element();
+		GetCoverLetterFromConvertedResume_element t53 = new GetCoverLetterFromConvertedResume_element();
+		ParseForContactInfoSimplifiedX_element t54 = new ParseForContactInfoSimplifiedX_element();
+		ParseForContactInfoSimplifiedXResult_element t55 = new ParseForContactInfoSimplifiedXResult_element();
+		ParseConvertedResume2Response_element t56 = new ParseConvertedResume2Response_element();
+		ParseConvertedResume3X_element t57 = new ParseConvertedResume3X_element();
+		TransformResponse_element t58 = new TransformResponse_element();
+		HelloWorld_element t59 = new HelloWorld_element();
+		ParseConvertedResume2_element t60 = new ParseConvertedResume2_element();
+		ParseConvertedResume3Response_element t61 = new ParseConvertedResume3Response_element();
+		TransformUsingFileResponse_element t62 = new TransformUsingFileResponse_element();
+		DefaultParseResponse_element t63 = new DefaultParseResponse_element();
+		ParseXResult_element t64 = new ParseXResult_element();
+		TransformUsingFile_element t65 = new TransformUsingFile_element();
+		ParseConvertedResume_element t66 = new ParseConvertedResume_element();
+		ParseResponse_element t67 = new ParseResponse_element();
+		Transform_element t68 = new Transform_element();
+		DefaultParseX_element t69 = new DefaultParseX_element();
+		
+		//now we need to test all the ConvertAndParseSoap Stuff (t38)
+		Double d = 1.0;
+		t38.ParseConvertedResume('ResumeAsAsciiText', false, false, 1, d, 'ResumeId', false, 'securityCode');
+		t38.ReturnTestHRXML('YourTestText');
+		t38.GetCustomDataList('name', 'language');
+		t38.DoConversionSimplified('DocumentAsByteArray', 'OutputType');
+		t38.DefaultParse('DocumentAsByteArray', false);
+		t38.ParseForContactInfoSimplified('ResumeAsAsciiText', 'ResumeId', false, 'securityCode');
+    }
 }

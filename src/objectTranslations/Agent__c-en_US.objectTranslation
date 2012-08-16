@@ -17,4 +17,8 @@
         <name>url__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
 </CustomObjectTranslation>

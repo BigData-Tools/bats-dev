@@ -17,8 +17,7 @@
     <tab>Application</tab>
     <tab>Candidate</tab>
     <tab>Review</tab>
-    <tab>Apply</tab>
-    <tab>Apply_Agent</tab>
-    <tab>Dashboard</tab>
     <tab>Agent__c</tab>
+    <tab>Dashboard</tab>
+    <tab>Email_Reminder__c</tab>
 </CustomApplication>

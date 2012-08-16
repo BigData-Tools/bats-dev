@@ -77,6 +77,16 @@
         <type>Url</type>
     </fields>
     <fields>
+        <fullName>Candidate_Email_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Candidate Email Address</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Candidate_Formula__c</fullName>
         <externalId>false</externalId>
         <formula>Candidate__r.First_Name__c
@@ -85,6 +95,16 @@
 &amp;
 Candidate__r.Last_Name__c</formula>
         <label>Candidate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Candidate_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Candidate__r.First_Name__c  + &apos; &apos; + Candidate__r.Last_Name__c</formula>
+        <label>Candidate Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -140,6 +160,17 @@ Candidate__r.Last_Name__c</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Notes__c</fullName>
+        <description>This field to add notes about the applications which are referred by employees/Agents</description>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Number_of_Reviews__c</fullName>
         <externalId>false</externalId>
         <label>Number of Reviews</label>
@@ -147,6 +178,16 @@ Candidate__r.Last_Name__c</formula>
         <summaryOperation>count</summaryOperation>
         <trackHistory>false</trackHistory>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Position_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Position__r.Name</formula>
+        <label>Position Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Position__c</fullName>
@@ -291,16 +332,6 @@ Candidate__r.Last_Name__c</formula>
         <trackHistory>false</trackHistory>
         <type>Summary</type>
     </fields>
-    <fields>
-        <fullName>candidate_email_address__c</fullName>
-        <externalId>false</externalId>
-        <label>candidate_email_address</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
     <label>Application</label>
     <listViews>
         <fullName>Active_Applications</fullName>
@@ -344,7 +375,7 @@ Candidate__r.Last_Name__c</formula>
         <filters>
             <field>Status__c</field>
             <operation>equals</operation>
-            <value>,Submitted Rejection,Recruiter Screen Rejection,HM Screen Rejection,Accepted</value>
+            <value>Submitted Rejection,Recruiter Screen Rejection,HM Screen Rejection,Rejected</value>
         </filters>
         <label>Closed Applications</label>
     </listViews>
@@ -378,6 +409,9 @@ Candidate__r.Last_Name__c</formula>
         <columns>Position__c</columns>
         <columns>Status__c</columns>
         <columns>CREATED_DATE</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Status__c</field>
@@ -455,6 +489,7 @@ Candidate__r.Last_Name__c</formula>
     </listViews>
     <listViews>
         <fullName>Pending_Candidates</fullName>
+        <columns>Candidate__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Position__c</columns>
         <columns>Status__c</columns>
@@ -473,6 +508,9 @@ Candidate__r.Last_Name__c</formula>
         <columns>Candidate_Formula__c</columns>
         <columns>Position__c</columns>
         <columns>Status__c</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -488,6 +526,9 @@ Candidate__r.Last_Name__c</formula>
         <columns>Candidate_Formula__c</columns>
         <columns>Position__c</columns>
         <columns>Status__c</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -503,6 +544,9 @@ Candidate__r.Last_Name__c</formula>
         <columns>Candidate_Formula__c</columns>
         <columns>Position__c</columns>
         <columns>Status__c</columns>
+        <columns>Recruiter__c</columns>
+        <columns>Hiring_Manager__c</columns>
+        <columns>Coordinator__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -521,6 +565,7 @@ Candidate__r.Last_Name__c</formula>
     </nameField>
     <pluralLabel>Applications</pluralLabel>
     <searchLayouts>
+        <listViewButtons>Delete</listViewButtons>
         <lookupDialogsAdditionalFields>Candidate__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Candidate_Formula__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Position__c</lookupDialogsAdditionalFields>
@@ -543,6 +588,35 @@ Candidate__r.Last_Name__c</formula>
         <fullName>Dept_Head_Hiring_Manager_Sharing_Access__c</fullName>
         <label>Dept Head Hiring Manager Sharing Access</label>
     </sharingReasons>
+    <validationRules>
+        <fullName>Check_Taggings</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Hiring_Manager__c ) || ISBLANK( Recruiter__c ) ||  ISBLANK( Coordinator__c )</errorConditionFormula>
+        <errorMessage>Tagged Hiring Manager, Recruiter and Coordinator cannot be blank.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <description>Bulk Delete from Application</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+
+var idsToDelete = {!GETRECORDIDS( $ObjectType.Application__c )};
+var deleteWarning= &apos;Are you sure you wish to delete &apos; + idsToDelete.length + &apos; Records?&apos;;
+if( idsToDelete.length &amp;&amp; (window.confirm(deleteWarning)))
+{
+sforce.connection.deleteIds(idsToDelete,function(){
+navigateToUrl(window.location.href);
+});
+}else if (idsToDelete.length == 0){
+alert(&quot;Please select the Agent you wish to delete.!!&quot;);
+}</url>
+    </webLinks>
     <webLinks>
         <fullName>Update_Status</fullName>
         <availability>online</availability>

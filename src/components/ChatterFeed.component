@@ -1,5 +1,5 @@
 <apex:component >
-  <div style="overflow:auto;height:600px">
+  <div style="overflow:auto;height:600px;width:300px">
       <chatter:feed entityId="{!$User.Id}"/>
   </div>
 </apex:component>

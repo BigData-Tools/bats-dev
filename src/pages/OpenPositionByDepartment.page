@@ -1,0 +1,44 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" controller="OpenPosition">
+  
+  <style type="text/css">
+   body, html {
+     font-family: arial, Sans-Serif !important;
+     color: #333 !important;
+     font-size: 13px !important;
+     line-height: 20px !important;
+     margin: 0px;
+     padding: 0px;
+   }
+   
+   h1 {
+      color: #111;
+      font-size: 35px;
+      line-height: 1.1;
+      text-shadow: 0 0 1px rgba(17, 17, 17, 0.4), 0 2px 1px rgba(0, 0, 0, 0.2);
+   }
+   
+   p {
+     margin-bottom: 10px;
+   }
+   
+   h3{
+    color: #333;
+    font-size: 16px;
+    border-bottom: 1px solid #E8E8E8;
+    margin: 0px 0px 5px 0px;
+    padding: 0px 0px 5px 0px;
+   }
+   a {
+     color: #1A74B0;
+     text-decoration: none;
+   }
+  </style>
+  <h1>Open Positions</h1>
+  <p>Please check our open positions below.  </p>
+
+  <apex:repeat value="{!departmentPosition}" var="p">
+     <apex:outputlink target="_parent" value="http://sissichen.me/CustomerPortalIntegration/position_details.php"> {!p.Name} 
+                <apex:param name="positionName" value="{!p.Name}"/> </apex:outputlink><br/>
+     
+   </apex:repeat> 
+</apex:page>

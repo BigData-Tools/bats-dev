@@ -54,10 +54,6 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Email__c</field>
             </layoutItems>
@@ -201,10 +197,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>EmailCommunication__c.Candidate__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Flagged_Junction__c.Candidate__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

@@ -170,6 +170,10 @@
             <section>Custom Links</section>
         </sections>
         <sections>
+            <label><!-- Default Taggings --></label>
+            <section>Default Taggings</section>
+        </sections>
+        <sections>
             <label><!-- Description --></label>
             <section>Description</section>
         </sections>
@@ -189,6 +193,10 @@
     </sharingReasons>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- Default Tagging: Hiring Manager, Recruiter and Coordinator cannot be blank. --></errorMessage>
+        <name>Check_Default_Taggings</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- The Close Data should be after the Open Date --></errorMessage>
         <name>Close_Date_Rule</name>
     </validationRules>
@@ -196,4 +204,8 @@
         <errorMessage><!-- Min Pay cannot exceed Max Pay --></errorMessage>
         <name>Min_Pay_Rule</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
 </CustomObjectTranslation>

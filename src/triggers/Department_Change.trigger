@@ -10,7 +10,7 @@ trigger Department_Change on Position__c (before update) {
     for(Position__c pos : trigger.new){
     
         // Delete the old sharing permissions
-        List<Position__Share> oldPosShares = [SELECT Id FROM Position__Share WHERE ParentId = :pos.Id];
+        List<Position__Share> oldPosShares = [SELECT Id FROM Position__Share WHERE ParentId = :pos.Id AND RowCause != :Schema.Position__Share.RowCause.Dept_Head_Hiring_Manager_Sharing_Access__c];
         
         for(Position__Share oldPosShare : oldPosShares) {
             try {

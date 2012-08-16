@@ -1,6 +1,7 @@
-<apex:page controller="ReferralController">
+<apex:page controller="ReferralController" sidebar="false" showHeader="false">
    <apex:form > 
     <apex:pageBlock >
+        <apex:pageMessages />
         <apex:pageBlockSection title="Agent's Credentials" columns="1">
                 <apex:inputText label="Agent Name" value="{!agent.Name}"/>
                 <apex:inputText label="Agent URL" value="{!agent.url__c}"/>

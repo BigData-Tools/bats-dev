@@ -1,0 +1,21 @@
+<apex:component controller="MyApplicationsController">
+    <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">My Tagged Applications</span>
+    <br/><br/>    
+    <apex:PageBlock >
+        <apex:outputpanel style="overflow:scroll;height:200px;" layout="block">
+            <apex:pageblockTable value="{!Applications}" var="a"  rendered="{!(Applications.size != 0)}">
+                <apex:column headerValue="ApplicationID">
+                    <apex:outputlink value="/{!a.Id}"> {!a.Name} 
+                    </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Candidate" >
+                    <apex:outputlink value="/{!a.Candidate__c}"> {!a.Candidate_Formula__c} 
+                    </apex:outputlink>
+                </apex:column>   
+                <apex:column value="{!a.Position__c}" />
+                <apex:column value="{!a.Status__c}" />
+            </apex:pageblockTable>
+            <apex:outputText rendered="{!(Applications.size == 0)}" value="There are no applications tagged for me." />
+        </apex:outputpanel>
+    </apex:PageBlock>
+</apex:component>

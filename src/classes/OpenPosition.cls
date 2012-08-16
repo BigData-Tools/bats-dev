@@ -5,7 +5,7 @@ public class OpenPosition {
             if(setBusiness == null) {
                 setBusiness = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Business Operations'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setBusiness;
         }
@@ -23,7 +23,7 @@ public class OpenPosition {
             if(setCustomer == null) {
                 setCustomer = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Customer Success'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setCustomer;
         }
@@ -42,7 +42,7 @@ public class OpenPosition {
             if(setDesign == null) {
                 setDesign = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Design'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setDesign;
         }
@@ -60,7 +60,7 @@ public class OpenPosition {
             if(setEngineering == null) {
                 setEngineering = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Engineering'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setEngineering;
         }
@@ -77,7 +77,7 @@ public class OpenPosition {
             if(setMarketing == null) {
                 setMarketing = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Marketing'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setMarketing;
         }
@@ -94,7 +94,7 @@ public class OpenPosition {
             if(setProduct == null) {
                 setProduct = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Product and Platform'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setProduct;
         }
@@ -111,7 +111,7 @@ public class OpenPosition {
             if(setSales == null) {
                 setSales = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Sales'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setSales;
         }
@@ -128,7 +128,7 @@ public class OpenPosition {
             if(setTechnical == null) {
                 setTechnical= new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = 'Technical Operations'
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setTechnical;
         }
@@ -145,9 +145,39 @@ public class OpenPosition {
             if(setOther == null) {
                 setOther= new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name FROM Position__c WHERE Department__c = ''
-                    And Close_Date__c > TODAY]));
+                    And Open_Date__c <= TODAY And Close_Date__c >= TODAY]));
             }
             return setOther;
+        }
+        set;
+    }
+    
+    public List<Position__c> departmentPosition{
+        get{
+            try{
+                String departmentName = ApexPages.currentPage().getParameters().get('department');
+                if(departmentName.equalsIgnoreCase('business operations')){
+                    return getBusinessPositions();
+                }else if(departmentName.equalsIgnoreCase('customer success')){
+                    return getCustomerPositions();
+                }else if(departmentName.equalsIgnoreCase('design')){
+                    return getDesignPositions();
+                }else if(departmentName.equalsIgnoreCase('engineering')){
+                    return getEngineeringPositions();
+                }else if(departmentName.equalsIgnoreCase('marketing')){
+                    return getMarketingPositions();
+                }else if(departmentName.equalsIgnoreCase('product and platform')){
+                    return getProductPositions();
+                }else if(departmentName.equalsIgnoreCase('sales')){
+                    return getSalesPositions();
+                }else if(departmentName.equalsIgnoreCase('technical operations')){
+                    return getTechnicalPositions();
+                }else{
+                    return getOtherPositions();
+                }
+            }catch(Exception e){
+                return new List<Position__c>();
+            }
         }
         set;
     }
@@ -168,6 +198,8 @@ public class OpenPosition {
     ttt.getSalesPositions();
     ttt.getTechnicalPositions();
     ttt.getOtherPositions();
+    
+    List<Position__c> dp = ttt.departmentPosition;
     
     }
     

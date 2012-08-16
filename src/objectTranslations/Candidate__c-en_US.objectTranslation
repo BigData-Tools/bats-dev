@@ -385,6 +385,10 @@
         <name>current_employee_rule</name>
     </validationRules>
     <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Flag --></label>
         <name>Flag</name>
     </webLinks>

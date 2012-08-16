@@ -1,0 +1,16 @@
+<apex:component controller="DashboardController">    
+    <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">Today's Phone Screens</span>
+    <br/><br/> 
+    <apex:PageBlock > 
+        <apex:pageblockTable value="{!TodayPhoneScreens}" var="ps">
+            <apex:column headerValue="ApplicationID">
+                <apex:outputlink value="/{!ps.Application__c}" target="_blank"> {!ps.Application__r.Name} 
+                </apex:outputlink>
+            </apex:column>
+            <apex:column headerValue="Candidate" value="{!ps.Candidate_Formula__c}"/>  
+            <apex:column headerValue="Position"  value="{!ps.Position__c}" />
+            <apex:column headerValue="Status"  value="{!ps.Interview__r.Interview_Type__c}" />
+        </apex:pageblockTable>
+    </apex:PageBlock>
+
+</apex:component>

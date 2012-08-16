@@ -3,5 +3,5 @@
     <narrowComponents>standard-CreateNew</narrowComponents>
     <narrowComponents>standard-UsefulLinks</narrowComponents>
     <narrowComponents>Advanced Search</narrowComponents>
-    <narrowComponents>Summary</narrowComponents>
+    <narrowComponents>My Tasks</narrowComponents>
 </HomePageLayout>

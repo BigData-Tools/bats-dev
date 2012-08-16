@@ -1,4 +1,4 @@
-<apex:page standardController="Candidate__c" extensions="EmailSender">
+<apex:page standardController="Candidate__c" extensions="EmailSender" showHeader="false">
     <apex:pageMessages />
     <apex:form >
         <apex:pageBlock title="Send message to candidates">

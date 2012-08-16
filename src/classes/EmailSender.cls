@@ -79,10 +79,25 @@ public class EmailSender{
     
      /*------------ Tests only below this line ------------*/
     static testMethod void testEmailSender(){
-    EmailSender ttt = new EmailSender();
-    //ttt.getCandidates();
-    ttt.sendEmail();
-    
+	    //test default constructor
+	    EmailSender es = new EmailSender();
+	    
+	    //test constructor which takes standard controller
+	    Application__c a = new Application__c();    
+	    
+	    
+	    Candidate__c c = new Candidate__c();      
+	    c.First_Name__c = 'user';
+	    c.Last_Name__c = 'user';
+	    c.Email__c = 'user@user.com';
+	    insert c;
+	    
+	    a.Candidate__c = c.Id;
+	    
+	    ApexPages.StandardController sc = new ApexPages.standardController(a);      
+	    es = new EmailSender(sc);
+	    
+	    es.sendEmail();
     }
     
 }

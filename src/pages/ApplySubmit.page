@@ -1,4 +1,4 @@
-<apex:page controller="ApplyController">
+<apex:page controller="ApplyController" showHeader="false">
     <apex:pageBlock title="Job Application">
         <apex:form >
             <apex:pageBlockSection title="General information">

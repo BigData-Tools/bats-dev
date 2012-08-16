@@ -1,0 +1,3 @@
+<apex:page >
+  <c:FlaggedCandidates ></c:FlaggedCandidates>
+</apex:page>

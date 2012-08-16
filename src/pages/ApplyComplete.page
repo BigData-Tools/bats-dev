@@ -1,6 +1,4 @@
-<apex:page controller="ApplyController">    
-    Response Body: <hr />
-    <apex:outputLabel value="{!responseBody}"></apex:outputLabel>
-    <hr />
-    Your application has been received. Thank you for applying to Box!
+<apex:page controller="ApplyController" showHeader="false">
+<style> body { background-color: transparent; } </style>
+<h3>Your application has been received. Thank you for applying to Box!</h3>
 </apex:page>

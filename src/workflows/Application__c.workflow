@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>after_reject</fullName>
-        <description>send_email_after_reject</description>
+        <fullName>NoModificationNotice</fullName>
+        <description>NoModificationNotice</description>
         <protected>false</protected>
         <recipients>
-            <field>candidate_email_address__c</field>
+            <field>Candidate_Email_Address__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/NoModificationNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>after_reject</fullName>
+        <description>Send_email_after_reject</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Candidate_Email_Address__c</field>
             <type>email</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -24,7 +35,7 @@
     </alerts>
     <fieldUpdates>
         <fullName>update_email</fullName>
-        <field>candidate_email_address__c</field>
+        <field>Candidate_Email_Address__c</field>
         <formula>Candidate__r.Email__c</formula>
         <name>update_email</name>
         <notifyAssignee>false</notifyAssignee>
@@ -32,12 +43,28 @@
         <protected>false</protected>
     </fieldUpdates>
     <rules>
-        <fullName>send_email_after_reject</fullName>
+        <fullName>Send_email_after_reject</fullName>
         <actions>
             <name>after_reject</name>
             <type>Alert</type>
         </actions>
         <active>true</active>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <criteriaItems>
+            <field>Application__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted Rejection</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Application__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Recruiter Screen Rejection</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Application__c.Status__c</field>
+            <operation>equals</operation>
+            <value>HM Screen Rejection</value>
+        </criteriaItems>
         <criteriaItems>
             <field>Application__c.Status__c</field>
             <operation>equals</operation>
@@ -55,8 +82,8 @@
             <name>update_email</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
-        <formula>candidate_email_address__c  = null</formula>
+        <active>false</active>
+        <formula>Candidate_Email_Address__c  = null</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

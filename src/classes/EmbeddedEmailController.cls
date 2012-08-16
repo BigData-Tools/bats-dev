@@ -17,10 +17,14 @@ public class EmbeddedEmailController{
      */
      public EmbeddedEmailController(ApexPages.StandardController stdController) {
         Id candidateId = stdController.getId();
-        try {
-           emailCommunication = [SELECT Candidate__c, CandidateSender__c, Message__c, Subject__c FROM EmailCommunication__c WHERE Candidate__c = :candidateId];
-        } catch (Nullpointerexception e) {
-           return;
-        }
+        emailCommunication = [SELECT Candidate__c, CandidateSender__c, Message__c, Subject__c FROM EmailCommunication__c WHERE Candidate__c = :candidateId];
+
+    }
+    
+    /*------------ Tests only below this line ------------*/
+    static testMethod void testEmbeddedEmailController(){
+        Application__c a = new Application__c();
+        ApexPages.StandardController sc = new ApexPages.StandardController(a);
+        EmbeddedEmailController eec = new EmbeddedEmailController(sc);
     }
 }

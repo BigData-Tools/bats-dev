@@ -35,7 +35,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>DashboardRedZoneController</apexClass>
+        <apexClass>DashboardController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -67,6 +67,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>MyApplicationsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>MyProfilePageController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -92,6 +96,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ResendCalendarInvites</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Scheduled_email_notice</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -145,7 +153,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Application__c.Candidate_Email_Address__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Application__c.Candidate_Formula__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.Candidate_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -170,7 +188,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Application__c.Notes__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Application__c.Number_of_Reviews__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.Position_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -201,11 +229,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.Total_Rating__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Application__c.candidate_email_address__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -365,6 +388,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Email_Reminder__c.ApplicationID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Email_Reminder__c.Application__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Email_Reminder__c.Last_Email_Datetime__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Flagged_Junction__c.Candidate__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -415,17 +453,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Interview__c.Interview_Datetime__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Interview__c.Interview_Type__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Interview__c.Last_Interview_Datetime__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -516,6 +544,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Review__c.Application__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Review__c.Candidate_Formula__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -617,6 +650,9 @@
         <layout>EmailCommunication__c-EmailCommunication Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Email_Reminder__c-Email Reminder Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Event-Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -710,6 +746,15 @@
         <allowRead>false</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>EmailCommunication__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>false</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Email_Reminder__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -853,15 +898,19 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>Dashboard2</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
-    <pageAccesses>
         <apexPage>Dashboard3</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>Dashboard4</apexPage>
+        <apexPage>DashboardFinal</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DashboardFlaggedCandidates</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DashboardPendingCandidates</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -870,6 +919,18 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>DashboardTaskList</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DashboardTeamQuarterlyHiresList</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DashboardTodayOnsites</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DashboardTodayPhoneScreens</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -894,6 +955,10 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>FileNotFound</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>FlaggedCandidates</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -929,15 +994,15 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>OpenPositionByDepartment</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>PositionDetail</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>Position_List</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
-    <pageAccesses>
-        <apexPage>PositionsDynamicCall</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>

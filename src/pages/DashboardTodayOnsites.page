@@ -1,0 +1,18 @@
+<apex:page controller="DashboardController" sidebar="false" showHeader="false" standardStylesheets="true" >   
+  <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">Today's Onsites</span>
+    <br/><br/>
+    <apex:PageBlock >
+        <apex:outputpanel style="overflow:scroll;height:400px;" layout="block">    
+            <apex:pageblockTable value="{!TodayOnsites}" var="onsite" rendered="{!(TodayOnsites.size != 0)}">
+                <apex:column headerValue="ApplicationID">
+                    <apex:outputlink value="/{!onsite.Application__c}" target="_blank"> {!onsite.Application__r.Name} 
+                    </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Candidate" value="{!onsite.Candidate_Formula__c}"/>                  
+                <apex:column headerValue="Position"  value="{!onsite.Position__c}" />
+                <apex:column headerValue="Status"  value="{!onsite.Interview__r.Interview_Type__c}" />
+            </apex:pageblockTable>
+            <apex:outputText rendered="{!(TodayOnsites.size == 0)}" value="There are no onsites for today." />         
+        </apex:outputpanel>
+   </apex:PageBlock>
+</apex:page>

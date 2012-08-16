@@ -22,8 +22,16 @@
         <name>Box_Resume_Link__c</name>
     </fields>
     <fields>
+        <label><!-- Candidate Email Address --></label>
+        <name>Candidate_Email_Address__c</name>
+    </fields>
+    <fields>
         <label><!-- Candidate --></label>
         <name>Candidate_Formula__c</name>
+    </fields>
+    <fields>
+        <label><!-- Candidate Name --></label>
+        <name>Candidate_Name__c</name>
     </fields>
     <fields>
         <label><!-- Candidate --></label>
@@ -45,8 +53,16 @@
         <relationshipLabel><!-- Applications (Hiring Manager) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
         <label><!-- Number of Reviews --></label>
         <name>Number_of_Reviews__c</name>
+    </fields>
+    <fields>
+        <label><!-- Position Name --></label>
+        <name>Position_Name__c</name>
     </fields>
     <fields>
         <label><!-- Position --></label>
@@ -147,10 +163,6 @@
         <label><!-- Total Rating --></label>
         <name>Total_Rating__c</name>
     </fields>
-    <fields>
-        <label><!-- candidate_email_address --></label>
-        <name>candidate_email_address__c</name>
-    </fields>
     <layouts>
         <layout>Application Layout</layout>
         <sections>
@@ -183,6 +195,14 @@
         <name>Dept_Head_Hiring_Manager_Sharing_Access</name>
     </sharingReasons>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Tagged Hiring Manager, Recruiter and Coordinator cannot be blank. --></errorMessage>
+        <name>Check_Taggings</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
     <webLinks>
         <label><!-- Update_Status --></label>
         <name>Update_Status</name>

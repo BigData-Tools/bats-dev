@@ -1,4 +1,5 @@
-<apex:page controller="ReferralController" sidebar="false">
+<apex:page controller="ReferralController" sidebar="false" showHeader="false">
+    <style> body { background-color: transparent; } </style>
     <script>
         function updatePosition(departmentFieldId, positionFieldId){
                ReferralController.getPositionListDynamically(document.getElementById(departmentFieldId).value, function(result, event){  
@@ -12,7 +13,6 @@
                     }   
                 }, {escape:true});  
         }
-        
     </script>
     <apex:form >
         <apex:pageBlock title="Agent's Referral">
@@ -25,11 +25,12 @@
              
              <apex:pageBlockSection title="Recommended Position" columns="2">
              <!--Just Comment-->
-                 <apex:selectList value="{!position.Department__c}" size="1" id="department" required="true" onChange="updatePosition('{!$Component.department}','{!$Component.position11}')" >
+             
+                 <apex:selectList value="{!position.Department__c}" size="1" id="department" required="true" onChange="updatePosition('{!$Component.department}','{!$Component.position11}')">
                      <apex:selectOptions value="{!DepartmentsList}"/>
                  </apex:selectList> 
                  <apex:selectList value="{!position.Name}" size="1" required="true" id="position11">
-                     <apex:selectOptions value="{!positionsList}"/>
+                     <apex:selectOptions value="{!positionsList}" />
                  </apex:selectList>  
              </apex:pageBlockSection>
              
@@ -39,7 +40,12 @@
                 <apex:inputField value="{!candidate.LinkedIn_Profile_URL__c}" label="LinkedIn Profile URL" />
              </apex:pageBlockSection>
              
-             <apex:pageBlockSection title="Resume upload">
+             <apex:pageBlockSection title="Notes">
+                 <apex:inputtextarea value="{!notes}" label="Notes"/>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Resume upload" columns="1">
+                <apex:outputLabel value="Accepted types: PDF, docx, doc" />
                 <apex:inputFile value="{!resume.body}" filename="{!resume.name}"/>
              </apex:pageBlockSection>
              

@@ -564,6 +564,7 @@
     <pluralLabel>Candidates</pluralLabel>
     <searchLayouts>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <listViewButtons>Delete</listViewButtons>
         <lookupDialogsAdditionalFields>First_Name__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Last_Name__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Email__c</lookupDialogsAdditionalFields>
@@ -571,7 +572,7 @@
         <searchResultsAdditionalFields>Last_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Email__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>Read</sharingModel>
     <validationRules>
         <fullName>EducationNotNullRule</fullName>
         <active>false</active>
@@ -606,6 +607,29 @@ OR(  Currently_Employed__c )
         <errorMessage>Current Employee must be specified when the Currently Employed is checked.</errorMessage>
     </validationRules>
     <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <description>Bulk Delete for the Candidate</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+
+var idsToDelete = {!GETRECORDIDS( $ObjectType.Candidate__c )};
+var deleteWarning= &apos;Are you sure you wish to delete &apos; + idsToDelete.length + &apos; Records?&apos;;
+if( idsToDelete.length &amp;&amp; (window.confirm(deleteWarning)))
+{
+sforce.connection.deleteIds(idsToDelete,function(){
+navigateToUrl(window.location.href);
+});
+}else if (idsToDelete.length == 0){
+alert(&quot;Please select the Agent you wish to delete.!!&quot;);
+}</url>
+    </webLinks>
+    <webLinks>
         <fullName>Flag</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
@@ -613,9 +637,26 @@ OR(  Currently_Employed__c )
         <masterLabel>Flag</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
-{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)}
-sforce.apex.execute(&quot;FlagCandidateController&quot;,&quot;Flag&quot;, {Candidate__c:&quot;C-000095&quot;, Commentor__c:&quot;M-000009&quot;});
-window.alert(&quot;This candidate is flagged.&quot; );</url>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)}
+var label = this.value;
+var result = sforce.apex.execute(&quot;FlagCandidateController&quot;,&quot;isFlagged&quot;, {candidate:&quot;{!Candidate__c.Id}&quot;}); 
+
+if(result == &apos;true&apos; &amp;&amp;label==&apos;Unflag&apos;){
+       sforce.apex.execute(&quot;FlagCandidateController&quot;,&quot;Unflag&quot;, {candidate:&quot;{!Candidate__c.Id}&quot;});        
+       alert(&quot;This candidate is unflagged.&quot;);
+       this.value = &apos;Flag&apos;;     
+} else if(result == &apos;false&apos;) {
+      var flag = sforce.apex.execute(&quot;FlagCandidateController&quot;,&quot;Flag&quot;, {candidate:&quot;{!Candidate__c.Id}&quot;});  
+      if(flag == &apos;true&apos;){     
+            alert(&quot;This candidate is flagged.&quot;);
+             this.value = &apos;Unflag&apos;;
+      } else{
+             alert(&quot;You do not have the permission to flag a candidate. Please register as a reviewer first.&quot;);
+      }
+} else{
+      alert(&quot;This candidate is already flagged.&quot;);
+      this.value = &apos;Unflag&apos;;
+}</url>
     </webLinks>
 </CustomObject>

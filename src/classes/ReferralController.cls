@@ -20,51 +20,53 @@ global with sharing class ReferralController {
         public set;
     }
     
+     public Position__c position{
+        public get;
+        public set;
+    }
+    
+    public String notes{
+        get;
+        set;
+    }
+    
     public ReferralController(){
         candidate = new Candidate__c();
         agent = new Agent__c(); 
         position = new Position__c();   
     }
     
-    private boolean validation(){
+    private List<ApexPages.Message> validation(){
+        List<ApexPages.Message> errorMessageList = new List<ApexPages.Message>();
         try{
-            ApexPages.Message errorMessage;
-            
             if(resume != null && resume.name != null && !(resume.name.contains('.doc') || resume.name.contains('.docx') || resume.name.contains('.pdf'))){
-                errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'invalid file type');
-                ApexPages.addMessage(errorMessage); 
-                return null;
+                errorMessageList.add(new ApexPages.Message(ApexPages.Severity.ERROR, 'invalid file type'));
             }
 
            if(candidate.Referrer_Email__c != null && !candidate.Referrer_Email__c.contains('box.com')){
-               errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'invalid email address for box employee, please use your @box.com email');
-               ApexPages.addMessage(errorMessage); 
-               return null;
+               errorMessageList.add(new ApexPages.Message(ApexPages.Severity.ERROR, 'invalid email address for box employee, please use your @box.com email'));
            }
               
-           if(resume == null && (candidate.LinkedIn_Profile_URL__c == null || candidate.LinkedIn_Profile_URL__c.length() < 1)){
-               errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'you need either Resume document or LinkedIn Profile');
-               ApexPages.addMessage(errorMessage); 
-               return null;
+           if(resume != null && resume.name == null && (candidate.LinkedIn_Profile_URL__c == null || candidate.LinkedIn_Profile_URL__c.length() < 1)){
+               errorMessageList.add(new ApexPages.Message(ApexPages.Severity.ERROR, 'you need either Resume document or LinkedIn Profile'));
            }
            
-           if(candidate.LinkedIn_Profile_URL__c != null && candidate.LinkedIn_Profile_URL__c.length() < 1 && candidate.LinkedIn_Profile_URL__c.contains('LinkedIn.com') == false){
-               errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'valid LinkedIn Profile URL');
-               ApexPages.addMessage(errorMessage); 
-               return null;
+           if(candidate.LinkedIn_Profile_URL__c != null && candidate.LinkedIn_Profile_URL__c.length() > 0 && candidate.LinkedIn_Profile_URL__c.toLowerCase().contains('linkedin.com') == false){
+               errorMessageList.add(new ApexPages.Message(ApexPages.Severity.ERROR, 'invalid LinkedIn Profile URL'));
+           }
+           
+           if(position.Name != null && position.Name.length() > 0 && position.Name.toLowerCase().equals('none')){
+               errorMessageList.add(new ApexPages.Message(ApexPages.Severity.ERROR, 'Invalid Position'));
            }
 
            if(candidate.Street__c == null || candidate.Street__c.length() < 1){
-               //since this is required in the candidate object but the employee may/maynot know it therefore I am setting default value if it has no value
                candidate.Street__c = 'Anywhere';
            }
 
         }catch(Exception e){
-            ApexPages.Message catchErrorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage());
-            ApexPages.addMessage(catchErrorMessage); 
-            return null;
+            errorMessageList.add(new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage()));
         }
-        return true;
+        return errorMessageList;
     }
     
     //for debug only
@@ -72,42 +74,70 @@ global with sharing class ReferralController {
     
     public ParsedResume parsedResume{get; private set;}
     
-    public PageReference employeeReferreralAction(){
-        if(validation() != null){
+    private PageReference referAction(boolean employee){
+        List<ApexPages.Message> errorsList = validation();
+        if(errorsList.size() < 1){
             try{
+                Application__c application = new Application__c();
                 if(resume != null && resume.name != null){
                     BoxUpload boxUpload = new BoxUpload(resume);
                     responseBody = boxUpload.getUploadedFileId();
+                    application.Box_Resume_Id__c = boxUpload.getUploadedFileId();
+                    application.Box_Resume_Link__c = 'https://www.box.com/shared/' + boxUpload.getUploadedFileShareLink();
                 }
-                candidate.Source__c = 'Employee Referreral';
+                
+                if(employee){
+                    candidate.Source__c = 'Employee Referreral';
+                }else{
+                    candidate.Source__c = 'Agent ' + Agent.Name;
+                }
                 insert candidate;
+                
+                
+                application.candidate_email_address__c = candidate.Email__c;
+                application.Position__c  = [select id from position__c where name =:position.Name].get(0).id;
+                if(employee){
+                    application.source__c = 'Employee Referral';
+                }else{
+                    application.source__c = Agent.Name + ' Referral';
+                }
+                application.status__c = 'New';
+                application.candidate__c = [select id from candidate__c where Email__c =: candidate.Email__c].get(0).id;
+                if(notes != null){
+                    application.Notes__c = notes;
+                }else{
+                    application.Notes__c = '';
+                }
+                insert application;
             }catch(Exception e){
                 ApexPages.Message catchErrorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage());
                 ApexPages.addMessage(catchErrorMessage); 
                 return null;
             }
             return new PageReference('/apex/ApplyComplete');
+            
+        }else{
+            for(ApexPages.Message errorMessage : errorsList){
+                ApexPages.addMessage(errorMessage);
+            } 
+            return null;
+        } 
+    }
+    
+    public PageReference employeeReferreralAction(){
+        try{
+            return referAction(true);
+        }catch(Exception e){
+            return null;
         }
-        return null;
     }
     
     public PageReference agentReferralAction(){
-        if(validation() != null){
-            try{
-                if(resume != null && resume.name != null){
-                    BoxUpload boxUpload = new BoxUpload(resume);
-                    responseBody = boxUpload.getUploadedFileId();
-                }
-                candidate.Source__c = 'Agent ' + Agent.Name;
-                insert candidate;
-            }catch(Exception e){
-                ApexPages.Message catchErrorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage());
-                ApexPages.addMessage(catchErrorMessage); 
-                return null;
-            }
-            return new PageReference('/apex/ApplyComplete');
+        try{
+            return referAction(false);
+        }catch(Exception e){
+            return null;
         }
-        return null;
     }
     
     //delete me after test
@@ -122,7 +152,7 @@ global with sharing class ReferralController {
             if(selectedAgent != null){
                 return new PageReference('/apex/AgentReferral'); 
             }else{
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'it is not listed there')); 
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'unauthorized agent')); 
             }
         }catch(Exception e){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Invalid Agent credentials')); 
@@ -132,9 +162,15 @@ global with sharing class ReferralController {
     
     public List<selectOption> departmentsList {
     public get {
-        List<selectOption> departmentsList = new List<selectOption>();
+        Set<String> tempDepartmentsList = new Set<String>();
+        //List<selectOption> departmentsList = new List<selectOption>();
             for (position__c department : [select department__c from position__c]){
-                departmentsList.add(new selectOption(department.department__c, department.department__c));
+                tempDepartmentsList.add(department.department__c);
+            }
+            
+            List<selectOption> departmentsList = new List<selectOption>();
+            for(String departmentName : tempDepartmentsList){
+                departmentsList.add(new selectOption(departmentName, departmentName));
             }
             return departmentsList;
         }
@@ -145,29 +181,17 @@ global with sharing class ReferralController {
         public get{
             List<selectOption> positionsList = new List<selectOption>();
             try{        
-                for (Position__c positionItem : [select Name from Position__c where Department__c = 'Engineering']){
-                    positionsList.add(new selectOption(positionItem.Name, positionItem.Name));
-                }
+                 for(Position__c positionItem : [select Name from Position__c]){
+                        positionsList.add(new selectOption(positionItem.Name, positionItem.Name));
+                 }
             }catch(Exception e){
-                positionsList.add(new selectOption('None', 'None'));
+                 positionsList.add(new selectOption('None', 'None'));
             }
             return positionsList;
         }
         
         public set;
     }
-    
-    /*public List<selectOption> testPositionsList{
-        public get{
-            List<selectOption> positionsList = new List<selectOption>();
-            for (Position__c positionItem : [select Name from Position__c where Department__c = 'Engineering']){
-                positionsList.add(new selectOption(positionItem.Name, positionItem.Name));
-            }
-            return positionsList;
-        }
-        
-        public set;
-    }*/
     
     @RemoteAction
     global static String getPositionListDynamically(String departmentName){
@@ -182,16 +206,44 @@ global with sharing class ReferralController {
         return result;
     }
     
-    public Position__c position{
-        public get;
-        public set;
-    }
+   
     
      /*------------ Tests only below this line ------------*/
     static testMethod void testApplyAgentController(){
-        ReferralController ttt = new ReferralController();
-        ttt.validation();
-        ttt.employeeReferreralAction();
-    
+        
+        //first run all methods with no mock objects
+        ReferralController rc0 = new ReferralController();
+        rc0.validation();
+        rc0.employeeReferreralAction();
+        rc0.agentReferralAction();
+        rc0.verifyAgentAction();
+        ReferralController.getPositionListDynamically('');
+        
+        //now run them with mock objects
+        ReferralController rc = new ReferralController();
+        rc.resume = new Document();
+        rc.resume.Body = Blob.valueOf('Test data');
+        rc.resume.Name = 'resume.doc';        
+        
+        Candidate__c c = new Candidate__c();      
+        c.First_Name__c = 'user';
+        c.Last_Name__c = 'user';
+        c.Email__c = 'user@box.com';
+        rc.candidate = c;
+        
+        Position__c p = new Position__c();
+        p.Department__c = 'Engineering';
+        p.Name = 'positionName';
+        p.Number_of_Hires__c = 5;
+        User u = [SELECT Id FROM User].get(0);
+        p.Hiring_Manager__c = u.Id;
+        p.Recruiter__c = u.Id; 
+        p.Coordinator__c = u.Id; 
+        p.Open_Date__c = System.today();
+        p.Close_Date__c = System.today();
+        rc.position = p;
+        
+        rc.employeeReferreralAction();
+        rc.agentReferralAction();
     }
 }

@@ -67,6 +67,31 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Agents</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <listViewButtons>Delete</listViewButtons>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <description>Delete the Selected Agents</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+
+var idsToDelete = {!GETRECORDIDS( $ObjectType.Agent__c )};
+var deleteWarning= &apos;Are you sure you wish to delete &apos;  + idsToDelete.length +  &apos; Records?&apos;;
+if( idsToDelete.length &amp;&amp; (window.confirm(deleteWarning)))
+{
+     sforce.connection.deleteIds(idsToDelete,function(){
+          navigateToUrl(window.location.href);
+     });
+}else if (idsToDelete.length == 0){
+     alert(&quot;Please select the Agent you wish to delete.!!&quot;);
+}</url>
+    </webLinks>
 </CustomObject>

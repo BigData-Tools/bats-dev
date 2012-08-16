@@ -55,8 +55,7 @@
             if(counter == 0) {
              // Display map of US if no Candidates found
                 var myPoint = new YGeoPoint(40,-95);
-                map.drawZoomAndCenter(myPoint, 14);
-                alert("There are no candidates for this position to map.");
+                map.drawZoomAndCenter(myPoint, 14);              
             }
         }
     </script>

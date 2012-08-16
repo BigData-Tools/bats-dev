@@ -1,11 +1,10 @@
 <apex:page standardController="Application__c" extensions="ApplicationChartsExtension" sidebar="true">
- 
+ <c:My_Applications />
  <apex:enhancedList listId="00Bc0000000LnKC" height="300" customizable="false" rowsPerPage="25"/><br/>
  <apex:enhancedList listId="00Bc0000000LnKM" height="300" customizable="false" rowsPerPage="25"/><br/>
  <apex:enhancedList listId="00Bc0000000LnKR" height="300" customizable="false" rowsPerPage="25"/><br/>
  <apex:enhancedList listId="00Bc0000000LnKW" height="300" customizable="false" rowsPerPage="25"/><br/>
  <apex:enhancedList listId="00BE00000010H9I" height="300" customizable="false" rowsPerPage="25"/><br/>
-
  <apex:includeScript id="a" value="https://www.google.com/jsapi" />
   
     <style>

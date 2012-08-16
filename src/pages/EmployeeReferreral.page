@@ -1,14 +1,18 @@
-<apex:page controller="ReferralController" sidebar="false">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-    <script>
+<apex:page controller="ReferralController" sidebar="false" showHeader="false">
+   <script>
         function updatePosition(departmentFieldId, positionFieldId){
-            //alert(document.getElementById(departmentFieldId).value);
-            
-            $.get("PositionsDynamicCall", { department: document.getElementById(departmentFieldId).value},
-               function(data){
-                     //alert("Data Loaded: " + data);
-               });
+               ReferralController.getPositionListDynamically(document.getElementById(departmentFieldId).value, function(result, event){  
+                    if(event.status){
+                       var tokenizedList = result.split(",");
+                       var optionsList = '';
+                       for(var i = 0; i < tokenizedList.length - 1; i++){
+                           optionsList += "<option value=\"" + tokenizedList[i] + "\">" + tokenizedList[i] + "</option>";
+                       }
+                       document.getElementById(positionFieldId).innerHTML = optionsList;   
+                    }   
+                }, {escape:true});  
         }
+        
     </script>
     <apex:form >
         <apex:pageBlock title="Employee Referral">
@@ -39,6 +43,10 @@
                 <apex:inputField value="{!candidate.Email__c}" label="Email" />
                 <apex:inputField value="{!candidate.Street__c}" label="Street" />
                 <apex:inputField value="{!candidate.LinkedIn_Profile_URL__c}" label="LinkedIn Profile URL" />
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Notes" >
+                 <apex:inputTextArea value="{!notes}" label="Notes" />
              </apex:pageBlockSection>
              
              <apex:pageBlockSection title="Resume upload">

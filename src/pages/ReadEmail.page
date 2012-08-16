@@ -1,4 +1,4 @@
-<apex:page standardController="Candidate__c" extensions="EmailReadingPanel">
+<apex:page standardController="Candidate__c" extensions="EmailReadingPanel" showHeader="false">
     <apex:pageMessages />
     <apex:pageBlock title="Reading Panel">
         <apex:pageBlockSection columns="1">

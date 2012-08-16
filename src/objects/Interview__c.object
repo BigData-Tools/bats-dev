@@ -68,14 +68,6 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Interview_Datetime__c</fullName>
-        <externalId>false</externalId>
-        <label>Interview Date/Time (PST)</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>Interview_Type__c</fullName>
         <externalId>false</externalId>
         <label>Interview Type</label>
@@ -85,7 +77,7 @@ Application__r.Candidate__r.Last_Name__c )</formula>
                 <default>true</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Hiring Manager Screen</fullName>
+                <fullName>HM Screen</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -96,14 +88,6 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Last_Interview_Datetime__c</fullName>
-        <externalId>false</externalId>
-        <label>Last Interview Date/Time (PST)</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Total_Number_of_Interviewers__c</fullName>
@@ -120,7 +104,6 @@ Application__r.Candidate__r.Last_Name__c )</formula>
     <label>Interview</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>Interview_Datetime__c</columns>
         <columns>Interview_Type__c</columns>
         <columns>Application__c</columns>
         <filterScope>Everything</filterScope>
@@ -132,47 +115,32 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Interviews</label>
     </listViews>
     <listViews>
         <fullName>Today_s_Onsites</fullName>
-        <columns>NAME</columns>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
             <value>Onsite Interview</value>
         </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
-        </filters>
         <label>Today&apos;s Onsites</label>
     </listViews>
     <listViews>
         <fullName>Today_s_Phone_Screens</fullName>
-        <columns>NAME</columns>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
-            <value>Recruiter Screen,HM Screen</value>
-        </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
+            <value>Recruiter Screen,Hiring Manager Screen</value>
         </filters>
         <label>Today&apos;s Phone Screens</label>
     </listViews>
@@ -182,7 +150,6 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <label>Unassigned Reviews</label>
     </listViews>
@@ -190,17 +157,11 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <fullName>Upcoming_HM_Screens_Dashboard</fullName>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
             <value>HM Screen</value>
-        </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>NEXT_N_DAYS:10</value>
         </filters>
         <label>Upcoming HM Screens</label>
     </listViews>
@@ -210,17 +171,11 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
             <value>Onsite Interview</value>
-        </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>TODAY</value>
         </filters>
         <label>Upcoming Onsites</label>
     </listViews>
@@ -228,17 +183,11 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <fullName>Upcoming_Onsites_Dashboard</fullName>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
             <value>Onsite Interview</value>
-        </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>TODAY,NEXT_N_DAYS:10</value>
         </filters>
         <label>Upcoming Onsites</label>
     </listViews>
@@ -248,17 +197,11 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
             <value>Recruiter Screen,HM Screen</value>
-        </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>TODAY</value>
         </filters>
         <label>Upcoming Phone Screens</label>
     </listViews>
@@ -267,17 +210,11 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <columns>Application__c</columns>
         <columns>Candidate_Formula__c</columns>
         <columns>Interview_Type__c</columns>
-        <columns>Interview_Datetime__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Interview_Type__c</field>
             <operation>equals</operation>
             <value>Recruiter Screen,HM Screen</value>
-        </filters>
-        <filters>
-            <field>Interview_Datetime__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>NEXT_N_DAYS:10</value>
         </filters>
         <label>Upcoming Phone Screens</label>
     </listViews>
@@ -287,20 +224,32 @@ Application__r.Candidate__r.Last_Name__c )</formula>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <namedFilters>
-        <fullName>nf_01IE0000000N3AmMAK_00NE00000023rkBMAQ</fullName>
-        <active>true</active>
-        <field>Review__c.Interview__c</field>
-        <filterItems>
-            <field>Interview__c.Application__c</field>
-            <operation>equals</operation>
-            <valueField>$Source.Application__c</valueField>
-        </filterItems>
-        <isOptional>false</isOptional>
-        <name>Review_Interview</name>
-        <sourceObject>Review__c</sourceObject>
-    </namedFilters>
     <pluralLabel>Interviews</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <listViewButtons>Delete</listViewButtons>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <description>Bulk Delete from Interview</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+
+var idsToDelete = {!GETRECORDIDS( $ObjectType.Interview__c )};
+var deleteWarning= &apos;Are you sure you wish to delete &apos; + idsToDelete.length + &apos; Records?&apos;;
+if( idsToDelete.length &amp;&amp; (window.confirm(deleteWarning)))
+{
+sforce.connection.deleteIds(idsToDelete,function(){
+navigateToUrl(window.location.href);
+});
+}else if (idsToDelete.length == 0){
+alert(&quot;Please select the Interview(s) you wish to delete.!!&quot;);
+}</url>
+    </webLinks>
 </CustomObject>

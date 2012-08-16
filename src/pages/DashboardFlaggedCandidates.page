@@ -1,0 +1,17 @@
+<apex:page controller="DashboardController" sidebar="false" showHeader="false" standardStylesheets="true">
+  <span style="font-family : arial,sans-serif; font-weight: bolder; font-size: 18pt">Flagged Candidates</span>
+    <br/><br/> 
+    <apex:PageBlock >
+        <apex:outputpanel style="overflow:scroll;height:400px;" layout="block"> 
+            <apex:pageblockTable value="{!FlaggedCandidates}" var="fc" rendered="{!(FlaggedCandidates.size != 0)}">
+                <apex:column headerValue="Candidate">
+                    <apex:outputlink value="/{!fc.Candidate__c}" target="_blank"> {!fc.Candidate__r.First_Name__c} {!fc.Candidate__r.Last_Name__c} 
+                    </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Position" />  
+                <apex:column headerValue="Status"/>               
+            </apex:pageblockTable>
+            <apex:outputText rendered="{!(FlaggedCandidates.size == 0)}" value="There are no flagged candidates." />
+        </apex:outputpanel>
+    </apex:PageBlock>
+</apex:page>
